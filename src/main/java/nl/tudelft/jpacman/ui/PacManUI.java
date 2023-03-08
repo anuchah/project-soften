@@ -14,10 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import javafx.event.ActionEvent;
-
 import javax.swing.*;
-import net.bytebuddy.asm.Advice.This;
+
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
 
@@ -128,14 +126,14 @@ public class PacManUI extends JFrame {
 
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                cardLayout.next(cardPanel);
+                cardPanel.add(GamePlay, "Second");
+                cardLayout.show(cardPanel, "Second");
             }
 
         });
         homeUI.setBackground("src\\main\\resources\\Homebackground1.png");
         homeUI.addButton(btnStart);
         cardPanel.add(homeUI, "First");
-        cardPanel.add(GamePlay, "Second");
 
         add(cardPanel);
         pack();
