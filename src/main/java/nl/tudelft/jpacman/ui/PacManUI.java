@@ -126,7 +126,7 @@ public class PacManUI extends JFrame {
 
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                cardPanel.add(GamePlay, "Second");
+
                 cardLayout.show(cardPanel, "Second");
             }
 
@@ -134,7 +134,7 @@ public class PacManUI extends JFrame {
         homeUI.setBackground("src\\main\\resources\\Homebackground1.png");
         homeUI.addButton(btnStart);
         cardPanel.add(homeUI, "First");
-
+        cardPanel.add(GamePlay, "Second");
         add(cardPanel);
         pack();
 
