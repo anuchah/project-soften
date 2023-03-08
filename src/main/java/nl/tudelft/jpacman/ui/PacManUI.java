@@ -17,7 +17,7 @@ import javax.swing.WindowConstants;
 import javafx.event.ActionEvent;
 
 import javax.swing.*;
-import net.bytebuddy.asm.Advice.This;
+//import net.bytebuddy.asm.Advice.This;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
 
