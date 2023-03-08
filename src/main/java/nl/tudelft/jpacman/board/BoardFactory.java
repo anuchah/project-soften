@@ -7,7 +7,7 @@ import nl.tudelft.jpacman.sprite.Sprite;
  * A factory that creates {@link Board} objects from 2-dimensional arrays of
  * {@link Square}s.
  *
- * @author Jeroen Roosen 
+ * @author Jeroen Roosen
  */
 public class BoardFactory {
 
@@ -21,7 +21,7 @@ public class BoardFactory {
      * background sprites.
      *
      * @param spriteStore
-     *            The sprite store providing the sprites for the background.
+     *                    The sprite store providing the sprites for the background.
      */
     public BoardFactory(PacManSprites spriteStore) {
         this.sprites = spriteStore;
@@ -31,8 +31,8 @@ public class BoardFactory {
      * Creates a new board from a grid of cells and connects it.
      *
      * @param grid
-     *            The square grid of cells, in which grid[x][y] corresponds to
-     *            the square at position x,y.
+     *             The square grid of cells, in which grid[x][y] corresponds to
+     *             the square at position x,y.
      * @return A new board, wrapping a grid of connected cells.
      */
     public Board createBoard(Square[][] grid) {
@@ -91,7 +91,7 @@ public class BoardFactory {
          * Creates a new wall square.
          *
          * @param sprite
-         *            The background for the square.
+         *               The background for the square.
          */
         Wall(Sprite sprite) {
             this.background = sprite;
@@ -124,7 +124,7 @@ public class BoardFactory {
          * Creates a new ground square.
          *
          * @param sprite
-         *            The background for the square.
+         *               The background for the square.
          */
         Ground(Sprite sprite) {
             this.background = sprite;

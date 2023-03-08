@@ -2,7 +2,11 @@ package nl.tudelft.jpacman;
 
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import org.checkerframework.checker.units.qual.Length;
 
 import nl.tudelft.jpacman.board.BoardFactory;
 import nl.tudelft.jpacman.board.Direction;
@@ -18,6 +22,7 @@ import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.points.PointCalculatorLoader;
 import nl.tudelft.jpacman.sprite.PacManSprites;
 import nl.tudelft.jpacman.ui.Action;
+import nl.tudelft.jpacman.ui.HomeUI;
 import nl.tudelft.jpacman.ui.PacManUI;
 import nl.tudelft.jpacman.ui.PacManUiBuilder;
 
@@ -31,8 +36,10 @@ public class Launcher {
 
     private static final PacManSprites SPRITE_STORE = new PacManSprites();
 
-    public static final String DEFAULT_MAP = "/board.txt";
-    private String levelMap = DEFAULT_MAP;
+    public static final String DEFAULT_MAP = "/board0.txt";
+    private List<String> allLevel = Arrays.asList("/board0.txt", "/board1.txt", "/board2.txt", "/board3.txt",
+            "/board4.txt");
+    private static String levelMap = DEFAULT_MAP;
 
     private PacManUI pacManUI;
     private Game game;
@@ -50,15 +57,16 @@ public class Launcher {
      *
      * @return The name of the map file.
      */
-    protected String getLevelMap() {
-        return levelMap;
+    protected String getLevelMap(int i) {
+
+        return allLevel.get(i);
     }
 
     /**
      * Set the name of the file containing this level's map.
      *
      * @param fileName
-     *            Map to be used.
+     *                 Map to be used.
      * @return Level corresponding to the given map.
      */
     public Launcher withMapFile(String fileName) {
@@ -73,7 +81,7 @@ public class Launcher {
      */
     public Game makeGame() {
         GameFactory gf = getGameFactory();
-        Level level = makeLevel();
+        List<Level> level = makeLevel();
         game = gf.createSinglePlayerGame(level, loadPointCalculator());
         return game;
     }
@@ -88,12 +96,16 @@ public class Launcher {
      *
      * @return A new level.
      */
-    public Level makeLevel() {
+    public List<Level> makeLevel() {
+        List<Level> all_level = new ArrayList<Level>();
         try {
-            return getMapParser().parseMap(getLevelMap());
+            for (int map = 0; map < allLevel.size(); map++) {
+                all_level.add(getMapParser().parseMap(getLevelMap(map)));
+            }
+            return all_level;
         } catch (IOException e) {
             throw new PacmanConfigurationException(
-                    "Unable to create level, name = " + getLevelMap(), e);
+                    "Unable to create level, name = ", e);
         }
     }
 
@@ -153,7 +165,7 @@ public class Launcher {
      * Adds key events UP, DOWN, LEFT and RIGHT to a game.
      *
      * @param builder
-     *            The {@link PacManUiBuilder} that will provide the UI.
+     *                The {@link PacManUiBuilder} that will provide the UI.
      */
     protected void addSinglePlayerKeys(final PacManUiBuilder builder) {
         builder.addKey(KeyEvent.VK_UP, moveTowardsDirection(Direction.NORTH))
@@ -203,9 +215,9 @@ public class Launcher {
      * Main execution method for the Launcher.
      *
      * @param args
-     *            The command line arguments - which are ignored.
+     *             The command line arguments - which are ignored.
      * @throws IOException
-     *             When a resource could not be read.
+     *                     When a resource could not be read.
      */
     public static void main(String[] args) throws IOException {
         new Launcher().launch();

@@ -11,7 +11,7 @@ import nl.tudelft.jpacman.points.PointCalculator;
 /**
  * A game with one player and a single level.
  *
- * @author Jeroen Roosen 
+ * @author Jeroen Roosen
  */
 public class SinglePlayerGame extends Game {
 
@@ -23,26 +23,30 @@ public class SinglePlayerGame extends Game {
     /**
      * The level of this game.
      */
-    private final Level level;
+    private final List<Level> listlevel;
+
+    private Level level;
+    private int MAP_NUMBER = 0;
 
     /**
      * Create a new single player game for the provided level and player.
      *
      * @param player
-     *            The player.
+     *                        The player.
      * @param level
-     *            The level.
+     *                        The level.
      * @param pointCalculator
-     *            The way to calculate points upon collisions.
+     *                        The way to calculate points upon collisions.
      */
-    protected SinglePlayerGame(Player player, Level level, PointCalculator pointCalculator) {
+    protected SinglePlayerGame(Player player, List<Level> level, PointCalculator pointCalculator) {
         super(pointCalculator);
 
         assert player != null;
         assert level != null;
 
         this.player = player;
-        this.level = level;
+        this.listlevel = level;
+        this.level = listlevel.get(MAP_NUMBER);
         this.level.registerPlayer(player);
     }
 
@@ -51,8 +55,35 @@ public class SinglePlayerGame extends Game {
         return ImmutableList.of(player);
     }
 
+    public void nextState() {
+        MAP_NUMBER++;
+        if (MAP_NUMBER > 4) {
+            MAP_NUMBER = 0;
+        }
+        this.level.removeObserver(this);
+        this.level = listlevel.get(MAP_NUMBER);
+        this.level.registerPlayer(player);
+
+    }
+
+    @Override
+    public void levelWon() {
+
+        nextState();
+        stop();
+
+    }
+
+    @Override
+    public void levelLost() {
+
+        stop();
+
+    }
+
     @Override
     public Level getLevel() {
-        return level;
+        return this.level;
     }
+
 }

@@ -11,7 +11,7 @@ import nl.tudelft.jpacman.points.PointCalculator;
 /**
  * A basic implementation of a Pac-Man game.
  *
- * @author Jeroen Roosen 
+ * @author Jeroen Roosen
  */
 public abstract class Game implements LevelObserver {
 
@@ -19,6 +19,7 @@ public abstract class Game implements LevelObserver {
      * <code>true</code> if the game is in progress.
      */
     private boolean inProgress;
+    private boolean won;
 
     /**
      * Object that locks the start and stop methods.
@@ -35,11 +36,12 @@ public abstract class Game implements LevelObserver {
      * Creates a new game.
      *
      * @param pointCalculator
-     *             The way to calculate points upon collisions.
+     *                        The way to calculate points upon collisions.
      */
     protected Game(PointCalculator pointCalculator) {
         this.pointCalculator = pointCalculator;
         inProgress = false;
+
     }
 
     /**
@@ -92,9 +94,9 @@ public abstract class Game implements LevelObserver {
      * Moves the specified player one square in the given direction.
      *
      * @param player
-     *            The player to move.
+     *                  The player to move.
      * @param direction
-     *            The direction to move in.
+     *                  The direction to move in.
      */
     public void move(Player player, Direction direction) {
         if (isInProgress()) {
@@ -111,6 +113,11 @@ public abstract class Game implements LevelObserver {
 
     @Override
     public void levelLost() {
-        stop();
+
     }
+
+    public void setIsprogress(Boolean b) {
+        inProgress = b;
+    }
+
 }
