@@ -99,8 +99,8 @@ public class Launcher {
     public List<Level> makeLevel() {
         List<Level> all_level = new ArrayList<Level>();
         try {
-            for (int map = 0; map < allLevel.size(); map++) {
-                all_level.add(getMapParser().parseMap(getLevelMap(map)));
+            for (int mapIndex = 0; mapIndex < allLevel.size(); mapIndex++) {
+                all_level.add(getMapParser().parseMap(getLevelMap(mapIndex)));
             }
             return all_level;
         } catch (IOException e) {

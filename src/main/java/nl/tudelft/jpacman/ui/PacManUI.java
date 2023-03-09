@@ -14,12 +14,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import javax.swing.*;
-<<<<<<< HEAD
-//import net.bytebuddy.asm.Advice.This;
-=======
+import javafx.scene.layout.Background;
 
->>>>>>> 25531ad0c1d537e8eb43aef1276079160b36b2d3
+import javax.swing.*;
+import net.bytebuddy.asm.Advice.This;
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
 
@@ -60,6 +59,8 @@ public class PacManUI extends JFrame {
      */
     private final BoardPanel boardPanel;
 
+    public static String BACKGROUND_PATH = "src\\main\\resources\\Theme\\background1.jpg";
+
     /**
      * Creates a new UI for a JPacman game.
      *
@@ -87,12 +88,13 @@ public class PacManUI extends JFrame {
     // create a panel to hold the buttons
     JPanel buttonPanel = new JPanel();
     // create two buttons to switch between cards
-    JButton btnStart = new JButton("Start");
+
     JPanel homePanel = new JPanel();
     JLabel title = new JLabel("PacMan");
 
     JPanel GamePlay = new JPanel();
     HomeUI homeUI = new HomeUI();
+    ThemeUI themeUI = new ThemeUI();
 
     public PacManUI(final Game game, final Map<String, Action> buttons,
             final Map<Integer, Action> keyMappings,
@@ -116,29 +118,76 @@ public class PacManUI extends JFrame {
         if (scoreFormatter != null) {
             scorePanel.setScoreFormatter(scoreFormatter);
         }
-
+        // Crete GamePlayUI
         boardPanel = new BoardPanel(game);
         GamePlay.setLayout(new BorderLayout());
         boardPanel.setOpaque(false);
         GamePlay.add(buttonPanel, BorderLayout.SOUTH);
         GamePlay.add(scorePanel, BorderLayout.NORTH);
         GamePlay.add(boardPanel, BorderLayout.CENTER);
+        boardPanel.setBackground(BACKGROUND_PATH);
 
-        boardPanel.setBackground("src\\main\\resources\\background1.jpg");
         // create btn home conection to Gameplay
+        JButton btnStart = new JButton("Start");
         btnStart.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
 
-                cardLayout.show(cardPanel, "Second");
+                cardLayout.show(cardPanel, "gameplay");
             }
 
         });
-        homeUI.setBackground("src\\main\\resources\\Homebackground1.png");
+        // create btn home conection to seclecttheme
+        JButton btnTheme = new JButton(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));
+        btnTheme.setBackground(new Color(0, 0, 0, 0));
+
+        btnTheme.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                cardLayout.show(cardPanel, "theme");
+            }
+
+        });
+
+        themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 1 + ".jpg", new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Theme: " + "Hollow");
+                BACKGROUND_PATH = "src\\main\\resources\\Theme\\background1.jpg";
+                homeUI.setBackground(BACKGROUND_PATH);
+                boardPanel.setBackground(BACKGROUND_PATH);
+                cardLayout.show(cardPanel, "home");
+            }
+
+        });
+        themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 2 + ".jpg", new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Theme: " + "Japan");
+                BACKGROUND_PATH = "src\\main\\resources\\Theme\\background2.jpg";
+                homeUI.setBackground(BACKGROUND_PATH);
+                boardPanel.setBackground(BACKGROUND_PATH);
+                cardLayout.show(cardPanel, "home");
+            }
+        });
+        themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 3 + ".jpg", new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Theme: " + "Neon");
+                BACKGROUND_PATH = "src\\main\\resources\\Theme\\background3.jpg";
+                homeUI.setBackground(BACKGROUND_PATH);
+                boardPanel.setBackground(BACKGROUND_PATH);
+                cardLayout.show(cardPanel, "home");
+            }
+        });
+
+        homeUI.setBackground(BACKGROUND_PATH);
+        homeUI.addButton(btnTheme);
         homeUI.addButton(btnStart);
-        cardPanel.add(homeUI, "First");
-        cardPanel.add(GamePlay, "Second");
+        cardPanel.add(homeUI, "home");
+        cardPanel.add(GamePlay, "gameplay");
+        cardPanel.add(themeUI, "theme");
         add(cardPanel);
         pack();
 

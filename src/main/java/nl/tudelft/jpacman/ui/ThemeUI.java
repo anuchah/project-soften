@@ -5,35 +5,25 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ThemeUI {
-        int i=0;
-        private static JPanel panel;
-        //private final Map<String, ImageIcon> imageMap;
-        public ThemeUI() {
+public class ThemeUI extends JPanel {
+    int i = 0;
 
-            JPanel buttonPanel = new JPanel();
-            JPanel themetitle = new JPanel();
+    // private final Map<String, ImageIcon> imageMap;
+    public ThemeUI() {
 
-            JButton[] buttons = new JButton[3];
-            panel = new JPanel(new GridLayout(2, 2));
-            String[] b = {"Japan", "Halloween", "City"};
-            ImageIcon[] images = {new ImageIcon("resources/Theme/japan.jpg"),
-                new ImageIcon("resources/Theme/hallow.jpg"),
-                new ImageIcon("resources/Theme/neon.jpg")};
+        JPanel buttonPanel = new JPanel();
+        JPanel themetitle = new JPanel();
 
-            for (int i = 0; i < buttons.length; i++) {
+        setLayout(new GridLayout(2, 2));
 
-                buttons[i] = new JButton(b[i], images[i]);
-                buttons[i].setActionCommand(b[i]);
-                buttons[i].addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        String choice = e.getActionCommand();
-                        JOptionPane.showMessageDialog(null, "Theme: " + choice);
-                    }
-                });
+    }
 
+    public void addThemeButton(String pathIcon, ActionListener action) {
+        ImageIcon icon = new ImageIcon(pathIcon);
+        JButton button = new JButton(icon);
+        button.addActionListener(action);
 
-                panel.add(buttons[i]);
-            }
+        add(button);
+
     }
 }
