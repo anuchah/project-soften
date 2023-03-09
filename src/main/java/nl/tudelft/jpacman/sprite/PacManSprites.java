@@ -116,6 +116,7 @@ public class PacManSprites extends SpriteStore {
      * @return The sprite for the wall.
      */
     public Sprite getWallSprite() {
+
         return loadSprite("/sprite/wall.png");
     }
 
