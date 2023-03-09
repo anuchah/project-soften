@@ -10,13 +10,15 @@ public class ThemeUI extends JPanel {
 
     // private final Map<String, ImageIcon> imageMap;
     public ThemeUI() {
+        setLayout(new BorderLayout());
 
         JPanel buttonPanel = new JPanel();
         JPanel themetitle = new JPanel();
 
-        setLayout(new GridLayout(2, 2));
 
+        setLayout(new GridLayout(2, 2));
     }
+
 
     public void addThemeButton(String pathIcon, ActionListener action) {
         ImageIcon icon = new ImageIcon(pathIcon);
