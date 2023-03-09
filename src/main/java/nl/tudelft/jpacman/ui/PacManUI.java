@@ -174,7 +174,7 @@ public class PacManUI extends JFrame {
         themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 3 + ".jpg", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Theme: " + "Neon");
+                JOptionPane.showMessageDialog(null, "Theme: " + "City");
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\background3.jpg";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
