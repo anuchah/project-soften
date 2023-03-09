@@ -29,7 +29,7 @@ public class Level {
     /**
      * The board of this level.
      */
-    private final Board board;
+    private Board board;
 
     /**
      * The lock that ensures moves are executed sequential.
@@ -66,17 +66,22 @@ public class Level {
     /**
      * The players on this level.
      */
-    private final List<Player> players;
+    private List<Player> players;
 
     /**
      * The table of possible collisions between units.
      */
-    private final CollisionMap collisions;
+    private CollisionMap collisions;
 
     /**
      * The objects observing this level.
      */
     private final Set<LevelObserver> observers;
+
+    // variable for copy
+    private List<Ghost> ghosts;
+    private CollisionMap collisionMap;
+    private List<Square> startPositions;
 
     /**
      * Creates a new level for the board.
@@ -95,6 +100,10 @@ public class Level {
         assert board != null;
         assert ghosts != null;
         assert startPositions != null;
+
+        this.ghosts = ghosts;
+        this.collisionMap = collisionMap;
+        this.startPositions = startPositions;
 
         this.board = board;
         this.inProgress = false;
@@ -372,4 +381,9 @@ public class Level {
          */
         void levelLost();
     }
+
+    public Level copy() {
+        return new Level(board, ghosts, startPositions, collisionMap);
+    }
+
 }

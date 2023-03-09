@@ -2,6 +2,7 @@ package nl.tudelft.jpacman.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
 import java.util.Map;
@@ -36,7 +37,7 @@ import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
  * @author Jeroen Roosen
  *
  */
-public class PacManUI extends JFrame {
+public class PacManUI extends JFrame implements ActionListener {
 
     /**
      * Default serialisation UID.
@@ -91,19 +92,27 @@ public class PacManUI extends JFrame {
 
     JPanel homePanel = new JPanel();
     JLabel title = new JLabel("PacMan");
-
+    final Game game;
     JPanel GamePlay = new JPanel();
     HomeUI homeUI = new HomeUI();
     ThemeUI themeUI = new ThemeUI();
 
-    public PacManUI(final Game game, final Map<String, Action> buttons,
+    JButton btnStart = new JButton();
+    JDialog dialogDead;
+    // custom dialog dead
+    JButton btnGame2home = new JButton("Back to home");
+    JButton restartButton = new JButton("Restart");
+    JButton homeButton = new JButton("Go Home");
+    JButton btnTheme = new JButton();
+
+    public PacManUI(Game game, final Map<String, Action> buttons,
             final Map<Integer, Action> keyMappings,
             ScoreFormatter scoreFormatter) {
 
         assert game != null;
         assert buttons != null;
         assert keyMappings != null;
-
+        this.game = game;
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // addCard Layout to Card Panel
@@ -127,28 +136,7 @@ public class PacManUI extends JFrame {
         GamePlay.add(boardPanel, BorderLayout.CENTER);
         boardPanel.setBackground(BACKGROUND_PATH);
 
-        // create btn home conection to Gameplay
-        JButton btnStart = new JButton("Start");
-        btnStart.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-
-                cardLayout.show(cardPanel, "gameplay");
-            }
-
-        });
         // create btn home conection to seclecttheme
-        JButton btnTheme = new JButton(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));
-        btnTheme.setBackground(new Color(0, 0, 0, 0));
-
-        btnTheme.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                cardLayout.show(cardPanel, "theme");
-            }
-
-        });
 
         themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 1 + ".jpg", new ActionListener() {
             @Override
@@ -181,6 +169,16 @@ public class PacManUI extends JFrame {
                 cardLayout.show(cardPanel, "home");
             }
         });
+        // setBackground btn HomeUI
+        btnStart.setIcon(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
+        btnTheme.setIcon(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));
+
+        btnStart.setBackground(new Color(0, 0, 0, 0));
+        btnTheme.setBackground(new Color(0, 0, 0, 0));
+        btnStart.setOpaque(true);
+        btnTheme.setOpaque(true);
+        btnStart.addActionListener(this);
+        btnTheme.addActionListener(this);
 
         homeUI.setBackground(BACKGROUND_PATH);
         homeUI.addButton(btnTheme);
@@ -209,6 +207,47 @@ public class PacManUI extends JFrame {
     private void nextFrame() {
         boardPanel.repaint();
         scorePanel.refresh();
+        if (game.isLost()) {
+            game.setLost(false);
+            dialogDead = new JDialog();
+            dialogDead.setLayout(new BorderLayout());
+            dialogDead.add(new JLabel("You Dead ", SwingConstants.CENTER), BorderLayout.NORTH);
+            dialogDead.add(new JLabel("Your Score :  " + game.getScore(), SwingConstants.CENTER), BorderLayout.CENTER);
+            // Create a JPanel for the buttons
+            JPanel buttonPanel1 = new JPanel();
+            dialogDead.setSize(300, 200);
+            // Set the location of the dialog
+            dialogDead.setLocationRelativeTo(this);
+            // Create a JButton for restarting
+            homeButton.addActionListener(this);
+            buttonPanel1.add(restartButton);
+            buttonPanel1.add(homeButton);
+            dialogDead.add(buttonPanel1, BorderLayout.SOUTH);
+
+            restartButton.addActionListener(this);
+            dialogDead.setVisible(true);
+        }
+
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnStart) {
+
+            cardLayout.show(cardPanel, "gameplay");
+        } else if (e.getSource() == btnTheme) {
+            cardLayout.show(cardPanel, "theme");
+        } else if (e.getSource() == homeButton) {
+            game.reStart();
+            dialogDead.setVisible(false);
+            cardLayout.show(cardPanel, "home");
+            dialogDead.removeAll();
+        } else if (e.getSource() == restartButton) {
+            dialogDead.setVisible(false);
+            game.reStart();
+            dialogDead.removeAll();
+
+        }
+
+    }
 }
