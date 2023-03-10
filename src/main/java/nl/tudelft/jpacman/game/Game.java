@@ -8,6 +8,7 @@ import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
+import nl.tudelft.jpacman.theme.ThemeSet;
 
 /**
  * A basic implementation of a Pac-Man game.
@@ -99,6 +100,8 @@ public abstract class Game implements LevelObserver {
     public abstract void reSetScore();
 
     public abstract int getScore();
+
+    public abstract void setTheme(ThemeSet themeSet);
 
     /**
      * Moves the specified player one square in the given direction.

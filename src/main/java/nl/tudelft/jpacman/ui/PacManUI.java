@@ -150,6 +150,8 @@ public class PacManUI extends JFrame implements ActionListener {
             }
 
         });
+        // create btn home conection to seclecttheme
+
 
         // create btn home conection to seclecttheme
         themeUI.addThemeButton("src\\main\\resources\\Theme\\default.jpg", new ActionListener() {
@@ -166,6 +168,7 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.HALLOWEEN);
+                game.setTheme(ThemeSet.HALLOWEEN);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\background1.jpg";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
@@ -177,6 +180,7 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.JAPAN);
+                game.setTheme(ThemeSet.JAPAN);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\background2.jpg";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
@@ -187,6 +191,7 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.CITY);
+                game.setTheme(ThemeSet.CITY);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\background3.jpg";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);

@@ -21,6 +21,7 @@ import nl.tudelft.jpacman.npc.ghost.GhostFactory;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.points.PointCalculatorLoader;
 import nl.tudelft.jpacman.sprite.PacManSprites;
+import nl.tudelft.jpacman.theme.ThemeSet;
 import nl.tudelft.jpacman.ui.Action;
 import nl.tudelft.jpacman.ui.HomeUI;
 import nl.tudelft.jpacman.ui.PacManUI;
@@ -43,6 +44,8 @@ public class Launcher {
 
     private PacManUI pacManUI;
     private Game game;
+
+    private ThemeSet themeDefault = ThemeSet.HALLOWEEN;
 
     /**
      * @return The game object this launcher will start when {@link #launch()}
@@ -81,7 +84,7 @@ public class Launcher {
      */
     public Game makeGame() {
         GameFactory gf = getGameFactory();
-        List<Level> level = makeLevel();
+        List<Level> level = makeLevel(themeDefault);
         game = gf.createSinglePlayerGame(level, loadPointCalculator());
         return game;
     }
@@ -96,11 +99,12 @@ public class Launcher {
      *
      * @return A new level.
      */
-    public List<Level> makeLevel() {
+    public List<Level> makeLevel(ThemeSet theme) {
         List<Level> all_level = new ArrayList<Level>();
         try {
             for (int mapIndex = 0; mapIndex < allLevel.size(); mapIndex++) {
-                all_level.add(getMapParser().parseMap(getLevelMap(mapIndex)));
+                System.out.println(theme.getThemeName());
+                all_level.add(getMapParser().parseMap(getLevelMap(mapIndex), theme));
             }
             return all_level;
         } catch (IOException e) {
