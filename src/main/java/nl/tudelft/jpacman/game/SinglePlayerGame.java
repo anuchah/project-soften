@@ -1,6 +1,5 @@
 package nl.tudelft.jpacman.game;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import nl.tudelft.jpacman.Launcher;
@@ -31,7 +30,7 @@ public class SinglePlayerGame extends Game {
     private Level level;
     private int MAP_NUMBER = 0;
     private Launcher launcher = new Launcher();
-    public ThemeSet theme = ThemeSet.HALLOWEEN;
+    public ThemeSet theme = ThemeSet.DEFAULT;
 
     /**
      * Create a new single player game for the provided level and player.
@@ -44,7 +43,7 @@ public class SinglePlayerGame extends Game {
      *                        The way to calculate points upon collisions.
      */
     protected SinglePlayerGame(Player player, List<Level> level, PointCalculator pointCalculator) {
-        super(pointCalculator);
+        super();
 
         assert player != null;
         assert level != null;

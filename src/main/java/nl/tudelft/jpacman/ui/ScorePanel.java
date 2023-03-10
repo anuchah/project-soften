@@ -66,7 +66,7 @@ public class ScorePanel extends JPanel {
     /**
      * Refreshes the scores of the players.
      */
-    protected void refresh() {
+    public void refresh() {
         for (Map.Entry<Player, JLabel> entry : scoreLabels.entrySet()) {
             Player player = entry.getKey();
             String score = "";

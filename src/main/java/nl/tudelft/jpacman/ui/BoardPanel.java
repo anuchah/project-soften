@@ -21,7 +21,7 @@ import nl.tudelft.jpacman.game.Game;
  * @author Jeroen Roosen
  *
  */
-class BoardPanel extends JPanel {
+public class BoardPanel extends JPanel {
 
     /**
      * Default serialisation ID.

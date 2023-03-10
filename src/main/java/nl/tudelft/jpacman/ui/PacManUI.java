@@ -235,7 +235,7 @@ public class PacManUI extends JFrame implements ActionListener {
     /**
      * Draws the next frame, i.e. refreshes the scores and game.
      */
-    private void nextFrame() {
+    public void nextFrame() {
         boardPanel.repaint();
         scorePanel.refresh();
         if (game.isLost()) {
