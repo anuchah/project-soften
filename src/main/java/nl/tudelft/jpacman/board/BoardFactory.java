@@ -60,6 +60,10 @@ public class BoardFactory {
         return board;
     }
 
+    public void setTheme(ThemeSet theme) {
+        sprites.setThme(theme);
+    }
+
     /**
      * Creates a new square that can be occupied by any unit.
      *
@@ -77,11 +81,13 @@ public class BoardFactory {
     public Square createWall() {
         return new Wall(sprites.getWallSprite());
     }
-    /*public Square createWall() {
-        Map<ThemeSet, Sprite> wallSprites = sprites.getWallSprite(selectedTheme);
-        Sprite wallSprite = wallSprites.get(selectedTheme);
-        return new Wall(wallSprite);
-    }*/
+    /*
+     * public Square createWall() {
+     * Map<ThemeSet, Sprite> wallSprites = sprites.getWallSprite(selectedTheme);
+     * Sprite wallSprite = wallSprites.get(selectedTheme);
+     * return new Wall(wallSprite);
+     * }
+     */
 
     /**
      * A wall is a square that is inaccessible to anyone.
@@ -148,4 +154,5 @@ public class BoardFactory {
             return background;
         }
     }
+
 }

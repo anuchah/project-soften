@@ -12,6 +12,7 @@ import nl.tudelft.jpacman.board.Board;
 import nl.tudelft.jpacman.board.BoardFactory;
 import nl.tudelft.jpacman.board.Square;
 import nl.tudelft.jpacman.npc.Ghost;
+import nl.tudelft.jpacman.theme.ThemeSet;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
@@ -113,7 +114,7 @@ public class MapParser {
                 grid[x][y] = boardCreator.createGround();
                 break;
             case '#':
-                //grid[x][y] = boardCreator.createWall();
+                // grid[x][y] = boardCreator.createWall();
                 grid[x][y] = boardCreator.createWall();
                 break;
             case '.':
@@ -245,7 +246,8 @@ public class MapParser {
      */
     @SuppressFBWarnings(value = { "OBL_UNSATISFIED_OBLIGATION",
             "RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE" }, justification = "try with resources always cleans up / false positive in java 11")
-    public Level parseMap(String mapName) throws IOException {
+    public Level parseMap(String mapName, ThemeSet theme) throws IOException {
+        boardCreator.setTheme(theme);
         try (InputStream boardStream = MapParser.class.getResourceAsStream(mapName)) {
             if (boardStream == null) {
                 throw new PacmanConfigurationException("Could not get resource for: " + mapName);

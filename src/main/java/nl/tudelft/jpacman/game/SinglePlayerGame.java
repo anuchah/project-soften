@@ -9,6 +9,7 @@ import nl.tudelft.jpacman.level.Player;
 
 import com.google.common.collect.ImmutableList;
 import nl.tudelft.jpacman.points.PointCalculator;
+import nl.tudelft.jpacman.theme.ThemeSet;
 
 /**
  * A game with one player and a single level.
@@ -30,6 +31,7 @@ public class SinglePlayerGame extends Game {
     private Level level;
     private int MAP_NUMBER = 0;
     private Launcher launcher = new Launcher();
+    public ThemeSet theme = ThemeSet.HALLOWEEN;
 
     /**
      * Create a new single player game for the provided level and player.
@@ -107,12 +109,18 @@ public class SinglePlayerGame extends Game {
     }
 
     public void reSetLevel() {
-        listlevel = launcher.makeLevel();
+        listlevel = launcher.makeLevel(theme);
     }
 
     @Override
     public int getScore() {
         return player.getScore();
+    }
+
+    public void setTheme(ThemeSet themeSet) {
+        theme = themeSet;
+        reSetLevel();
+        reStart();
     }
 
 }

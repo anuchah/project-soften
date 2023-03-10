@@ -28,13 +28,6 @@ public class PacManSprites extends SpriteStore {
             Direction.WEST
     };
 
-    private static final ThemeSet[] THEME_SETS = {
-        ThemeSet.DEFAULT,
-        ThemeSet.HALLOWEEN,
-        ThemeSet.JAPAN,
-        ThemeSet.CITY
-    };
-
     /**
      * The image size in pixels.
      */
@@ -59,6 +52,8 @@ public class PacManSprites extends SpriteStore {
      * The delay between frames.
      */
     private static final int ANIMATION_DELAY = 200;
+
+    private ThemeSet theme = ThemeSet.DEFAULT;
 
     /**
      * @return A map of animated Pac-Man sprites for all directions.
@@ -124,23 +119,37 @@ public class PacManSprites extends SpriteStore {
     /**
      * @return The sprite for the wall.
      */
-    /*public Map<ThemeSet, Sprite> getWallSprite(ThemeSet selectedTheme){
-        Map<ThemeSet, Sprite> wallsprite = new HashMap<>();
-
-        switch (ThemeSet.valueOf(Arrays.toString(THEME_SETS))){
-            case HALLOWEEN:
-                Sprite hallowSprite = loadSprite("/sprite/wall.png");
-                wallsprite.put(ThemeSet.HALLOWEEN, hallowSprite);
-                break;
-            case JAPAN:
-                Sprite japanSprite = loadSprite("/sprite/wall" + 1 + ".png");
-                wallsprite.put(ThemeSet.JAPAN, japanSprite);
-                break;
-        }
-
-        return wallsprite;
-    }*/
+    /*
+     * public Map<ThemeSet, Sprite> getWallSprite(ThemeSet selectedTheme){
+     * Map<ThemeSet, Sprite> wallsprite = new HashMap<>();
+     * 
+     * switch (ThemeSet.valueOf(Arrays.toString(THEME_SETS))){
+     * case HALLOWEEN:
+     * Sprite hallowSprite = loadSprite("/sprite/wall.png");
+     * wallsprite.put(ThemeSet.HALLOWEEN, hallowSprite);
+     * break;
+     * case JAPAN:
+     * Sprite japanSprite = loadSprite("/sprite/wall" + 1 + ".png");
+     * wallsprite.put(ThemeSet.JAPAN, japanSprite);
+     * break;
+     * }
+     * 
+     * return wallsprite;
+     * }
+     */
     public Sprite getWallSprite() {
+
+        switch (theme.getThemeName()) {
+            case "Default":
+                return loadSprite("/sprite/wall.png");
+            case "Halloween":
+                return loadSprite("/sprite/wall3.png");
+            case "Japan":
+                return loadSprite("/sprite/wall1.png");
+            case "City":
+                return loadSprite("/sprite/wall4.png");
+
+        }
 
         return loadSprite("/sprite/wall.png");
     }
@@ -156,6 +165,17 @@ public class PacManSprites extends SpriteStore {
      * @return The sprite for the
      */
     public Sprite getPelletSprite() {
+        switch (theme.getThemeName()) {
+            case "Halloween":
+                return loadSprite("/sprite/bone.png");
+            case "Japan":
+                return loadSprite("/sprite/apple.png");
+            case "City":
+                return loadSprite("/sprite/bell.png");
+            case  "Default":
+                return loadSprite("/sprite/pellet.png");
+        }
+
         return loadSprite("/sprite/pellet.png");
     }
 
@@ -173,5 +193,9 @@ public class PacManSprites extends SpriteStore {
         } catch (IOException e) {
             throw new PacmanConfigurationException("Unable to load sprite: " + resource, e);
         }
+    }
+
+    public void setThme(ThemeSet theme) {
+        this.theme = theme;
     }
 }

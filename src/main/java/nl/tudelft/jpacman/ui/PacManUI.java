@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import javafx.scene.layout.Background;
+//import javafx.scene.layout.Background;
 
 import javax.swing.*;
 //import net.bytebuddy.asm.Advice.This;
@@ -61,7 +61,8 @@ public class PacManUI extends JFrame implements ActionListener {
      */
     private final BoardPanel boardPanel;
 
-    public static String BACKGROUND_PATH = "src\\main\\resources\\Theme\\background1.jpg";
+    public static String BACKGROUND_PATH = "src\\main\\resources\\Theme\\background0.jpg";
+    public static String BOARDBACKGROUND_PATH = "src\\main\\resources\\Theme\\black.jpg";
 
     /**
      * Creates a new UI for a JPacman game.
@@ -101,10 +102,11 @@ public class PacManUI extends JFrame implements ActionListener {
     JButton btnStart = new JButton();
     JDialog dialogDead;
     // custom dialog dead
-    JButton btnGame2home = new JButton("Back to home");
+    JButton backButton = new JButton("Back");
     JButton restartButton = new JButton("Restart");
-    JButton homeButton = new JButton("Go Home");
+    JButton homeButton = new JButton("Exit");
     JButton btnTheme = new JButton();
+    // custom dialog dead
 
     public PacManUI(Game game, final Map<String, Action> buttons,
             final Map<Integer, Action> keyMappings,
@@ -135,9 +137,12 @@ public class PacManUI extends JFrame implements ActionListener {
         GamePlay.add(buttonPanel, BorderLayout.SOUTH);
         GamePlay.add(scorePanel, BorderLayout.NORTH);
         GamePlay.add(boardPanel, BorderLayout.CENTER);
-        boardPanel.setBackground(BACKGROUND_PATH);
+        boardPanel.setBackground(BOARDBACKGROUND_PATH);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a1bdad48fb0a9cf35bfc689d06c8ce3bb99cb38
         // create btn home conection to Gameplay
         JButton btnStart = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnStart.setBackground(new Color(0, 0, 0, 0));
@@ -150,40 +155,60 @@ public class PacManUI extends JFrame implements ActionListener {
             }
 
         });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a1bdad48fb0a9cf35bfc689d06c8ce3bb99cb38
         // create btn home conection to seclecttheme
 
+
+        // create btn home conection to seclecttheme
+        themeUI.addThemeButton("src\\main\\resources\\Theme\\default.jpg", new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.DEFAULT);
+                game.setTheme(ThemeSet.DEFAULT);
+                BACKGROUND_PATH = "src\\main\\resources\\Theme\\background0.jpg";
+                homeUI.setBackground(BACKGROUND_PATH);
+                boardPanel.setBackground(BOARDBACKGROUND_PATH);
+                cardLayout.show(cardPanel, "home");
+            }
+
+        }, 1, 0);
         themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 1 + ".jpg", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.HALLOWEEN);
+                game.setTheme(ThemeSet.HALLOWEEN);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\background1.jpg";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
                 cardLayout.show(cardPanel, "home");
             }
 
-        });
+        }, 1, 1);
         themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 2 + ".jpg", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.JAPAN);
+                game.setTheme(ThemeSet.JAPAN);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\background2.jpg";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
                 cardLayout.show(cardPanel, "home");
             }
-        });
+        }, 2, 0);
         themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 3 + ".jpg", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.CITY);
+                game.setTheme(ThemeSet.CITY);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\background3.jpg";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
                 cardLayout.show(cardPanel, "home");
             }
-        });
+        }, 2, 1);
         // setBackground btn HomeUI
         btnStart.setIcon(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnTheme.setIcon(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));
@@ -215,6 +240,7 @@ public class PacManUI extends JFrame implements ActionListener {
         ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
     }
+
 
     /**
      * Draws the next frame, i.e. refreshes the scores and game.
@@ -248,7 +274,6 @@ public class PacManUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnStart) {
-
             cardLayout.show(cardPanel, "gameplay");
         } else if (e.getSource() == btnTheme) {
             cardLayout.show(cardPanel, "theme");
@@ -261,7 +286,11 @@ public class PacManUI extends JFrame implements ActionListener {
             dialogDead.setVisible(false);
             game.reStart();
             dialogDead.removeAll();
-
+        } else if (e.getSource() == backButton) {
+            game.reStart();
+            dialogDead.setVisible(false);
+            cardLayout.show(cardPanel, "home");
+            dialogDead.removeAll();
         }
 
     }
