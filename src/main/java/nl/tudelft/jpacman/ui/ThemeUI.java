@@ -36,11 +36,6 @@ public class ThemeUI extends JPanel {
     public void addThemeButton(String pathIcon, ActionListener action) {
         ImageIcon icon = new ImageIcon(pathIcon);
 
-        /*
-         * icon.getImage().getScaledInstance(1, 1, Image.SCALE_SMOOTH);
-         * icon.setImage(icon);
-         */
-
         JButton button = new JButton(icon);
         button.addActionListener(action);
 

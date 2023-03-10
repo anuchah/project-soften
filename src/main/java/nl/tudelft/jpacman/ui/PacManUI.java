@@ -102,10 +102,11 @@ public class PacManUI extends JFrame implements ActionListener {
     JButton btnStart = new JButton();
     JDialog dialogDead;
     // custom dialog dead
-    JButton btnGame2home = new JButton("Back to home");
+    JButton backButton = new JButton("Back");
     JButton restartButton = new JButton("Restart");
-    JButton homeButton = new JButton("Go Home");
+    JButton homeButton = new JButton("Exit");
     JButton btnTheme = new JButton();
+    // custom dialog dead
 
     public PacManUI(Game game, final Map<String, Action> buttons,
             final Map<Integer, Action> keyMappings,
@@ -230,6 +231,7 @@ public class PacManUI extends JFrame implements ActionListener {
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
     }
 
+
     /**
      * Draws the next frame, i.e. refreshes the scores and game.
      */
@@ -262,7 +264,6 @@ public class PacManUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnStart) {
-
             cardLayout.show(cardPanel, "gameplay");
         } else if (e.getSource() == btnTheme) {
             cardLayout.show(cardPanel, "theme");
@@ -275,7 +276,11 @@ public class PacManUI extends JFrame implements ActionListener {
             dialogDead.setVisible(false);
             game.reStart();
             dialogDead.removeAll();
-
+        } else if (e.getSource() == backButton) {
+            game.reStart();
+            dialogDead.setVisible(false);
+            cardLayout.show(cardPanel, "home");
+            dialogDead.removeAll();
         }
 
     }

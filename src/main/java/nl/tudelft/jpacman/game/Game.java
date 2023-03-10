@@ -65,6 +65,7 @@ public abstract class Game implements LevelObserver {
         }
     }
 
+
     /**
      * Pauses the game.
      */

@@ -33,11 +33,13 @@ public class HomeUI extends JPanel {
     JLabel miniLogo = new JLabel();
 
     public HomeUI() {
+
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         logo.setIcon((ResizeImage(new ImageIcon("src\\main\\resources\\logo.png"), 500, 400)));
         logo.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(logo);
+
 
         GridBagConstraints logoConstraints = new GridBagConstraints();
         logoConstraints.gridx = 0; // start at column 0
