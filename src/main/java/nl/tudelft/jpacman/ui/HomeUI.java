@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 
@@ -24,24 +25,20 @@ import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
 
 public class HomeUI extends JPanel {
 
-    // create a panel to hold the buttons
-    JPanel buttonPanel = new JPanel();
-    // create two buttons to switch between cards
-
     JLabel title = new JLabel("PacMan");
     ImageIcon background;
-    JPanel logoPanel = new JPanel();
+
     JPanel miniPanel = new JPanel();
     JLabel logo = new JLabel();
     JLabel miniLogo = new JLabel();
 
     public HomeUI() {
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        logoPanel.setBackground(new Color(0, 0, 0, 0));
         logo.setIcon((ResizeImage(new ImageIcon("src\\main\\resources\\logo.png"), 500, 400)));
-        logoPanel.add(logo);
+        logo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.add(logo);
 
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         GridBagConstraints logoConstraints = new GridBagConstraints();
         logoConstraints.gridx = 0; // start at column 0
         logoConstraints.gridy = 0; // start at row 0
@@ -51,8 +48,6 @@ public class HomeUI extends JPanel {
         logoConstraints.weighty = 0.0; // do not resize vertically
         logoConstraints.anchor = GridBagConstraints.PAGE_START; // align at page start
         logoConstraints.fill = GridBagConstraints.HORIZONTAL; // fill horizontally
-        this.setLayout(new GridBagLayout());
-        add(logoPanel, logoConstraints);
 
     }
 
@@ -61,24 +56,9 @@ public class HomeUI extends JPanel {
     }
 
     public void addButton(JButton btn) {
-        buttonPanel.add(btn);
-        buttonPanel.setBackground(new java.awt.Color(255, 0, 0, 0));
-        GridBagConstraints buttonConstraints = new GridBagConstraints();
-        buttonConstraints.gridx = 0; // start at column 0
-        buttonConstraints.gridy = 1; // start at row 1
-        buttonConstraints.gridwidth = 1; // span one column
-        buttonConstraints.gridheight = 1; // span one row
-        buttonConstraints.weightx = 1.0; // resize horizontally
-        buttonConstraints.weighty = 1.0; // resize vertically
-        buttonConstraints.anchor = GridBagConstraints.CENTER; // align at center
-        Component[] components = this.getComponents();
-        for (Component c : components) {
-            if (c instanceof JPanel) {
-                this.remove(buttonPanel);
-                this.revalidate();
-            }
-        }
-        this.add(buttonPanel, buttonConstraints);
+        btn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btn.setContentAreaFilled(false);
+        this.add(btn);
     }
 
     public ImageIcon ResizeImage(ImageIcon image, int width, int hight) {

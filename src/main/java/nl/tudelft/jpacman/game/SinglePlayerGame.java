@@ -1,7 +1,9 @@
 package nl.tudelft.jpacman.game;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Player;
 
@@ -23,10 +25,11 @@ public class SinglePlayerGame extends Game {
     /**
      * The level of this game.
      */
-    private final List<Level> listlevel;
+    private List<Level> listlevel;
 
     private Level level;
     private int MAP_NUMBER = 0;
+    private Launcher launcher = new Launcher();
 
     /**
      * Create a new single player game for the provided level and player.
@@ -45,7 +48,8 @@ public class SinglePlayerGame extends Game {
         assert level != null;
 
         this.player = player;
-        this.listlevel = level;
+        listlevel = level;
+
         this.level = listlevel.get(MAP_NUMBER);
         this.level.registerPlayer(player);
     }
@@ -59,6 +63,7 @@ public class SinglePlayerGame extends Game {
         MAP_NUMBER++;
         if (MAP_NUMBER > 4) {
             MAP_NUMBER = 0;
+            reSetLevel();
         }
         this.level.removeObserver(this);
         this.level = listlevel.get(MAP_NUMBER);
@@ -68,7 +73,7 @@ public class SinglePlayerGame extends Game {
 
     @Override
     public void levelWon() {
-
+        this.setWon(true);
         nextState();
         stop();
 
@@ -76,7 +81,7 @@ public class SinglePlayerGame extends Game {
 
     @Override
     public void levelLost() {
-
+        this.setLost(true);
         stop();
 
     }
@@ -84,6 +89,30 @@ public class SinglePlayerGame extends Game {
     @Override
     public Level getLevel() {
         return this.level;
+    }
+
+    @Override
+    public void reStart() {
+        reSetLevel();
+        player.setAlive(true);
+        MAP_NUMBER = -1;
+        reSetScore();
+        nextState();
+
+    }
+
+    @Override
+    public void reSetScore() {
+        player.reSetScore();
+    }
+
+    public void reSetLevel() {
+        listlevel = launcher.makeLevel();
+    }
+
+    @Override
+    public int getScore() {
+        return player.getScore();
     }
 
 }

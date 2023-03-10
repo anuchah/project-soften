@@ -2,6 +2,7 @@ package nl.tudelft.jpacman.game;
 
 import java.util.List;
 
+import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.level.Level;
 import nl.tudelft.jpacman.level.Level.LevelObserver;
@@ -20,6 +21,7 @@ public abstract class Game implements LevelObserver {
      */
     private boolean inProgress;
     private boolean won;
+    private boolean lost;
 
     /**
      * Object that locks the start and stop methods.
@@ -41,6 +43,8 @@ public abstract class Game implements LevelObserver {
     protected Game(PointCalculator pointCalculator) {
         this.pointCalculator = pointCalculator;
         inProgress = false;
+        won = false;
+        lost = false;
 
     }
 
@@ -90,6 +94,12 @@ public abstract class Game implements LevelObserver {
      */
     public abstract Level getLevel();
 
+    public abstract void reStart();
+
+    public abstract void reSetScore();
+
+    public abstract int getScore();
+
     /**
      * Moves the specified player one square in the given direction.
      *
@@ -108,16 +118,34 @@ public abstract class Game implements LevelObserver {
 
     @Override
     public void levelWon() {
+        won = true;
         stop();
     }
 
     @Override
     public void levelLost() {
-
+        lost = true;
+        stop();
     }
 
     public void setIsprogress(Boolean b) {
         inProgress = b;
+    }
+
+    public Boolean isWon() {
+        return won;
+    }
+
+    public Boolean isLost() {
+        return lost;
+    }
+
+    public void setWon(Boolean bl) {
+        won = bl;
+    }
+
+    public void setLost(Boolean bl) {
+        lost = bl;
     }
 
 }
