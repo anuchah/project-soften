@@ -169,7 +169,7 @@ public class PacManSprites extends SpriteStore {
             case "Halloween":
                 return loadSprite("/sprite/bone.png");
             case "Japan":
-                return loadSprite("/sprite/apple.png");
+                return loadSprite("/sprite/sushi.png");
             case "City":
                 return loadSprite("/sprite/bell.png");
             case  "Default":
