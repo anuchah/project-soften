@@ -139,6 +139,7 @@ public class PacManUI extends JFrame implements ActionListener {
         GamePlay.add(boardPanel, BorderLayout.CENTER);
         boardPanel.setBackground(BOARDBACKGROUND_PATH);
 
+
         // create btn home conection to Gameplay
         JButton btnStart = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnStart.setBackground(new Color(0, 0, 0, 0));
@@ -151,6 +152,7 @@ public class PacManUI extends JFrame implements ActionListener {
             }
 
         });
+
 
         // create btn home conection to seclecttheme
         themeUI.addThemeButton("src\\main\\resources\\Theme\\default.jpg", new ActionListener() {
