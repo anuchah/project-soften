@@ -15,42 +15,26 @@ public class ThemeUI extends JPanel {
         showTopic();
     }
 
-    public void setUI(){
+    public void setUI() {
         topictheme = new JLabel("", JLabel.CENTER);
 
-        setLayout(new GridLayout(5,3,50,48));
-        //setSize(20,100);
+        setLayout(new GridLayout(5, 3, 50, 48));
+        // setSize(20,100);
         setBackground(Color.BLACK);
     }
 
-<<<<<<< HEAD
-    public void showTopic(){
+    public void showTopic() {
         topictheme.setIcon(new ImageIcon("src/main/resources/Theme/buttontheme.png"));
         add(topictheme);
 
     }
 
-=======
-        setLayout(new GridLayout(3, 2, 48, 48));
-
-        JLabel topictheme = new JLabel();
-        topictheme.setIcon(new ImageIcon("src/main/resources/Theme/buttontheme.png"));
-
-        JLabel space = new JLabel();
-        add(topictheme);
-        add(space);
-
-    }
-
-    private Container getContentPane() {
-        return null;
-    }
-
->>>>>>> 81fc866f9edc57ea0d1a1f1cb00194fb66400390
     public void addThemeButton(String pathIcon, ActionListener action) {
         ImageIcon icon = new ImageIcon(pathIcon);
-        /*icon.getImage().getScaledInstance(1, 1, Image.SCALE_SMOOTH);
-        icon.setImage(icon);*/
+        /*
+         * icon.getImage().getScaledInstance(1, 1, Image.SCALE_SMOOTH);
+         * icon.setImage(icon);
+         */
         JButton button = new JButton(icon);
         button.addActionListener(action);
 
