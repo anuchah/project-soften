@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import javafx.scene.layout.Background;
+//import javafx.scene.layout.Background;
 
 import javax.swing.*;
 //import net.bytebuddy.asm.Advice.This;
@@ -159,6 +159,8 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.DEFAULT);
+                game.setTheme(ThemeSet.DEFAULT);
+                BACKGROUND_PATH = "src\\main\\resources\\Theme\\background0.jpg";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BOARDBACKGROUND_PATH);
                 cardLayout.show(cardPanel, "home");
