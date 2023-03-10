@@ -146,6 +146,8 @@ public class PacManSprites extends SpriteStore {
                 return loadSprite("/sprite/wall1.png");
             case "City":
                 return loadSprite("/sprite/wall3.png");
+            case "Default":
+                return loadSprite("/sprite/wall.png");
         }
 
         return loadSprite("/sprite/wall.png");
@@ -162,6 +164,17 @@ public class PacManSprites extends SpriteStore {
      * @return The sprite for the
      */
     public Sprite getPelletSprite() {
+        switch (theme.getThemeName()) {
+            case "Halloween":
+                return loadSprite("/sprite/cherry.png");
+            case "Japan":
+                return loadSprite("/sprite/apple.png");
+            case "City":
+                return loadSprite("/sprite/bell.png");
+            case  "Default":
+                return loadSprite("/sprite/pellet.png");
+        }
+
         return loadSprite("/sprite/pellet.png");
     }
 
