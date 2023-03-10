@@ -153,8 +153,6 @@ public class PacManUI extends JFrame implements ActionListener {
 
         });
 
-        // create btn home conection to seclecttheme
-
 
         // create btn home conection to seclecttheme
         themeUI.addThemeButton("src\\main\\resources\\Theme\\default.jpg", new ActionListener() {
