@@ -30,33 +30,7 @@ public class ThemeUI extends JPanel {
         setBackground(Color.BLACK);
     }
 
-<<<<<<< HEAD
-    public void showTopic(){
-        topictheme.setIcon(new ImageIcon("src/main/resources/Theme/buttontheme.png"));
-        add(topictheme);
-
-
-
-        setLayout(new GridLayout(3, 2, 48, 48));
-
-        JLabel topictheme = new JLabel();
-        topictheme.setIcon(new ImageIcon("src/main/resources/Theme/buttontheme.png"));
-
-        JLabel space = new JLabel();
-        add(topictheme);
-        add(space);
-
-    }
-
-    private Container getContentPane() {
-        return null;
-    }
-
-
-    public void addThemeButton(String pathIcon, ActionListener action) {
-=======
     public void addThemeButton(String pathIcon, ActionListener action, int row, int column) {
->>>>>>> 3a1bdad48fb0a9cf35bfc689d06c8ce3bb99cb38
         ImageIcon icon = new ImageIcon(pathIcon);
 
         JButton button = new JButton(icon);
