@@ -7,35 +7,32 @@ import java.awt.event.ActionListener;
 
 public class ThemeUI extends JPanel {
     int i = 0;
+    private JLabel topictheme;
 
     // private final Map<String, ImageIcon> imageMap;
     public ThemeUI() {
+        setUI();
+        showTopic();
+    }
 
-        Container c = getContentPane();
-        JPanel buttonPanel = new JPanel();
-        JPanel themetitle = new JPanel();
+    public void setUI(){
+        topictheme = new JLabel("", JLabel.CENTER);
 
-        JPanel topic = new JPanel();
+        setLayout(new GridLayout(5,3,50,48));
+        //setSize(20,100);
+        setBackground(Color.BLACK);
+    }
 
-
-        setLayout(new GridLayout(3,2,48,48));
-
-        JLabel topictheme = new JLabel();
+    public void showTopic(){
         topictheme.setIcon(new ImageIcon("src/main/resources/Theme/buttontheme.png"));
-        JLabel space = new JLabel();
         add(topictheme);
-        add(space);
-
 
     }
-
-    private Container getContentPane() {
-        return null;
-    }
-
 
     public void addThemeButton(String pathIcon, ActionListener action) {
         ImageIcon icon = new ImageIcon(pathIcon);
+        /*icon.getImage().getScaledInstance(1, 1, Image.SCALE_SMOOTH);
+        icon.setImage(icon);*/
         JButton button = new JButton(icon);
         button.addActionListener(action);
 

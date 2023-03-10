@@ -1,12 +1,14 @@
 package nl.tudelft.jpacman.sprite;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import nl.tudelft.jpacman.PacmanConfigurationException;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.npc.ghost.GhostColor;
+import nl.tudelft.jpacman.theme.ThemeSet;
 
 /**
  * Sprite Store containing the classic Pac-Man sprites.
@@ -24,6 +26,13 @@ public class PacManSprites extends SpriteStore {
             Direction.EAST,
             Direction.SOUTH,
             Direction.WEST
+    };
+
+    private static final ThemeSet[] THEME_SETS = {
+        ThemeSet.DEFAULT,
+        ThemeSet.HALLOWEEN,
+        ThemeSet.JAPAN,
+        ThemeSet.CITY
     };
 
     /**
@@ -115,6 +124,22 @@ public class PacManSprites extends SpriteStore {
     /**
      * @return The sprite for the wall.
      */
+    /*public Map<ThemeSet, Sprite> getWallSprite(ThemeSet selectedTheme){
+        Map<ThemeSet, Sprite> wallsprite = new HashMap<>();
+
+        switch (ThemeSet.valueOf(Arrays.toString(THEME_SETS))){
+            case HALLOWEEN:
+                Sprite hallowSprite = loadSprite("/sprite/wall.png");
+                wallsprite.put(ThemeSet.HALLOWEEN, hallowSprite);
+                break;
+            case JAPAN:
+                Sprite japanSprite = loadSprite("/sprite/wall" + 1 + ".png");
+                wallsprite.put(ThemeSet.JAPAN, japanSprite);
+                break;
+        }
+
+        return wallsprite;
+    }*/
     public Sprite getWallSprite() {
 
         return loadSprite("/sprite/wall.png");

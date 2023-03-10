@@ -2,6 +2,9 @@ package nl.tudelft.jpacman.board;
 
 import nl.tudelft.jpacman.sprite.PacManSprites;
 import nl.tudelft.jpacman.sprite.Sprite;
+import nl.tudelft.jpacman.theme.ThemeSet;
+
+import java.util.Map;
 
 /**
  * A factory that creates {@link Board} objects from 2-dimensional arrays of
@@ -74,6 +77,11 @@ public class BoardFactory {
     public Square createWall() {
         return new Wall(sprites.getWallSprite());
     }
+    /*public Square createWall() {
+        Map<ThemeSet, Sprite> wallSprites = sprites.getWallSprite(selectedTheme);
+        Sprite wallSprite = wallSprites.get(selectedTheme);
+        return new Wall(wallSprite);
+    }*/
 
     /**
      * A wall is a square that is inaccessible to anyone.

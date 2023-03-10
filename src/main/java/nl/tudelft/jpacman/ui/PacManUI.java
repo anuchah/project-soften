@@ -20,6 +20,7 @@ import javax.swing.*;
 //import net.bytebuddy.asm.Advice.This;
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.game.Game;
+import nl.tudelft.jpacman.theme.ThemeSet;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
 
 /**
@@ -128,7 +129,8 @@ public class PacManUI extends JFrame {
         boardPanel.setBackground(BACKGROUND_PATH);
 
         // create btn home conection to Gameplay
-        JButton btnStart = new JButton("Start");
+        JButton btnStart = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
+        btnStart.setBackground(new Color(0, 0, 0, 0));
         btnStart.addActionListener(new ActionListener() {
 
             @Override
@@ -153,7 +155,7 @@ public class PacManUI extends JFrame {
         themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 1 + ".jpg", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Theme: " + "Holloween");
+                JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.HALLOWEEN);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\background1.jpg";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
@@ -164,7 +166,7 @@ public class PacManUI extends JFrame {
         themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 2 + ".jpg", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Theme: " + "Japan");
+                JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.JAPAN);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\background2.jpg";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
@@ -174,7 +176,7 @@ public class PacManUI extends JFrame {
         themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 3 + ".jpg", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Theme: " + "City");
+                JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.CITY);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\background3.jpg";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);

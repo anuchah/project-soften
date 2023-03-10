@@ -113,6 +113,7 @@ public class MapParser {
                 grid[x][y] = boardCreator.createGround();
                 break;
             case '#':
+                //grid[x][y] = boardCreator.createWall();
                 grid[x][y] = boardCreator.createWall();
                 break;
             case '.':
