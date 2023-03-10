@@ -9,37 +9,40 @@ public class ThemeUI extends JPanel {
     int i = 0;
     private JLabel topictheme;
 
-    // private final Map<String, ImageIcon> imageMap;
     public ThemeUI() {
+
         setUI();
-        showTopic();
+        //showTopic();
     }
 
     public void setUI() {
-        topictheme = new JLabel("", JLabel.CENTER);
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridwidth = 3;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.CENTER;
+        topictheme = new JLabel(new ImageIcon("src/main/resources/Theme/buttontheme.png"));
+        add(topictheme, c);
 
-        setLayout(new GridLayout(4,2,20,30));
+        setPreferredSize(new Dimension(800, 800));
         setBackground(Color.BLACK);
     }
 
-    public void showTopic(){
-        JLabel space = new JLabel();
-        JLabel topictheme = new JLabel();
-        topictheme.setIcon(new ImageIcon("src/main/resources/Theme/buttontheme.png"));
-
-        add(space);
-        add(topictheme);
-
-    }
-
-
-    public void addThemeButton(String pathIcon, ActionListener action) {
+    public void addThemeButton(String pathIcon, ActionListener action, int row, int column) {
         ImageIcon icon = new ImageIcon(pathIcon);
 
         JButton button = new JButton(icon);
+        button.setPreferredSize(new Dimension(300, 100));
         button.addActionListener(action);
 
-        add(button);
+        GridBagConstraints c1 = new GridBagConstraints();
+        c1.fill = GridBagConstraints.HORIZONTAL;
+        c1.gridx = column;
+        c1.gridy = row;
+        c1.insets = new Insets(20, 20, 20, 0);
+        add(button, c1);
 
     }
 }

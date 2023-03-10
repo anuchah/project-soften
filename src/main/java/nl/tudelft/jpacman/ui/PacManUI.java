@@ -166,7 +166,7 @@ public class PacManUI extends JFrame implements ActionListener {
                 cardLayout.show(cardPanel, "home");
             }
 
-        });
+        }, 1, 0);
         themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 1 + ".jpg", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -178,7 +178,7 @@ public class PacManUI extends JFrame implements ActionListener {
                 cardLayout.show(cardPanel, "home");
             }
 
-        });
+        }, 1, 1);
         themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 2 + ".jpg", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -189,7 +189,7 @@ public class PacManUI extends JFrame implements ActionListener {
                 boardPanel.setBackground(BACKGROUND_PATH);
                 cardLayout.show(cardPanel, "home");
             }
-        });
+        }, 2, 0);
         themeUI.addThemeButton("src\\main\\resources\\Theme\\background" + 3 + ".jpg", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -200,7 +200,7 @@ public class PacManUI extends JFrame implements ActionListener {
                 boardPanel.setBackground(BACKGROUND_PATH);
                 cardLayout.show(cardPanel, "home");
             }
-        });
+        }, 2, 1);
         // setBackground btn HomeUI
         btnStart.setIcon(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnTheme.setIcon(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));
