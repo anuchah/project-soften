@@ -37,9 +37,9 @@ public class HomeUI extends JPanel {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBounds(0,0,800, 800);
 
-        logo.setIcon((ResizeImage(new ImageIcon("src\\main\\resources\\logo.png"), 500, 400)));
+        /*logo.setIcon((ResizeImage(new ImageIcon("src\\main\\resources\\logo.png"), 500, 400)));
         logo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.add(logo);
+        this.add(logo);*/
 
 
         GridBagConstraints logoConstraints = new GridBagConstraints();
@@ -60,6 +60,8 @@ public class HomeUI extends JPanel {
 
     public void addButton(JButton btn) {
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btn.setBorderPainted(false);
+        btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btn.setContentAreaFilled(false);
         this.add(btn);
     }

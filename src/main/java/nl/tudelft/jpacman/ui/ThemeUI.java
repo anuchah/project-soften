@@ -1,16 +1,19 @@
 package nl.tudelft.jpacman.ui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class ThemeUI extends JPanel {
-    int i = 0;
-    private JLabel topictheme;
+    private BufferedImage backgroundImage;
 
     public ThemeUI() {
-
+        setBackground("src/main/resources/Theme/ThemeSelected.png");
         setUI();
         //showTopic();
     }
@@ -23,19 +26,24 @@ public class ThemeUI extends JPanel {
         c.gridx = 0;
         c.gridy = 0;
         c.anchor = GridBagConstraints.CENTER;
-        topictheme = new JLabel(new ImageIcon("src/main/resources/Theme/buttontheme.png"));
-        add(topictheme, c);
-
         setPreferredSize(new Dimension(800, 800));
         setBackground(Color.BLACK);
+    }
+
+    public void setBackground(String imagePath) {
+        try {
+            backgroundImage = ImageIO.read(new File(imagePath));
+            repaint();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addThemeButton(String pathIcon, ActionListener action, int row, int column) {
 
         ImageIcon icon = new ImageIcon(pathIcon);
-
         JButton button = new JButton(icon);
-        button.setPreferredSize(new Dimension(300, 100));
+        button.setPreferredSize(new Dimension(150, 200));
         button.addActionListener(action);
 
         GridBagConstraints c1 = new GridBagConstraints();
@@ -45,5 +53,12 @@ public class ThemeUI extends JPanel {
         c1.insets = new Insets(20, 20, 20, 0);
         add(button, c1);
 
+    }
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (backgroundImage != null) {
+            g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+        }
     }
 }
