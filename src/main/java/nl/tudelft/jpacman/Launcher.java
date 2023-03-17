@@ -45,7 +45,7 @@ public class Launcher {
     private PacManUI pacManUI;
     private Game game;
 
-    private ThemeSet themeDefault = ThemeSet.HALLOWEEN;
+    private ThemeSet themeDefault = ThemeSet.ORIGINAL;
 
     /**
      * @return The game object this launcher will start when {@link #launch()}

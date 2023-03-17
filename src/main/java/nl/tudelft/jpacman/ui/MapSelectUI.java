@@ -12,7 +12,7 @@ public class MapSelectUI extends JPanel {
     private BufferedImage backgroundImage;
 
     public MapSelectUI() {
-        setBackground("src/main/resources/Theme/ThemeSelected.png");
+        setBackground("src/main/resources/stage/stage.png");
         setUI();
         // showTopic();
     }
@@ -42,7 +42,7 @@ public class MapSelectUI extends JPanel {
 
         ImageIcon icon = new ImageIcon(pathIcon);
 
-        btn.setPreferredSize(new Dimension(150, 200));
+        btn.setPreferredSize(new Dimension(150, 150));
         btn.setIcon(icon);
 
         GridBagConstraints c1 = new GridBagConstraints();

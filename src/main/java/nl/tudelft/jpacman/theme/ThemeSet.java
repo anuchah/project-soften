@@ -2,10 +2,11 @@ package nl.tudelft.jpacman.theme;
 
 public enum ThemeSet {
 
-    DEFAULT("Default"),
-    JAPAN("Japan"),
-    HALLOWEEN("Halloween"),
-    CITY("City");
+    ORIGINAL("Original"),
+    WAT2("Wat2"),
+    WAT3("Wat3"),
+    WAT4("Wat4"),
+    WAT5("Wat5");
 
     private final String ThemeName;
 
