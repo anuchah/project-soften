@@ -41,11 +41,11 @@ public class Launcher {
     private List<String> allLevel = Arrays.asList("/board0.txt", "/board1.txt", "/board2.txt", "/board3.txt",
             "/board4.txt");
     private static String levelMap = DEFAULT_MAP;
-
+    private int mapNum = 0;
     private PacManUI pacManUI;
     private Game game;
 
-    private ThemeSet themeDefault = ThemeSet.DEFAULT;
+    private ThemeSet themeDefault = ThemeSet.HALLOWEEN;
 
     /**
      * @return The game object this launcher will start when {@link #launch()}
@@ -60,7 +60,7 @@ public class Launcher {
      *
      * @return The name of the map file.
      */
-    public String getLevelMap(int i) {
+    protected String getLevelMap(int i) {
 
         return allLevel.get(i);
     }
@@ -84,7 +84,7 @@ public class Launcher {
      */
     public Game makeGame() {
         GameFactory gf = getGameFactory();
-        List<Level> level = makeLevel(themeDefault);
+        Level level = makeLevel(themeDefault, mapNum);
         game = gf.createSinglePlayerGame(level, loadPointCalculator());
         return game;
     }
@@ -99,14 +99,11 @@ public class Launcher {
      *
      * @return A new level.
      */
-    public List<Level> makeLevel(ThemeSet theme) {
-        List<Level> all_level = new ArrayList<Level>();
+    public Level makeLevel(ThemeSet theme, int mapNum) {
+
         try {
-            for (int mapIndex = 0; mapIndex < allLevel.size(); mapIndex++) {
-                System.out.println(theme.getThemeName());
-                all_level.add(getMapParser().parseMap(getLevelMap(mapIndex), theme));
-            }
-            return all_level;
+            return getMapParser().parseMap(getLevelMap(mapNum), theme);
+
         } catch (IOException e) {
             throw new PacmanConfigurationException(
                     "Unable to create level, name = ", e);

@@ -25,12 +25,12 @@ public class SinglePlayerGame extends Game {
     /**
      * The level of this game.
      */
-    private List<Level> listlevel;
 
     private Level level;
-    private int MAP_NUMBER = 0;
+
     private Launcher launcher = new Launcher();
     public ThemeSet theme = ThemeSet.DEFAULT;
+    private int mapNum = 0;
 
     /**
      * Create a new single player game for the provided level and player.
@@ -42,16 +42,15 @@ public class SinglePlayerGame extends Game {
      * @param pointCalculator
      *                        The way to calculate points upon collisions.
      */
-    protected SinglePlayerGame(Player player, List<Level> level, PointCalculator pointCalculator) {
-        super();
+    protected SinglePlayerGame(Player player, Level level, PointCalculator pointCalculator) {
+        super(pointCalculator);
 
         assert player != null;
         assert level != null;
 
         this.player = player;
-        listlevel = level;
+        this.level = level;
 
-        this.level = listlevel.get(MAP_NUMBER);
         this.level.registerPlayer(player);
     }
 
@@ -60,22 +59,10 @@ public class SinglePlayerGame extends Game {
         return ImmutableList.of(player);
     }
 
-    public void nextState() {
-        MAP_NUMBER++;
-        if (MAP_NUMBER > 4) {
-            MAP_NUMBER = 0;
-            reSetLevel();
-        }
-        this.level.removeObserver(this);
-        this.level = listlevel.get(MAP_NUMBER);
-        this.level.registerPlayer(player);
-
-    }
-
     @Override
     public void levelWon() {
         this.setWon(true);
-        nextState();
+
         stop();
 
     }
@@ -94,11 +81,9 @@ public class SinglePlayerGame extends Game {
 
     @Override
     public void reStart() {
-        reSetLevel();
+        startGame(mapNum);
         player.setAlive(true);
-        MAP_NUMBER = -1;
         reSetScore();
-        nextState();
 
     }
 
@@ -107,8 +92,11 @@ public class SinglePlayerGame extends Game {
         player.reSetScore();
     }
 
-    public void reSetLevel() {
-        listlevel = launcher.makeLevel(theme);
+    private void startGame(int mapNum) {
+        level = launcher.makeLevel(theme, mapNum);
+        level.registerPlayer(player);
+        level.addObserver(this);
+
     }
 
     @Override
@@ -118,8 +106,13 @@ public class SinglePlayerGame extends Game {
 
     public void setTheme(ThemeSet themeSet) {
         theme = themeSet;
-        reSetLevel();
+        startGame(mapNum);
         reStart();
+    }
+
+    public void setMap(int mapnum) {
+        this.mapNum = mapnum;
+
     }
 
 }

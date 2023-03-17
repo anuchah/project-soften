@@ -96,17 +96,27 @@ public class PacManUI extends JFrame implements ActionListener {
     JLabel title = new JLabel("PacMan");
     final Game game;
     JPanel GamePlay = new JPanel();
+
     HomeUI homeUI = new HomeUI();
+    // create btn home conection to Gameplay
+    JButton btnStart = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
+
     ThemeUI themeUI = new ThemeUI();
 
-    JButton btnStart = new JButton();
     JDialog dialogDead;
-    // custom dialog dead
+
     JButton backButton = new JButton("Back");
     JButton restartButton = new JButton("Restart");
     JButton homeButton = new JButton("Exit");
     JButton btnTheme = new JButton();
-    // custom dialog dead
+
+    // Map Select UI
+    MapSelectUI mapSelectUI = new MapSelectUI();
+    JButton map0 = new JButton("map 0");
+    JButton map1 = new JButton("map 1");
+    JButton map2 = new JButton("map 2");
+    JButton map3 = new JButton("map 3");
+    JButton map4 = new JButton("map 4");
 
     public PacManUI(Game game, final Map<String, Action> buttons,
             final Map<Integer, Action> keyMappings,
@@ -130,6 +140,7 @@ public class PacManUI extends JFrame implements ActionListener {
         if (scoreFormatter != null) {
             scorePanel.setScoreFormatter(scoreFormatter);
         }
+
         // Crete GamePlayUI
         boardPanel = new BoardPanel(game);
         GamePlay.setLayout(new BorderLayout());
@@ -139,26 +150,13 @@ public class PacManUI extends JFrame implements ActionListener {
         GamePlay.add(boardPanel, BorderLayout.CENTER);
         boardPanel.setBackground(BOARDBACKGROUND_PATH);
 
-
-        // create btn home conection to Gameplay
-        JButton btnStart = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnStart.setBackground(new Color(0, 0, 0, 0));
-        btnStart.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-
-                cardLayout.show(cardPanel, "gameplay");
-            }
-
-        });
-
 
         // create btn home conection to seclecttheme
         themeUI.addThemeButton("src\\main\\resources\\button\\og.png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.DEFAULT);
+
                 game.setTheme(ThemeSet.DEFAULT);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\original.png";
                 homeUI.setBackground(BACKGROUND_PATH);
@@ -170,7 +168,7 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 2 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.HALLOWEEN);
+
                 game.setTheme(ThemeSet.HALLOWEEN);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp1.png";
                 homeUI.setBackground(BACKGROUND_PATH);
@@ -181,7 +179,7 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 3 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.JAPAN);
+
                 game.setTheme(ThemeSet.JAPAN);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp2.png";
                 homeUI.setBackground(BACKGROUND_PATH);
@@ -192,7 +190,7 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 4 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.CITY);
+
                 game.setTheme(ThemeSet.CITY);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp3.png";
                 homeUI.setBackground(BACKGROUND_PATH);
@@ -203,7 +201,7 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 5 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Theme: " + ThemeSet.CITY);
+
                 game.setTheme(ThemeSet.CITY);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp4.png";
                 homeUI.setBackground(BACKGROUND_PATH);
@@ -215,17 +213,32 @@ public class PacManUI extends JFrame implements ActionListener {
         btnStart.setIcon(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnTheme.setIcon(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));
 
-        /*btnStart.setBackground(new Color(0, 0, 0, 0));
-        btnTheme.setBackground(new Color(0, 0, 0, 0));
-        btnStart.setOpaque(true);
-        btnTheme.setOpaque(true);*/
+        /*
+         * btnStart.setBackground(new Color(0, 0, 0, 0));
+         * btnTheme.setBackground(new Color(0, 0, 0, 0));
+         * btnStart.setOpaque(true);
+         * btnTheme.setOpaque(true);
+         */
         btnStart.addActionListener(this);
         btnTheme.addActionListener(this);
+
+        map1.addActionListener(this);
+        map4.addActionListener(this);
+        map3.addActionListener(this);
+        map2.addActionListener(this);
+        map0.addActionListener(this);
+
+        mapSelectUI.addThemeButton(null, map0, 1, 0);
+        mapSelectUI.addThemeButton(null, map1, 1, 1);
+        mapSelectUI.addThemeButton(null, map2, 1, 2);
+        mapSelectUI.addThemeButton(null, map3, 2, 0);
+        mapSelectUI.addThemeButton(null, map4, 2, 1);
 
         homeUI.setBackground(BACKGROUND_PATH);
         homeUI.addButton(btnTheme);
         homeUI.addButton(btnStart);
         cardPanel.add(homeUI, "home");
+        cardPanel.add(mapSelectUI, "map select");
         cardPanel.add(GamePlay, "gameplay");
         cardPanel.add(themeUI, "theme");
         add(cardPanel);
@@ -243,13 +256,14 @@ public class PacManUI extends JFrame implements ActionListener {
         service.scheduleAtFixedRate(this::nextFrame, 0, FRAME_INTERVAL, TimeUnit.MILLISECONDS);
     }
 
-
     /**
      * Draws the next frame, i.e. refreshes the scores and game.
      */
     public void nextFrame() {
         boardPanel.repaint();
         scorePanel.refresh();
+
+        // check Game Lost
         if (game.isLost()) {
             game.setLost(false);
             dialogDead = new JDialog();
@@ -273,27 +287,62 @@ public class PacManUI extends JFrame implements ActionListener {
 
     }
 
+    // Handle Button
     @Override
     public void actionPerformed(ActionEvent e) {
+        // start btn
         if (e.getSource() == btnStart) {
-            cardLayout.show(cardPanel, "gameplay");
-        } else if (e.getSource() == btnTheme) {
+            cardLayout.show(cardPanel, "map select");
+        }
+        // btnTheme
+        else if (e.getSource() == btnTheme) {
             cardLayout.show(cardPanel, "theme");
-        } else if (e.getSource() == homeButton) {
-            game.reStart();
-            dialogDead.setVisible(false);
-            cardLayout.show(cardPanel, "home");
-            dialogDead.removeAll();
-        } else if (e.getSource() == restartButton) {
-            dialogDead.setVisible(false);
-            game.reStart();
-            dialogDead.removeAll();
-        } else if (e.getSource() == backButton) {
+        }
+        // GoHome
+        else if (e.getSource() == homeButton) {
             game.reStart();
             dialogDead.setVisible(false);
             cardLayout.show(cardPanel, "home");
             dialogDead.removeAll();
         }
+        // restart
+        else if (e.getSource() == restartButton) {
+            dialogDead.setVisible(false);
+            game.reStart();
+            dialogDead.removeAll();
+        }
+        // back
+        else if (e.getSource() == backButton) {
+            game.reStart();
+            dialogDead.setVisible(false);
+            cardLayout.show(cardPanel, "home");
+            dialogDead.removeAll();
+        }
+        // map
+        else if (e.getSource() == map0) {
 
+            game.setMap(0);
+            game.reStart();
+            cardLayout.show(cardPanel, "gameplay");
+
+        } else if (e.getSource() == map1) {
+
+            game.setMap(1);
+            game.reStart();
+            cardLayout.show(cardPanel, "gameplay");
+
+        } else if (e.getSource() == map2) {
+            game.setMap(2);
+            game.reStart();
+            cardLayout.show(cardPanel, "gameplay");
+        } else if (e.getSource() == map3) {
+            game.setMap(3);
+            game.reStart();
+            cardLayout.show(cardPanel, "gameplay");
+        } else if (e.getSource() == map4) {
+            game.setMap(4);
+            game.reStart();
+            cardLayout.show(cardPanel, "gameplay");
+        }
     }
 }

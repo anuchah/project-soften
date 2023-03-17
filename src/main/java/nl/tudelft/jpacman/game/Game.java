@@ -37,7 +37,7 @@ public abstract class Game implements LevelObserver {
     /**
      * Creates a new game.
      */
-    protected Game() {
+    protected Game(PointCalculator pointCalculator) {
         this.pointCalculator = pointCalculator;
         inProgress = false;
         won = false;
@@ -60,7 +60,6 @@ public abstract class Game implements LevelObserver {
             }
         }
     }
-
 
     /**
      * Pauses the game.
@@ -97,6 +96,8 @@ public abstract class Game implements LevelObserver {
     public abstract void reSetScore();
 
     public abstract int getScore();
+
+    public abstract void setMap(int mapnum);
 
     public abstract void setTheme(ThemeSet themeSet);
 
