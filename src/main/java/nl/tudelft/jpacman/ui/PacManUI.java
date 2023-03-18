@@ -101,6 +101,7 @@ public class PacManUI extends JFrame implements ActionListener {
     private HomeUI homeUI = new HomeUI();
     // create btn home conection to Gameplay
     private JButton btnStart = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
+    private JButton btnMapBack = new JButton();
 
     private ThemeUI themeUI = new ThemeUI();
     Timer timer;
@@ -225,14 +226,12 @@ public class PacManUI extends JFrame implements ActionListener {
         btnStart.setIcon(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnTheme.setIcon(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));
 
-        /*
-         * btnStart.setBackground(new Color(0, 0, 0, 0));
-         * btnTheme.setBackground(new Color(0, 0, 0, 0));
-         * btnStart.setOpaque(true);
-         * btnTheme.setOpaque(true);
-         */
+
+        btnTheme.setFocusPainted(false);
+        btnTheme.setMargin(new Insets(400,0,5,0));
         btnStart.addActionListener(this);
         btnTheme.addActionListener(this);
+        btnMapBack.addActionListener(this);
 
         map1.addActionListener(this);
         map4.addActionListener(this);
@@ -240,11 +239,13 @@ public class PacManUI extends JFrame implements ActionListener {
         map2.addActionListener(this);
         map0.addActionListener(this);
 
-        mapSelectUI.addThemeButton(null, map0, 1, 0);
-        mapSelectUI.addThemeButton(null, map1, 1, 1);
-        mapSelectUI.addThemeButton(null, map2, 1, 2);
-        mapSelectUI.addThemeButton(null, map3, 2, 0);
-        mapSelectUI.addThemeButton(null, map4, 2, 1);
+        mapSelectUI.addMapButton(null, map0, 1, 0);
+        mapSelectUI.addMapButton(null, map1, 1, 1);
+        mapSelectUI.addMapButton(null, map2, 1, 2);
+        mapSelectUI.addMapButton(null, map3, 2, 0);
+        mapSelectUI.addMapButton(null, map4, 2, 1);
+        //add Back to home button in Map Select
+        mapSelectUI.backBtn("src/main/resources/button/backbtn.png", btnMapBack, 3, 1);
 
         homeUI.setBackground(ThemeSet.DEFAULT.getPathBackgroundHome());
         homeUI.addButton(btnTheme);
@@ -327,6 +328,9 @@ public class PacManUI extends JFrame implements ActionListener {
         // btnTheme
         else if (e.getSource() == btnTheme) {
             cardLayout.show(cardPanel, "theme");
+        }
+        else if (e.getSource() == btnMapBack) {
+            cardLayout.show(cardPanel, "home");
         }
         // GoHome
         else if (e.getSource() == homeButton) {

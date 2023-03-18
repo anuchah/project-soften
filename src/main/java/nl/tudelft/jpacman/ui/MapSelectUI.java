@@ -3,17 +3,20 @@ package nl.tudelft.jpacman.ui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionListener;
 
-public class MapSelectUI extends JPanel {
+public class MapSelectUI extends JPanel{
     private BufferedImage backgroundImage;
+    private JButton btnBack = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
 
     public MapSelectUI() {
         setBackground("src/main/resources/stage/stage.png");
         setUI();
+
         // showTopic();
     }
 
@@ -27,6 +30,22 @@ public class MapSelectUI extends JPanel {
         c.anchor = GridBagConstraints.CENTER;
         setPreferredSize(new Dimension(800, 800));
         setBackground(Color.BLACK);
+
+    }public void backBtn(String pathIcon, JButton btn, int row, int column){
+        ImageIcon icon = new ImageIcon(pathIcon);
+
+        btn.setPreferredSize(new Dimension(100, 37));
+        btn.setIcon(icon);
+        btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btn.setBorderPainted(false);
+        btn.setFocusPainted(false);
+
+        GridBagConstraints c1 = new GridBagConstraints();
+        c1.fill = GridBagConstraints.HORIZONTAL;
+        c1.gridx = column;
+        c1.gridy = row;
+        c1.insets = new Insets(20, 20, 20, 0);
+        add(btn, c1);
     }
 
     public void setBackground(String imagePath) {
@@ -38,7 +57,7 @@ public class MapSelectUI extends JPanel {
         }
     }
 
-    public void addThemeButton(String pathIcon, JButton btn, int row, int column) {
+    public void addMapButton(String pathIcon, JButton btn, int row, int column) {
 
         ImageIcon icon = new ImageIcon(pathIcon);
 
@@ -65,3 +84,4 @@ public class MapSelectUI extends JPanel {
         }
     }
 }
+

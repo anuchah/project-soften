@@ -63,6 +63,7 @@ public class HomeUI extends JPanel {
     public void addButton(JButton btn) {
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
         btn.setBorderPainted(false);
+        btn.setFocusPainted(false);
         btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btn.setContentAreaFilled(false);
         this.add(btn);
