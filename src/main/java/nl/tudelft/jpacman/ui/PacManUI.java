@@ -61,9 +61,6 @@ public class PacManUI extends JFrame implements ActionListener {
      */
     private final BoardPanel boardPanel;
 
-    public static String BACKGROUND_PATH = "src\\main\\resources\\Theme\\original.png";
-    public static String BOARDBACKGROUND_PATH = "src\\main\\resources\\Theme\\original.png";
-
     /**
      * Creates a new UI for a JPacman game.
      *
@@ -148,7 +145,7 @@ public class PacManUI extends JFrame implements ActionListener {
         GamePlay.add(buttonPanel, BorderLayout.SOUTH);
         GamePlay.add(scorePanel, BorderLayout.NORTH);
         GamePlay.add(boardPanel, BorderLayout.CENTER);
-        boardPanel.setBackground(BOARDBACKGROUND_PATH);
+        boardPanel.setBackground(ThemeSet.DEFAULT.getPathBackgroundGamplay());
 
         btnStart.setBackground(new Color(0, 0, 0, 0));
 
@@ -157,10 +154,10 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
 
-                game.setTheme(ThemeSet.ORIGINAL);
-                BACKGROUND_PATH = "src\\main\\resources\\Theme\\original.png";
-                homeUI.setBackground(BACKGROUND_PATH);
-                boardPanel.setBackground(BOARDBACKGROUND_PATH);
+                game.setTheme(ThemeSet.DEFAULT);
+
+                homeUI.setBackground(ThemeSet.DEFAULT.getPathBackgroundHome());
+                boardPanel.setBackground(ThemeSet.DEFAULT.getPathBackgroundGamplay());
                 cardLayout.show(cardPanel, "home");
 
             }
@@ -169,16 +166,10 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
 
-<<<<<<< HEAD
                 game.setTheme(ThemeSet.Temple1);
-                BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp1.png";
-=======
-                game.setTheme(ThemeSet.WAT2);
-                BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp2.png";
-                BOARDBACKGROUND_PATH = "src\\main\\resources\\Theme\\gamewat2.png";
->>>>>>> 9a0b16b17a83413c6d9cbb25227309a3ae842076
-                homeUI.setBackground(BACKGROUND_PATH);
-                boardPanel.setBackground(BOARDBACKGROUND_PATH);
+
+                homeUI.setBackground(ThemeSet.Temple1.getPathBackgroundHome());
+                boardPanel.setBackground(ThemeSet.Temple1.getPathBackgroundGamplay());
                 cardLayout.show(cardPanel, "home");
             }
         }, 1, 1);
@@ -186,16 +177,10 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
 
-<<<<<<< HEAD
                 game.setTheme(ThemeSet.Temple2);
-                BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp2.png";
-=======
-                game.setTheme(ThemeSet.WAT3);
-                BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp3.png";
-                BOARDBACKGROUND_PATH = "src\\main\\resources\\Theme\\gamewat2.png";
->>>>>>> 9a0b16b17a83413c6d9cbb25227309a3ae842076
-                homeUI.setBackground(BACKGROUND_PATH);
-                boardPanel.setBackground(BOARDBACKGROUND_PATH);
+
+                homeUI.setBackground(ThemeSet.Temple2.getPathBackgroundHome());
+                boardPanel.setBackground(ThemeSet.Temple2.getPathBackgroundGamplay());
                 cardLayout.show(cardPanel, "home");
             }
         }, 1, 2);
@@ -203,16 +188,9 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
 
-<<<<<<< HEAD
                 game.setTheme(ThemeSet.Temple3);
-                BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp3.png";
-=======
-                game.setTheme(ThemeSet.WAT4);
-                BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp4.png";
-                BOARDBACKGROUND_PATH = "src\\main\\resources\\Theme\\gamewat2.png";
->>>>>>> 9a0b16b17a83413c6d9cbb25227309a3ae842076
-                homeUI.setBackground(BACKGROUND_PATH);
-                boardPanel.setBackground(BOARDBACKGROUND_PATH);
+                homeUI.setBackground(ThemeSet.Temple3.getPathBackgroundHome());
+                boardPanel.setBackground(ThemeSet.Temple3.getPathBackgroundGamplay());
                 cardLayout.show(cardPanel, "home");
             }
         }, 2, 0);
@@ -220,16 +198,9 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
 
-<<<<<<< HEAD
                 game.setTheme(ThemeSet.Temple4);
-                BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp4.png";
-=======
-                game.setTheme(ThemeSet.WAT5);
-                BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp5.png";
-                BOARDBACKGROUND_PATH = "src\\main\\resources\\Theme\\gamewat2.png";
->>>>>>> 9a0b16b17a83413c6d9cbb25227309a3ae842076
-                homeUI.setBackground(BACKGROUND_PATH);
-                boardPanel.setBackground(BOARDBACKGROUND_PATH);
+                homeUI.setBackground(ThemeSet.Temple4.getPathBackgroundHome());
+                boardPanel.setBackground(ThemeSet.Temple4.getPathBackgroundGamplay());
                 cardLayout.show(cardPanel, "home");
             }
         }, 2, 1);
@@ -258,7 +229,7 @@ public class PacManUI extends JFrame implements ActionListener {
         mapSelectUI.addThemeButton(null, map3, 2, 0);
         mapSelectUI.addThemeButton(null, map4, 2, 1);
 
-        homeUI.setBackground(BACKGROUND_PATH);
+        homeUI.setBackground(ThemeSet.DEFAULT.getPathBackgroundHome());
         homeUI.addButton(btnTheme);
         homeUI.addButton(btnStart);
         cardPanel.add(homeUI, "home");

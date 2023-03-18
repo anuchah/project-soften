@@ -53,7 +53,7 @@ public class PacManSprites extends SpriteStore {
      */
     private static final int ANIMATION_DELAY = 200;
 
-    private ThemeSet theme = ThemeSet.ORIGINAL;
+    private ThemeSet theme = ThemeSet.DEFAULT;
 
     /**
      * @return A map of animated Pac-Man sprites for all directions.

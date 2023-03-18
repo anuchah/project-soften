@@ -32,7 +32,7 @@ public class SinglePlayerGame extends Game {
     private Level level;
 
     private Launcher launcher = new Launcher();
-    public ThemeSet theme = ThemeSet.ORIGINAL;
+    public ThemeSet theme = ThemeSet.DEFAULT;
     private int mapNum = 0;
 
     /**

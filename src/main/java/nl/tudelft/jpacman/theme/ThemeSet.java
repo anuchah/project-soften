@@ -2,34 +2,30 @@ package nl.tudelft.jpacman.theme;
 
 public enum ThemeSet {
 
-<<<<<<< HEAD
-    DEFAULT("Default", "/Theme/Original.png",
+    DEFAULT("Default", "src\\main\\resources\\Theme\\original.png",
             "/sprite/wall.png", "/sprite/pellet.png", "/sprite/pacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
-            "/Theme/Original.png", "/Theme/Original.png", "/Theme/Original.png"),
-=======
-    ORIGINAL("Original"),
-    WAT2("Wat2"),
-    WAT3("Wat3"),
-    WAT4("Wat4"),
-    WAT5("Wat5");
->>>>>>> 9a0b16b17a83413c6d9cbb25227309a3ae842076
+            "src\\main\\resources\\Theme\\black.jpg", "/Theme/Original.png", "/Theme/Original.png"),
 
-    Temple1("Temple1", "/Theme/temp1.png", "/sprite/wall1.png", "/sprite/sushi.png", "/sprite/mspacman.png",
+    Temple1("Temple1", "src\\main\\resources\\Theme\\temp2.png", "/sprite/wall1.png", "/sprite/sushi.png",
+            "/sprite/mspacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
-            "/Theme/temp1.png", "/Theme/temp1.png", "/Theme/temp1.png"),
+            "src\\main\\resources\\Theme\\gamewat2.png", "/Theme/temp1.png", "/Theme/temp1.png"),
 
-    Temple2("Temple2", "/Theme/temp2.png", "/sprite/wall1.png", "/sprite/strawberry.png", "/sprite/pacman.png",
+    Temple2("Temple2", "src\\main\\resources\\Theme\\temp3.png", "/sprite/wall1.png", "/sprite/strawberry.png",
+            "/sprite/pacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
-            "/Theme/temp2.png", "/Theme/temp2.png", "/Theme/temp2.png"),
+            "src\\main\\resources\\Theme\\gamewat3.png", "/Theme/temp2.png", "/Theme/temp2.png"),
 
-    Temple3("Temple3", "/Theme/temp3.png", "/sprite/wall3.png", "/sprite/orange.png", "/sprite/mspacman.png",
+    Temple3("Temple3", "src\\main\\resources\\Theme\\temp4.png", "/sprite/wall3.png", "/sprite/orange.png",
+            "/sprite/mspacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
-            "/Theme/temp3.png", "/Theme/temp3.png", "/Theme/temp3.png"),
+            "src\\main\\resources\\Theme\\gamewat4.png", "/Theme/temp3.png", "/Theme/temp3.png"),
 
-    Temple4("Temple4", "/Theme/temp4.png", "/sprite/wall4.png", "/sprite/melon.png", "/sprite/mspacman.png",
+    Temple4("Temple4", "src\\main\\resources\\Theme\\temp5.png", "/sprite/wall4.png", "/sprite/melon.png",
+            "/sprite/mspacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
-            "/Theme/temp4.png", "/Theme/temp3.png", "/Theme/temp3.png");
+            "src\\main\\resources\\Theme\\gamewat5.png", "/Theme/temp3.png", "/Theme/temp3.png");
 
     private final String themeName;
     private final String pathSkinPacman;

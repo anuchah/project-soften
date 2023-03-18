@@ -43,7 +43,7 @@ public class BoardPanel extends JPanel {
      * The game to display.
      */
     private final Game game;
-    BufferedImage background;
+    ImageIcon background;
 
     /**
      * Creates a new board panel that will display the provided game.
@@ -74,7 +74,7 @@ public class BoardPanel extends JPanel {
         assert g != null;
         // Draw the background image first
 
-        g.drawImage(background, 0, 0, getWidth(), getHeight(), this);
+        g.drawImage(background.getImage(), 0, 0, getWidth(), getHeight(), this);
         // Cast your graphics object to a graphics2d object
         Graphics2D g2d = (Graphics2D) g;
         // Create an AlphaComposite with 50% transparency and DST_OVER rule
@@ -139,12 +139,8 @@ public class BoardPanel extends JPanel {
     }
 
     public void setBackground(String path) {
-        try {
-            background = ImageIO.read(new File(path));
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+
+        background = new ImageIcon(path);
 
     }
 
