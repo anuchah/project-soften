@@ -35,12 +35,14 @@ public class HomeUI extends JPanel {
     public HomeUI() {
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBounds(0,0,800, 800);
+        setBounds(0, 0, 800, 800);
 
-        /*logo.setIcon((ResizeImage(new ImageIcon("src\\main\\resources\\logo.png"), 500, 400)));
-        logo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.add(logo);*/
-
+        /*
+         * logo.setIcon((ResizeImage(new ImageIcon("src\\main\\resources\\logo.png"),
+         * 500, 400)));
+         * logo.setAlignmentX(Component.CENTER_ALIGNMENT);
+         * this.add(logo);
+         */
 
         GridBagConstraints logoConstraints = new GridBagConstraints();
         logoConstraints.gridx = 0; // start at column 0

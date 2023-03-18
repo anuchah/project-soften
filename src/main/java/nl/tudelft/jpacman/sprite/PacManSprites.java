@@ -59,7 +59,7 @@ public class PacManSprites extends SpriteStore {
      * @return A map of animated Pac-Man sprites for all directions.
      */
     public Map<Direction, Sprite> getPacmanSprites() {
-        return directionSprite("/sprite/pacman.png", PACMAN_ANIMATION_FRAMES);
+        return directionSprite(theme.getPathSkinPacman(), PACMAN_ANIMATION_FRAMES);
     }
 
     /**
@@ -113,6 +113,22 @@ public class PacManSprites extends SpriteStore {
 
         String resource = "/sprite/ghost_" + color.name().toLowerCase()
                 + ".png";
+
+        switch (color.name()) {
+            case "RED":
+                resource = theme.getPathGhostBlinky();
+                break;
+            case "CYAN":
+                resource = theme.getPathGhostInky();
+                break;
+            case "PINK":
+                resource = theme.getPathGhostPinky();
+                break;
+            case "ORANGE":
+                resource = theme.getPathGhostClyde();
+                break;
+        }
+
         return directionSprite(resource, GHOST_ANIMATION_FRAMES);
     }
 
@@ -139,19 +155,7 @@ public class PacManSprites extends SpriteStore {
      */
     public Sprite getWallSprite() {
 
-        switch (theme.getThemeName()) {
-            case "Default":
-                return loadSprite("/sprite/wall.png");
-            case "Halloween":
-                return loadSprite("/sprite/wall3.png");
-            case "Japan":
-                return loadSprite("/sprite/wall1.png");
-            case "City":
-                return loadSprite("/sprite/wall4.png");
-
-        }
-
-        return loadSprite("/sprite/wall.png");
+        return loadSprite(theme.getPathWall());
     }
 
     /**
@@ -165,18 +169,8 @@ public class PacManSprites extends SpriteStore {
      * @return The sprite for the
      */
     public Sprite getPelletSprite() {
-        switch (theme.getThemeName()) {
-            case "Halloween":
-                return loadSprite("/sprite/bone.png");
-            case "Japan":
-                return loadSprite("/sprite/sushi.png");
-            case "City":
-                return loadSprite("/sprite/bell.png");
-            case  "Default":
-                return loadSprite("/sprite/pellet.png");
-        }
 
-        return loadSprite("/sprite/pellet.png");
+        return loadSprite(theme.getPathPallet());
     }
 
     /**

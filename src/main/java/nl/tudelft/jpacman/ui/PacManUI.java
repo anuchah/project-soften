@@ -169,7 +169,7 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
 
-                game.setTheme(ThemeSet.HALLOWEEN);
+                game.setTheme(ThemeSet.Temple1);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp1.png";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
@@ -180,7 +180,7 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
 
-                game.setTheme(ThemeSet.JAPAN);
+                game.setTheme(ThemeSet.Temple2);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp2.png";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
@@ -191,7 +191,7 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
 
-                game.setTheme(ThemeSet.CITY);
+                game.setTheme(ThemeSet.Temple3);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp3.png";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
@@ -202,7 +202,7 @@ public class PacManUI extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
 
-                game.setTheme(ThemeSet.CITY);
+                game.setTheme(ThemeSet.Temple4);
                 BACKGROUND_PATH = "src\\main\\resources\\Theme\\temp4.png";
                 homeUI.setBackground(BACKGROUND_PATH);
                 boardPanel.setBackground(BACKGROUND_PATH);
@@ -326,7 +326,6 @@ public class PacManUI extends JFrame implements ActionListener {
             cardLayout.show(cardPanel, "gameplay");
 
         } else if (e.getSource() == map1) {
-
             game.setMap(1);
             game.reStart();
             cardLayout.show(cardPanel, "gameplay");

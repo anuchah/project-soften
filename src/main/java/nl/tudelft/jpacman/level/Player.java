@@ -22,7 +22,7 @@ public class Player extends Unit {
     /**
      * The animations for every direction.
      */
-    private final Map<Direction, Sprite> sprites;
+    private Map<Direction, Sprite> sprites;
 
     /**
      * The animation that is to be played when Pac-Man dies.
@@ -118,6 +118,10 @@ public class Player extends Unit {
             return sprites.get(getDirection());
         }
         return deathSprite;
+    }
+
+    public void setSprite(Map<Direction, Sprite> sprites) {
+        this.sprites = sprites;
     }
 
     /**

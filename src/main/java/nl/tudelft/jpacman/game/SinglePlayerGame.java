@@ -8,6 +8,8 @@ import nl.tudelft.jpacman.level.Player;
 
 import com.google.common.collect.ImmutableList;
 import nl.tudelft.jpacman.points.PointCalculator;
+import nl.tudelft.jpacman.sprite.PacManSprites;
+
 import nl.tudelft.jpacman.theme.ThemeSet;
 
 /**
@@ -21,6 +23,7 @@ public class SinglePlayerGame extends Game {
      * The player of this game.
      */
     private final Player player;
+    private final PacManSprites pacManSprites = new PacManSprites();
 
     /**
      * The level of this game.
@@ -106,6 +109,8 @@ public class SinglePlayerGame extends Game {
 
     public void setTheme(ThemeSet themeSet) {
         theme = themeSet;
+        pacManSprites.setThme(theme);
+        player.setSprite(pacManSprites.getPacmanSprites());
         startGame(mapNum);
         reStart();
     }

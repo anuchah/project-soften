@@ -45,7 +45,7 @@ public class Launcher {
     private PacManUI pacManUI;
     private Game game;
 
-    private ThemeSet themeDefault = ThemeSet.HALLOWEEN;
+    private ThemeSet themeDefault = ThemeSet.DEFAULT;
 
     /**
      * @return The game object this launcher will start when {@link #launch()}
@@ -60,7 +60,7 @@ public class Launcher {
      *
      * @return The name of the map file.
      */
-    protected String getLevelMap(int i) {
+    public String getLevelMap(int i) {
 
         return allLevel.get(i);
     }

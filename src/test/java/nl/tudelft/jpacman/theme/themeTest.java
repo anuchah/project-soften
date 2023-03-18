@@ -10,26 +10,29 @@ import org.junit.jupiter.api.Test;
 
 public class themeTest {
     PacManSprites p = new PacManSprites();
-    
+
     @Test
     public void testSelectThemeJapan() {
-        ThemeSet jp = ThemeSet.valueOf("JAPAN");
-        assertEquals(jp,ThemeSet.JAPAN);
+        ThemeSet jp = ThemeSet.valueOf("Temple1");
+        assertEquals(jp, ThemeSet.Temple1);
     }
+
     @Test
     public void testSelectThemeHalloween() {
-        ThemeSet h = ThemeSet.valueOf("HALLOWEEN");
-        assertEquals(h,ThemeSet.HALLOWEEN);
+        ThemeSet h = ThemeSet.valueOf("Temple2");
+        assertEquals(h, ThemeSet.Temple2);
     }
+
     @Test
     public void testSelectThemeCity() {
-        ThemeSet c = ThemeSet.valueOf("CITY");
-        assertEquals(c,ThemeSet.CITY);
+        ThemeSet c = ThemeSet.valueOf("Temple3");
+        assertEquals(c, ThemeSet.Temple3);
     }
+
     @Test
     public void testSelectThemeDefault() {
         ThemeSet de = ThemeSet.valueOf("DEFAULT");
-        assertEquals(de,ThemeSet.DEFAULT);
+        assertEquals(de, ThemeSet.DEFAULT);
     }
 
 }
