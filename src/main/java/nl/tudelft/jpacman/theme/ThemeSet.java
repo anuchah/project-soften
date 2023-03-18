@@ -7,22 +7,22 @@ public enum ThemeSet {
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
             "src\\main\\resources\\Theme\\black.jpg", "/Theme/Original.png", "/Theme/Original.png"),
 
-    Temple1("Temple1", "src\\main\\resources\\Theme\\temp2.png", "/sprite/wall1.png", "/sprite/sushi.png",
+    Temple1("Temple1", "src\\main\\resources\\Theme\\temp2.png", "/sprite/pixil-frame-1.png", "/sprite/sushi.png",
             "/sprite/mspacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
             "src\\main\\resources\\Theme\\gamewat2.png", "/Theme/temp1.png", "/Theme/temp1.png"),
 
-    Temple2("Temple2", "src\\main\\resources\\Theme\\temp3.png", "/sprite/wall1.png", "/sprite/strawberry.png",
+    Temple2("Temple2", "src\\main\\resources\\Theme\\temp3.png", "/sprite/pixil-frame-2.png", "/sprite/strawberry.png",
             "/sprite/pacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
             "src\\main\\resources\\Theme\\gamewat3.png", "/Theme/temp2.png", "/Theme/temp2.png"),
 
-    Temple3("Temple3", "src\\main\\resources\\Theme\\temp4.png", "/sprite/wall3.png", "/sprite/orange.png",
+    Temple3("Temple3", "src\\main\\resources\\Theme\\temp4.png", "/sprite/pixil-frame-3.png", "/sprite/orange.png",
             "/sprite/mspacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
             "src\\main\\resources\\Theme\\gamewat4.png", "/Theme/temp3.png", "/Theme/temp3.png"),
 
-    Temple4("Temple4", "src\\main\\resources\\Theme\\temp5.png", "/sprite/wall4.png", "/sprite/melon.png",
+    Temple4("Temple4", "src\\main\\resources\\Theme\\temp5.png", "/sprite/pixil-frame-4.png", "/sprite/melon.png",
             "/sprite/mspacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
             "src\\main\\resources\\Theme\\gamewat5.png", "/Theme/temp3.png", "/Theme/temp3.png");
