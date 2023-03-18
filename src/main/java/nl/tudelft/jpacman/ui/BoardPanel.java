@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -51,7 +52,7 @@ public class BoardPanel extends JPanel {
      * @param game
      *             The game to display.
      */
-    BoardPanel(Game game) {
+    BoardPanel(Game game, final Map<String, Action> buttons) {
         super();
         assert game != null;
         this.game = game;
@@ -67,6 +68,7 @@ public class BoardPanel extends JPanel {
         Dimension size = new Dimension(w, h);
         setMinimumSize(size);
         setPreferredSize(size);
+
     }
 
     @Override

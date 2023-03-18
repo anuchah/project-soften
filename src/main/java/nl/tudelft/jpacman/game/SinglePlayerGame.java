@@ -84,7 +84,9 @@ public class SinglePlayerGame extends Game {
 
     @Override
     public void reStart() {
-        startGame(mapNum);
+        level = launcher.makeLevel(theme, mapNum);
+        level.registerPlayer(player);
+        level.addObserver(this);
         player.setAlive(true);
         reSetScore();
 
@@ -97,8 +99,6 @@ public class SinglePlayerGame extends Game {
 
     private void startGame(int mapNum) {
         level = launcher.makeLevel(theme, mapNum);
-        level.registerPlayer(player);
-        level.addObserver(this);
 
     }
 
@@ -111,7 +111,6 @@ public class SinglePlayerGame extends Game {
         theme = themeSet;
         pacManSprites.setThme(theme);
         player.setSprite(pacManSprites.getPacmanSprites());
-        startGame(mapNum);
         reStart();
     }
 

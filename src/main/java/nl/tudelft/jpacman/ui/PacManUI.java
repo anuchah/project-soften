@@ -55,6 +55,10 @@ public class PacManUI extends JFrame implements ActionListener {
      * The panel displaying the player scores.
      */
     private final ScorePanel scorePanel;
+    private final JButton btnPauseButton = new JButton("Pause");
+    private final DialogPause dialogPause = new DialogPause();
+    private final JButton btnContinue = new JButton("Continue");
+    private final JButton btnBackhome = new JButton("Backhome");
 
     /**
      * The panel displaying the game.
@@ -82,25 +86,25 @@ public class PacManUI extends JFrame implements ActionListener {
      */
 
     // create a card layout
-    CardLayout cardLayout = new CardLayout();
+    private CardLayout cardLayout = new CardLayout();
     // create a panel to hold the cards
-    JPanel cardPanel = new JPanel();
+    private JPanel cardPanel = new JPanel();
     // create a panel to hold the buttons
-    JPanel buttonPanel = new JPanel();
+    private JPanel buttonPanel = new JPanel();
     // create two buttons to switch between cards
 
-    JPanel homePanel = new JPanel();
-    JLabel title = new JLabel("PacMan");
-    final Game game;
-    JPanel GamePlay = new JPanel();
+    private JPanel homePanel = new JPanel();
+    private JLabel title = new JLabel("PacMan");
+    private final Game game;
+    private JPanel GamePlay = new JPanel();
 
-    HomeUI homeUI = new HomeUI();
+    private HomeUI homeUI = new HomeUI();
     // create btn home conection to Gameplay
-    JButton btnStart = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
+    private JButton btnStart = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
 
-    ThemeUI themeUI = new ThemeUI();
-
-    JDialog dialogDead;
+    private ThemeUI themeUI = new ThemeUI();
+    Timer timer;
+    private JDialog dialogDead;
 
     JDialog dialogWon;
 
@@ -113,12 +117,14 @@ public class PacManUI extends JFrame implements ActionListener {
     JButton btnTheme = new JButton();
 
     // Map Select UI
-    MapSelectUI mapSelectUI = new MapSelectUI();
-    JButton map0 = new JButton("map 0");
-    JButton map1 = new JButton("map 1");
-    JButton map2 = new JButton("map 2");
-    JButton map3 = new JButton("map 3");
-    JButton map4 = new JButton("map 4");
+    private MapSelectUI mapSelectUI = new MapSelectUI();
+    private JButton map0 = new JButton("map 0");
+    private JButton map1 = new JButton("map 1");
+    private JButton map2 = new JButton("map 2");
+    private JButton map3 = new JButton("map 3");
+    private JButton map4 = new JButton("map 4");
+
+    DialogCountDown countdown;
 
     public PacManUI(Game game, final Map<String, Action> buttons,
             final Map<Integer, Action> keyMappings,
@@ -128,6 +134,10 @@ public class PacManUI extends JFrame implements ActionListener {
         assert buttons != null;
         assert keyMappings != null;
         this.game = game;
+
+        dialogPause.addBackhomeButton(btnBackhome);
+        dialogPause.addContinueButton(btnContinue);
+
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // addCard Layout to Card Panel
@@ -142,12 +152,14 @@ public class PacManUI extends JFrame implements ActionListener {
         if (scoreFormatter != null) {
             scorePanel.setScoreFormatter(scoreFormatter);
         }
-
+        btnPauseButton.addActionListener(this);
+        scorePanel.addPauseButton(btnPauseButton);
+        btnBackhome.addActionListener(this);
+        btnContinue.addActionListener(this);
         // Crete GamePlayUI
-        boardPanel = new BoardPanel(game);
+        boardPanel = new BoardPanel(game, buttons);
         GamePlay.setLayout(new BorderLayout());
         boardPanel.setOpaque(false);
-        GamePlay.add(buttonPanel, BorderLayout.SOUTH);
         GamePlay.add(scorePanel, BorderLayout.NORTH);
         GamePlay.add(boardPanel, BorderLayout.CENTER);
         boardPanel.setBackground(ThemeSet.DEFAULT.getPathBackgroundGamplay());
@@ -265,7 +277,7 @@ public class PacManUI extends JFrame implements ActionListener {
 
         // check Game Lost
         if (game.isLost()) {
-            game.setLost(false);
+
             dialogDead = new JDialog();
             dialogDead.setLayout(new BorderLayout());
             dialogDead.add(new JLabel("You Dead ", SwingConstants.CENTER), BorderLayout.NORTH);
@@ -283,6 +295,7 @@ public class PacManUI extends JFrame implements ActionListener {
 
             restartButton.addActionListener(this);
             dialogDead.setVisible(true);
+            game.setLost(false);
         }
         if (game.isWon()) {
             game.setWon(false);
@@ -303,8 +316,6 @@ public class PacManUI extends JFrame implements ActionListener {
         }
 
     }
-
-
 
     // Handle Button
     @Override
@@ -328,7 +339,9 @@ public class PacManUI extends JFrame implements ActionListener {
         else if (e.getSource() == restartButton) {
             dialogDead.setVisible(false);
             game.reStart();
+
             dialogDead.removeAll();
+            CountdownToStart(3000, game);
         }
         // back
         else if (e.getSource() == backButton) {
@@ -342,25 +355,48 @@ public class PacManUI extends JFrame implements ActionListener {
 
             game.setMap(0);
             game.reStart();
+
             cardLayout.show(cardPanel, "gameplay");
+            CountdownToStart(5000, game);
 
         } else if (e.getSource() == map1) {
             game.setMap(1);
             game.reStart();
             cardLayout.show(cardPanel, "gameplay");
+            CountdownToStart(5000, game);
 
         } else if (e.getSource() == map2) {
+
             game.setMap(2);
             game.reStart();
+
             cardLayout.show(cardPanel, "gameplay");
+            CountdownToStart(5000, game);
         } else if (e.getSource() == map3) {
             game.setMap(3);
             game.reStart();
             cardLayout.show(cardPanel, "gameplay");
+            CountdownToStart(5000, game);
         } else if (e.getSource() == map4) {
             game.setMap(4);
             game.reStart();
+
             cardLayout.show(cardPanel, "gameplay");
+            CountdownToStart(5000, game);
+        }
+
+        else if (e.getSource() == btnPauseButton) {
+            game.stop();
+            dialogPause.setLocationRelativeTo(this);
+            dialogPause.Visible();
+
+        } else if (e.getSource() == btnContinue) {
+            game.start();
+            dialogPause.Disible();
+        } else if (e.getSource() == btnBackhome) {
+            game.reStart();
+            dialogPause.Disible();
+            cardLayout.show(cardPanel, "home");
         }
 
         else if (e.getSource() == nextButton) {
@@ -373,6 +409,7 @@ public class PacManUI extends JFrame implements ActionListener {
                 game.reStart();
                 cardLayout.show(cardPanel, "gameplay");
                 dialogWon.removeAll();
+                CountdownToStart(3000, game);
             } else {
                 System.out.println("There are no more maps!");
                 nextButton.setEnabled(false);
@@ -380,4 +417,21 @@ public class PacManUI extends JFrame implements ActionListener {
             }
         }
     }
+
+    private void CountdownToStart(int time, Game game) {
+        // Check if a countdown dialog is already visible
+        if (countdown != null) {
+            countdown.setCount(time / 1000);
+            countdown.setLocationRelativeTo(this);
+            countdown.Visible();
+            GamePlay.setEnabled(false);
+        } else {
+            countdown = new DialogCountDown(this, time, game);
+            countdown.setLocationRelativeTo(this);
+            countdown.Visible();
+            GamePlay.setEnabled(false);
+        }
+
+    }
+
 }

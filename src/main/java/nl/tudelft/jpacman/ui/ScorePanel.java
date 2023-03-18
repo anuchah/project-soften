@@ -1,10 +1,12 @@
 package nl.tudelft.jpacman.ui;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -50,17 +52,18 @@ public class ScorePanel extends JPanel {
         super();
         assert players != null;
 
-        setLayout(new GridLayout(2, players.size()));
+        setLayout(new BorderLayout());
 
         for (int i = 1; i <= players.size(); i++) {
-            add(new JLabel("Player " + i, JLabel.CENTER));
+            add(new JLabel("Player " + i, JLabel.CENTER), BorderLayout.LINE_START);
         }
         scoreLabels = new LinkedHashMap<>();
         for (Player player : players) {
             JLabel scoreLabel = new JLabel("0", JLabel.CENTER);
             scoreLabels.put(player, scoreLabel);
-            add(scoreLabel);
+            add(scoreLabel, BorderLayout.CENTER);
         }
+
     }
 
     /**
@@ -100,6 +103,10 @@ public class ScorePanel extends JPanel {
     public void setScoreFormatter(ScoreFormatter scoreFormatter) {
         assert scoreFormatter != null;
         this.scoreFormatter = scoreFormatter;
+    }
+
+    public void addPauseButton(JButton btnPauseGame) {
+        add(btnPauseGame, BorderLayout.LINE_END);
     }
 
 }
