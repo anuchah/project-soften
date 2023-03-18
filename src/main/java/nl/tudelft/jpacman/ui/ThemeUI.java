@@ -45,6 +45,9 @@ public class ThemeUI extends JPanel {
         JButton button = new JButton(icon);
         button.setPreferredSize(new Dimension(150, 200));
         button.addActionListener(action);
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
 
         GridBagConstraints c1 = new GridBagConstraints();
         c1.fill = GridBagConstraints.HORIZONTAL;

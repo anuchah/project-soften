@@ -44,6 +44,9 @@ public class MapSelectUI extends JPanel {
 
         btn.setPreferredSize(new Dimension(150, 150));
         btn.setIcon(icon);
+        btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btn.setBorderPainted(false);
+        btn.setFocusPainted(false);
 
         GridBagConstraints c1 = new GridBagConstraints();
         c1.fill = GridBagConstraints.HORIZONTAL;
