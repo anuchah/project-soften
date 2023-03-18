@@ -2,10 +2,18 @@ package nl.tudelft.jpacman.theme;
 
 public enum ThemeSet {
 
+<<<<<<< HEAD
     DEFAULT("Default", "/Theme/Original.png",
             "/sprite/wall.png", "/sprite/pellet.png", "/sprite/pacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
             "/Theme/Original.png", "/Theme/Original.png", "/Theme/Original.png"),
+=======
+    ORIGINAL("Original"),
+    WAT2("Wat2"),
+    WAT3("Wat3"),
+    WAT4("Wat4"),
+    WAT5("Wat5");
+>>>>>>> 9a0b16b17a83413c6d9cbb25227309a3ae842076
 
     Temple1("Temple1", "/Theme/temp1.png", "/sprite/wall1.png", "/sprite/sushi.png", "/sprite/mspacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
