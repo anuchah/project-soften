@@ -102,9 +102,14 @@ public class PacManUI extends JFrame implements ActionListener {
 
     JDialog dialogDead;
 
+    JDialog dialogWon;
+
     JButton backButton = new JButton("Back");
     JButton restartButton = new JButton("Restart");
+    JButton restartButton2 = new JButton("Restart");
+    JButton nextButton = new JButton("Next");
     JButton homeButton = new JButton("Exit");
+    JButton homeButton2 = new JButton("Exit");
     JButton btnTheme = new JButton();
 
     // Map Select UI
@@ -279,8 +284,27 @@ public class PacManUI extends JFrame implements ActionListener {
             restartButton.addActionListener(this);
             dialogDead.setVisible(true);
         }
+        if (game.isWon()) {
+            game.setWon(false);
+            dialogWon = new JDialog();
+            dialogWon.setLayout(new BorderLayout());
+            dialogWon.add(new JLabel("You Won ", SwingConstants.CENTER), BorderLayout.NORTH);
+            dialogWon.add(new JLabel("Your Score :  " + game.getScore(), SwingConstants.CENTER), BorderLayout.CENTER);
+            JPanel buttonPanel2 = new JPanel();
+            dialogWon.setSize(300, 200);
+            // Set the location of the dialog
+            dialogWon.setLocationRelativeTo(this);
+            buttonPanel2.add(nextButton);
+            buttonPanel2.add(homeButton2);
+            homeButton2.addActionListener(this);
+            nextButton.addActionListener(this);
+            dialogWon.add(buttonPanel2, BorderLayout.SOUTH);
+            dialogWon.setVisible(true);
+        }
 
     }
+
+
 
     // Handle Button
     @Override
@@ -337,6 +361,23 @@ public class PacManUI extends JFrame implements ActionListener {
             game.setMap(4);
             game.reStart();
             cardLayout.show(cardPanel, "gameplay");
+        }
+
+        else if (e.getSource() == nextButton) {
+            dialogWon.setVisible(false);
+            Launcher launcher = new Launcher();
+            if (launcher.getMapNum() + 1 < launcher.getAllLevels().size()) {
+                int mapNum = launcher.getMapNum();
+                mapNum++;
+                game.setMap(mapNum);
+                game.reStart();
+                cardLayout.show(cardPanel, "gameplay");
+                dialogWon.removeAll();
+            } else {
+                System.out.println("There are no more maps!");
+                nextButton.setEnabled(false);
+                dialogWon.removeAll();
+            }
         }
     }
 }

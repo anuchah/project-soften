@@ -40,10 +40,19 @@ public class Launcher {
     public static final String DEFAULT_MAP = "/board0.txt";
     private List<String> allLevel = Arrays.asList("/board0.txt", "/board1.txt", "/board2.txt", "/board3.txt",
             "/board4.txt");
+
+    public List<String> getAllLevels() {
+        return allLevel;
+    }
+
     private static String levelMap = DEFAULT_MAP;
     private int mapNum = 0;
     private PacManUI pacManUI;
     private Game game;
+
+    public int getMapNum(){
+        return mapNum;
+    }
 
     private ThemeSet themeDefault = ThemeSet.DEFAULT;
 
