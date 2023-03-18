@@ -7,7 +7,7 @@ public enum ThemeSet {
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
             "src\\main\\resources\\Theme\\black.jpg", "/Theme/Original.png", "/Theme/Original.png"),
 
-    Temple1("Temple1", "src\\main\\resources\\Theme\\temp2.png", "/sprite/wall1.png", "/sprite/sushi.png",
+    Temple1("Temple1", "src\\main\\resources\\Theme\\temp2.png", "/sprite/wall1.png", "/sprite/p1.png",
             "/sprite/mspacman.png",
             "/sprite/ghost_red.png", "/sprite/ghost_pink.png", "/sprite/ghost_cyan.png", "/sprite/ghost_orange.png",
             "src\\main\\resources\\Theme\\gamewat2.png", "/Theme/temp1.png", "/Theme/temp1.png"),
