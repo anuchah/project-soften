@@ -71,7 +71,6 @@ public class HomeUI extends JPanel {
     public ImageIcon ResizeImage(ImageIcon image, int width, int hight) {
 
         Image img = image.getImage().getScaledInstance(width, hight, Image.SCALE_SMOOTH);
-
         return new ImageIcon(img);
 
     }
