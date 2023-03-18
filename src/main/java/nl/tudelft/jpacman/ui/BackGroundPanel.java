@@ -25,7 +25,7 @@ public class BackGroundPanel extends JPanel {
     }
 
     public void setPanel(JPanel panel) {
-        panel = panel;
+        this.panel = panel;
         add(panel);
     }
 
