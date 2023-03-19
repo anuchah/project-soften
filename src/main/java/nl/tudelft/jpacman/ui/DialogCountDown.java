@@ -32,10 +32,10 @@ public class DialogCountDown extends JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.print(count);
                 count--;
+                System.out.print(count);
                 label.setText(String.valueOf(count));
-                if (count == 0) {
+                if (count <= 0) {
                     timer.stop();
                     setVisible(false);
                     game.start();
@@ -61,6 +61,11 @@ public class DialogCountDown extends JDialog {
     public void setCount(int count) {
         this.count = count;
         label.setText(String.valueOf(count));
+    }
+
+    public void Dispose() {
+        dispose();
+        timer.stop();
     }
 
 }

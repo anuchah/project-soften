@@ -143,7 +143,6 @@ public class PacManUI extends JFrame implements ActionListener {
         dialogPause.addBackhomeButton(btnBackhome);
         dialogPause.addContinueButton(btnContinue);
 
-
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // addCard Layout to Card Panel
@@ -246,9 +245,8 @@ public class PacManUI extends JFrame implements ActionListener {
         btnPauseButton.setFocusPainted(false);
         btnPauseButton.setContentAreaFilled(false);
 
-
         btnTheme.setFocusPainted(false);
-        btnTheme.setMargin(new Insets(400,0,5,0));
+        btnTheme.setMargin(new Insets(400, 0, 5, 0));
         btnStart.addActionListener(this);
         btnTheme.addActionListener(this);
         btnMapBack.addActionListener(this);
@@ -264,7 +262,7 @@ public class PacManUI extends JFrame implements ActionListener {
         mapSelectUI.addMapButton("src/main/resources/stage/s3.png", map2, 1, 2);
         mapSelectUI.addMapButton("src/main/resources/stage/s4.png", map3, 2, 0);
         mapSelectUI.addMapButton("src/main/resources/stage/s5.png", map4, 2, 1);
-        //add Back to home button in Map Select
+        // add Back to home button in Map Select
         mapSelectUI.backBtn("src/main/resources/button/backbtn.png", btnMapBack, 3, 1);
 
         homeUI.setBackground(ThemeSet.DEFAULT.getPathBackgroundHome());
@@ -274,8 +272,8 @@ public class PacManUI extends JFrame implements ActionListener {
         cardPanel.add(mapSelectUI, "map select");
         cardPanel.add(GamePlay, "gameplay");
         cardPanel.add(themeUI, "theme");
-        cardPanel.add(LostPage,"lost");
-        cardPanel.add(WinPage,"win");
+        cardPanel.add(LostPage, "lost");
+        cardPanel.add(WinPage, "win");
         add(cardPanel);
         pack();
 
@@ -301,24 +299,28 @@ public class PacManUI extends JFrame implements ActionListener {
         // check Game Lost
         if (game.isLost()) {
 
-            /*dialogDead = new JDialog();
-            dialogDead.setLayout(new BorderLayout());
-            dialogDead.add(new JLabel("You Dead ", SwingConstants.CENTER), BorderLayout.NORTH);
-            dialogDead.add(new JLabel("Your Score :  " + game.getScore(), SwingConstants.CENTER), BorderLayout.CENTER);
-            // Create a JPanel for the buttons
-            JPanel buttonPanel1 = new JPanel();
-            dialogDead.setSize(300, 200);
-            // Set the location of the dialog
-            dialogDead.setLocationRelativeTo(this);
-            // Create a JButton for restarting
-            homeButton.addActionListener(this);
-            buttonPanel1.add(restartButton);
-            buttonPanel1.add(homeButton);
-            dialogDead.add(buttonPanel1, BorderLayout.SOUTH);
-
-            restartButton.addActionListener(this);
-            dialogDead.setVisible(true);
-            game.setLost(false);*/
+            /*
+             * dialogDead = new JDialog();
+             * dialogDead.setLayout(new BorderLayout());
+             * dialogDead.add(new JLabel("You Dead ", SwingConstants.CENTER),
+             * BorderLayout.NORTH);
+             * dialogDead.add(new JLabel("Your Score :  " + game.getScore(),
+             * SwingConstants.CENTER), BorderLayout.CENTER);
+             * // Create a JPanel for the buttons
+             * JPanel buttonPanel1 = new JPanel();
+             * dialogDead.setSize(300, 200);
+             * // Set the location of the dialog
+             * dialogDead.setLocationRelativeTo(this);
+             * // Create a JButton for restarting
+             * homeButton.addActionListener(this);
+             * buttonPanel1.add(restartButton);
+             * buttonPanel1.add(homeButton);
+             * dialogDead.add(buttonPanel1, BorderLayout.SOUTH);
+             * 
+             * restartButton.addActionListener(this);
+             * dialogDead.setVisible(true);
+             * game.setLost(false);
+             */
             cardLayout.show(cardPanel, "lost");
             game.setLost(false);
             LostPage.addThemeButton("src/main/resources/button/restartbtn.png", new ActionListener() {
@@ -337,29 +339,37 @@ public class PacManUI extends JFrame implements ActionListener {
             }, 1, 0);
         }
         if (game.isWon()) {
-            /*game.setWon(false);
-            dialogWon = new JDialog();
-            dialogWon.setLayout(new BorderLayout());
-            dialogWon.add(new JLabel("You Won ", SwingConstants.CENTER), BorderLayout.NORTH);
-            dialogWon.add(new JLabel("Your Score :  " + game.getScore(), SwingConstants.CENTER), BorderLayout.CENTER);
-            JPanel buttonPanel2 = new JPanel();
-            dialogWon.setSize(300, 200);
-            // Set the location of the dialog
-            dialogWon.setLocationRelativeTo(this);
-            buttonPanel2.add(nextButton);
-            buttonPanel2.add(homeButton2);
-            homeButton2.addActionListener(this);
-            nextButton.addActionListener(this);
-            dialogWon.add(buttonPanel2, BorderLayout.SOUTH);
-            dialogWon.setVisible(true);*/
-            cardLayout.show(cardPanel,"win");
+            /*
+             * game.setWon(false);
+             * dialogWon = new JDialog();
+             * dialogWon.setLayout(new BorderLayout());
+             * dialogWon.add(new JLabel("You Won ", SwingConstants.CENTER),
+             * BorderLayout.NORTH);
+             * dialogWon.add(new JLabel("Your Score :  " + game.getScore(),
+             * SwingConstants.CENTER), BorderLayout.CENTER);
+             * JPanel buttonPanel2 = new JPanel();
+             * dialogWon.setSize(300, 200);
+             * // Set the location of the dialog
+             * dialogWon.setLocationRelativeTo(this);
+             * buttonPanel2.add(nextButton);
+             * buttonPanel2.add(homeButton2);
+             * homeButton2.addActionListener(this);
+             * nextButton.addActionListener(this);
+             * dialogWon.add(buttonPanel2, BorderLayout.SOUTH);
+             * dialogWon.setVisible(true);
+             */
+            cardLayout.show(cardPanel, "win");
             game.setWon(false);
-            /*WinPage.addThemeButton("src/main/resources/button/nextbtn.png", new ActionListener() {
-                @Override
-                public void actionPerformed(java.awt.event.ActionEvent e) {
-                    cardLayout.show(cardPanel, "map select");
-                }
-            }, 0, 0);*/
+            /*
+             * WinPage.addThemeButton("src/main/resources/button/nextbtn.png", new
+             * ActionListener() {
+             * 
+             * @Override
+             * public void actionPerformed(java.awt.event.ActionEvent e) {
+             * cardLayout.show(cardPanel, "map select");
+             * }
+             * }, 0, 0);
+             */
             WinPage.addThemeButton("src/main/resources/button/quit1.png", new ActionListener() {
                 @Override
                 public void actionPerformed(java.awt.event.ActionEvent e) {
@@ -380,8 +390,7 @@ public class PacManUI extends JFrame implements ActionListener {
         // btnTheme
         else if (e.getSource() == btnTheme) {
             cardLayout.show(cardPanel, "theme");
-        }
-        else if (e.getSource() == btnMapBack) {
+        } else if (e.getSource() == btnMapBack) {
             cardLayout.show(cardPanel, "home");
         }
         // GoHome
@@ -440,7 +449,7 @@ public class PacManUI extends JFrame implements ActionListener {
             cardLayout.show(cardPanel, "gameplay");
             CountdownToStart(5000, game);
         }
-
+        // pause
         else if (e.getSource() == btnPauseButton) {
             game.stop();
             dialogPause.setLocationRelativeTo(this);
@@ -450,9 +459,11 @@ public class PacManUI extends JFrame implements ActionListener {
             game.start();
             dialogPause.Disible();
         } else if (e.getSource() == btnBackhome) {
-            game.reStart();
+            countdown.Dispose();
+            game.stop();
             dialogPause.Disible();
             cardLayout.show(cardPanel, "home");
+
         }
 
         else if (e.getSource() == nextButton) {
