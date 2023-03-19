@@ -55,10 +55,10 @@ public class PacManUI extends JFrame implements ActionListener {
      * The panel displaying the player scores.
      */
     private final ScorePanel scorePanel;
-    private final JButton btnPauseButton = new JButton("Pause");
+    private final JButton btnPauseButton = new JButton();
     private final DialogPause dialogPause = new DialogPause();
-    private final JButton btnContinue = new JButton("Continue");
-    private final JButton btnBackhome = new JButton("Backhome");
+    private final JButton btnContinue = new JButton();
+    private final JButton btnBackhome = new JButton();
 
     /**
      * The panel displaying the game.
@@ -136,6 +136,8 @@ public class PacManUI extends JFrame implements ActionListener {
         assert keyMappings != null;
         this.game = game;
 
+        btnContinue.setIcon(new ImageIcon("src/main/resources/button/resumebtn.png"));
+        btnBackhome.setIcon(new ImageIcon("src/main/resources/button/quitbtn.png"));
         dialogPause.addBackhomeButton(btnBackhome);
         dialogPause.addContinueButton(btnContinue);
 
@@ -225,6 +227,11 @@ public class PacManUI extends JFrame implements ActionListener {
         // setBackground btn HomeUI
         btnStart.setIcon(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnTheme.setIcon(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));
+        btnPauseButton.setIcon(new ImageIcon("src/main/resources/button/plausebutton.png"));
+        btnPauseButton.setOpaque(false);
+        btnPauseButton.setBorderPainted(false);
+        btnPauseButton.setFocusPainted(false);
+        btnPauseButton.setContentAreaFilled(false);
 
 
         btnTheme.setFocusPainted(false);
