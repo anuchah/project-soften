@@ -1,14 +1,11 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import nl.tudelft.jpacman.level.Player;
 
@@ -55,14 +52,19 @@ public class ScorePanel extends JPanel {
         setLayout(new BorderLayout());
 
         for (int i = 1; i <= players.size(); i++) {
-            add(new JLabel("Player " + i, JLabel.CENTER), BorderLayout.LINE_START);
+            JLabel player = new JLabel("Player " + i, JLabel.CENTER);
+            player.setForeground(Color.WHITE);
+            add(player, BorderLayout.LINE_START);
+
         }
         scoreLabels = new LinkedHashMap<>();
         for (Player player : players) {
             JLabel scoreLabel = new JLabel("0", JLabel.CENTER);
+            scoreLabel.setForeground(Color.WHITE);
             scoreLabels.put(player, scoreLabel);
             add(scoreLabel, BorderLayout.CENTER);
         }
+        setBackground(new Color(51,51,51));
 
     }
 

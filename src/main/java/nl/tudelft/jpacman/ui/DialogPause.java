@@ -52,8 +52,6 @@ public class DialogPause extends JDialog{
         setVisible(false);
     }
 
-
-
     public void addContinueButton(JButton btn) {
         GridBagConstraints c1 = new GridBagConstraints();
         c1.gridx = 0;

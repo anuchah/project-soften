@@ -108,6 +108,8 @@ public class PacManUI extends JFrame implements ActionListener {
     private JDialog dialogDead;
 
     JDialog dialogWon;
+    private LostPage LostPage = new LostPage();
+    private WinPage WinPage = new WinPage();
 
     JButton backButton = new JButton("Back");
     JButton restartButton = new JButton("Restart");
@@ -140,6 +142,7 @@ public class PacManUI extends JFrame implements ActionListener {
         btnBackhome.setIcon(new ImageIcon("src/main/resources/button/quitbtn.png"));
         dialogPause.addBackhomeButton(btnBackhome);
         dialogPause.addContinueButton(btnContinue);
+
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -178,6 +181,8 @@ public class PacManUI extends JFrame implements ActionListener {
 
                 homeUI.setBackground(ThemeSet.DEFAULT.getPathBackgroundHome());
                 boardPanel.setBackground(ThemeSet.DEFAULT.getPathBackgroundGamplay());
+                WinPage.setBackground(ThemeSet.DEFAULT.getPathBackgroundWin());
+                LostPage.setBackground(ThemeSet.DEFAULT.getPathBackgroundLost());
                 cardLayout.show(cardPanel, "home");
 
             }
@@ -190,6 +195,8 @@ public class PacManUI extends JFrame implements ActionListener {
 
                 homeUI.setBackground(ThemeSet.Temple1.getPathBackgroundHome());
                 boardPanel.setBackground(ThemeSet.Temple1.getPathBackgroundGamplay());
+                WinPage.setBackground(ThemeSet.Temple1.getPathBackgroundWin());
+                LostPage.setBackground(ThemeSet.Temple1.getPathBackgroundLost());
                 cardLayout.show(cardPanel, "home");
             }
         }, 1, 1);
@@ -201,6 +208,8 @@ public class PacManUI extends JFrame implements ActionListener {
 
                 homeUI.setBackground(ThemeSet.Temple2.getPathBackgroundHome());
                 boardPanel.setBackground(ThemeSet.Temple2.getPathBackgroundGamplay());
+                WinPage.setBackground(ThemeSet.Temple2.getPathBackgroundWin());
+                LostPage.setBackground(ThemeSet.Temple2.getPathBackgroundLost());
                 cardLayout.show(cardPanel, "home");
             }
         }, 1, 2);
@@ -211,6 +220,8 @@ public class PacManUI extends JFrame implements ActionListener {
                 game.setTheme(ThemeSet.Temple3);
                 homeUI.setBackground(ThemeSet.Temple3.getPathBackgroundHome());
                 boardPanel.setBackground(ThemeSet.Temple3.getPathBackgroundGamplay());
+                WinPage.setBackground(ThemeSet.Temple3.getPathBackgroundWin());
+                LostPage.setBackground(ThemeSet.Temple3.getPathBackgroundLost());
                 cardLayout.show(cardPanel, "home");
             }
         }, 2, 0);
@@ -221,6 +232,8 @@ public class PacManUI extends JFrame implements ActionListener {
                 game.setTheme(ThemeSet.Temple4);
                 homeUI.setBackground(ThemeSet.Temple4.getPathBackgroundHome());
                 boardPanel.setBackground(ThemeSet.Temple4.getPathBackgroundGamplay());
+                WinPage.setBackground(ThemeSet.Temple4.getPathBackgroundWin());
+                LostPage.setBackground(ThemeSet.Temple4.getPathBackgroundLost());
                 cardLayout.show(cardPanel, "home");
             }
         }, 2, 1);
@@ -246,11 +259,11 @@ public class PacManUI extends JFrame implements ActionListener {
         map2.addActionListener(this);
         map0.addActionListener(this);
 
-        mapSelectUI.addMapButton(null, map0, 1, 0);
-        mapSelectUI.addMapButton(null, map1, 1, 1);
-        mapSelectUI.addMapButton(null, map2, 1, 2);
-        mapSelectUI.addMapButton(null, map3, 2, 0);
-        mapSelectUI.addMapButton(null, map4, 2, 1);
+        mapSelectUI.addMapButton("src/main/resources/stage/s1.png", map0, 1, 0);
+        mapSelectUI.addMapButton("src/main/resources/stage/s2.png", map1, 1, 1);
+        mapSelectUI.addMapButton("src/main/resources/stage/s3.png", map2, 1, 2);
+        mapSelectUI.addMapButton("src/main/resources/stage/s4.png", map3, 2, 0);
+        mapSelectUI.addMapButton("src/main/resources/stage/s5.png", map4, 2, 1);
         //add Back to home button in Map Select
         mapSelectUI.backBtn("src/main/resources/button/backbtn.png", btnMapBack, 3, 1);
 
@@ -261,6 +274,8 @@ public class PacManUI extends JFrame implements ActionListener {
         cardPanel.add(mapSelectUI, "map select");
         cardPanel.add(GamePlay, "gameplay");
         cardPanel.add(themeUI, "theme");
+        cardPanel.add(LostPage,"lost");
+        cardPanel.add(WinPage,"win");
         add(cardPanel);
         pack();
 
@@ -286,7 +301,7 @@ public class PacManUI extends JFrame implements ActionListener {
         // check Game Lost
         if (game.isLost()) {
 
-            dialogDead = new JDialog();
+            /*dialogDead = new JDialog();
             dialogDead.setLayout(new BorderLayout());
             dialogDead.add(new JLabel("You Dead ", SwingConstants.CENTER), BorderLayout.NORTH);
             dialogDead.add(new JLabel("Your Score :  " + game.getScore(), SwingConstants.CENTER), BorderLayout.CENTER);
@@ -303,10 +318,26 @@ public class PacManUI extends JFrame implements ActionListener {
 
             restartButton.addActionListener(this);
             dialogDead.setVisible(true);
+            game.setLost(false);*/
+            cardLayout.show(cardPanel, "lost");
             game.setLost(false);
+            LostPage.addThemeButton("src/main/resources/button/restartbtn.png", new ActionListener() {
+                @Override
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    cardLayout.show(cardPanel, "gameplay");
+                    game.reStart();
+                    CountdownToStart(3000, game);
+                }
+            }, 0, 0);
+            LostPage.addThemeButton("src/main/resources/button/quit1.png", new ActionListener() {
+                @Override
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    cardLayout.show(cardPanel, "home");
+                }
+            }, 1, 0);
         }
         if (game.isWon()) {
-            game.setWon(false);
+            /*game.setWon(false);
             dialogWon = new JDialog();
             dialogWon.setLayout(new BorderLayout());
             dialogWon.add(new JLabel("You Won ", SwingConstants.CENTER), BorderLayout.NORTH);
@@ -320,7 +351,21 @@ public class PacManUI extends JFrame implements ActionListener {
             homeButton2.addActionListener(this);
             nextButton.addActionListener(this);
             dialogWon.add(buttonPanel2, BorderLayout.SOUTH);
-            dialogWon.setVisible(true);
+            dialogWon.setVisible(true);*/
+            cardLayout.show(cardPanel,"win");
+            game.setWon(false);
+            /*WinPage.addThemeButton("src/main/resources/button/nextbtn.png", new ActionListener() {
+                @Override
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    cardLayout.show(cardPanel, "map select");
+                }
+            }, 0, 0);*/
+            WinPage.addThemeButton("src/main/resources/button/quit1.png", new ActionListener() {
+                @Override
+                public void actionPerformed(java.awt.event.ActionEvent e) {
+                    cardLayout.show(cardPanel, "home");
+                }
+            }, 1, 0);
         }
 
     }

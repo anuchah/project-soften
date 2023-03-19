@@ -3,23 +3,18 @@ package nl.tudelft.jpacman.ui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.event.ActionListener;
 
-public class MapSelectUI extends JPanel{
+public class LostPage extends JPanel{
     private BufferedImage backgroundImage;
-    private JButton btnBack = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
 
-    public MapSelectUI() {
-        setBackground("src/main/resources/stage/stage.png");
+    public LostPage(){
+        setBackground("src/main/resources/theme/lostwin/lost.png");
         setUI();
-
-        // showTopic();
     }
-
     public void setUI() {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -30,23 +25,6 @@ public class MapSelectUI extends JPanel{
         c.anchor = GridBagConstraints.CENTER;
         setPreferredSize(new Dimension(800, 800));
         setBackground(Color.BLACK);
-
-    }public void backBtn(String pathIcon, JButton btn, int row, int column){
-        ImageIcon icon = new ImageIcon(pathIcon);
-
-        btn.setPreferredSize(new Dimension(100, 50));
-        btn.setIcon(icon);
-        btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btn.setBorderPainted(false);
-        btn.setFocusPainted(false);
-        btn.setContentAreaFilled(false);
-
-        GridBagConstraints c1 = new GridBagConstraints();
-        c1.fill = GridBagConstraints.HORIZONTAL;
-        c1.gridx = column;
-        c1.gridy = row;
-        c1.insets = new Insets(20, 20, 20, 0);
-        add(btn, c1);
     }
 
     public void setBackground(String imagePath) {
@@ -58,26 +36,25 @@ public class MapSelectUI extends JPanel{
         }
     }
 
-    public void addMapButton(String pathIcon, JButton btn, int row, int column) {
+    public void addThemeButton(String pathIcon, ActionListener action, int row, int column) {
 
         ImageIcon icon = new ImageIcon(pathIcon);
-
-        btn.setPreferredSize(new Dimension(150, 150));
-        btn.setIcon(icon);
-        btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        btn.setBorderPainted(false);
-        btn.setFocusPainted(false);
-        btn.setContentAreaFilled(false);
+        JButton button = new JButton(icon);
+        button.setPreferredSize(new Dimension(150, 75));
+        button.addActionListener(action);
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
+        button.setContentAreaFilled(false);
 
         GridBagConstraints c1 = new GridBagConstraints();
         c1.fill = GridBagConstraints.HORIZONTAL;
         c1.gridx = column;
         c1.gridy = row;
         c1.insets = new Insets(20, 20, 20, 0);
-        add(btn, c1);
+        add(button, c1);
 
     }
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -86,4 +63,3 @@ public class MapSelectUI extends JPanel{
         }
     }
 }
-
