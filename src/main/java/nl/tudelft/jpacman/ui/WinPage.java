@@ -11,10 +11,13 @@ import java.io.IOException;
 public class WinPage extends JPanel {
     private BufferedImage backgroundImage;
 
-    public WinPage(){
+    private JLabel score;
+
+    public WinPage() {
         setBackground("src/main/resources/theme/lostwin/win.png");
         setUI();
     }
+
     public void setUI() {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -23,8 +26,12 @@ public class WinPage extends JPanel {
         c.gridx = 0;
         c.gridy = 0;
         c.anchor = GridBagConstraints.CENTER;
+        score = new JLabel("Score : 0");
+        Font font = new Font("Serif", Font.BOLD, 50);
+        score.setFont(font);
         setPreferredSize(new Dimension(800, 800));
         setBackground(Color.BLACK);
+        this.add(score, c);
     }
 
     public void setBackground(String imagePath) {
@@ -55,11 +62,16 @@ public class WinPage extends JPanel {
         add(button, c1);
 
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
+    }
+
+    public void setScore(int socre) {
+        score.setText("Score : " + socre);
     }
 }

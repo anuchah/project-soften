@@ -68,4 +68,16 @@ public class DialogCountDown extends JDialog {
         timer.stop();
     }
 
+    public Boolean isRun() {
+        return timer.isRunning();
+    }
+
+    public void stopTime() {
+        timer.stop();
+    }
+
+    public void startTime() {
+        timer.start();
+    }
+
 }

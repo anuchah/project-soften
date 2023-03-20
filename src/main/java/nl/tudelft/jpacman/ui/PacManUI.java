@@ -15,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import org.junit.jupiter.api.function.ThrowingSupplier;
+
 //import javafx.scene.layout.Background;
 
 import javax.swing.*;
@@ -92,7 +94,7 @@ public class PacManUI extends JFrame implements ActionListener {
     // create a panel to hold the buttons
     private JPanel buttonPanel = new JPanel();
     // create two buttons to switch between cards
-
+    private ThemeSet themeSet = ThemeSet.DEFAULT;
     private JPanel homePanel = new JPanel();
     private JLabel title = new JLabel("PacMan");
     private final Game game;
@@ -102,6 +104,7 @@ public class PacManUI extends JFrame implements ActionListener {
     // create btn home conection to Gameplay
     private JButton btnStart = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
     private JButton btnMapBack = new JButton();
+    private JButton btnThemeBack = new JButton();
 
     private ThemeUI themeUI = new ThemeUI();
     Timer timer;
@@ -175,13 +178,8 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\og.png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-
-                game.setTheme(ThemeSet.DEFAULT);
-
-                homeUI.setBackground(ThemeSet.DEFAULT.getPathBackgroundHome());
-                boardPanel.setBackground(ThemeSet.DEFAULT.getPathBackgroundGamplay());
-                WinPage.setBackground(ThemeSet.DEFAULT.getPathBackgroundWin());
-                LostPage.setBackground(ThemeSet.DEFAULT.getPathBackgroundLost());
+                themeSet = ThemeSet.DEFAULT;
+                setAllTheme();
                 cardLayout.show(cardPanel, "home");
 
             }
@@ -189,53 +187,60 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 2 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-
-                game.setTheme(ThemeSet.Temple1);
-
-                homeUI.setBackground(ThemeSet.Temple1.getPathBackgroundHome());
-                boardPanel.setBackground(ThemeSet.Temple1.getPathBackgroundGamplay());
-                WinPage.setBackground(ThemeSet.Temple1.getPathBackgroundWin());
-                LostPage.setBackground(ThemeSet.Temple1.getPathBackgroundLost());
+                themeSet = ThemeSet.Temple1;
+                setAllTheme();
                 cardLayout.show(cardPanel, "home");
             }
         }, 1, 1);
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 3 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-
-                game.setTheme(ThemeSet.Temple2);
-
-                homeUI.setBackground(ThemeSet.Temple2.getPathBackgroundHome());
-                boardPanel.setBackground(ThemeSet.Temple2.getPathBackgroundGamplay());
-                WinPage.setBackground(ThemeSet.Temple2.getPathBackgroundWin());
-                LostPage.setBackground(ThemeSet.Temple2.getPathBackgroundLost());
+                themeSet = ThemeSet.Temple3;
+                setAllTheme();
                 cardLayout.show(cardPanel, "home");
             }
         }, 1, 2);
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 4 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-
-                game.setTheme(ThemeSet.Temple3);
-                homeUI.setBackground(ThemeSet.Temple3.getPathBackgroundHome());
-                boardPanel.setBackground(ThemeSet.Temple3.getPathBackgroundGamplay());
-                WinPage.setBackground(ThemeSet.Temple3.getPathBackgroundWin());
-                LostPage.setBackground(ThemeSet.Temple3.getPathBackgroundLost());
+                themeSet = ThemeSet.Temple3;
+                setAllTheme();
                 cardLayout.show(cardPanel, "home");
             }
         }, 2, 0);
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 5 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-
-                game.setTheme(ThemeSet.Temple4);
-                homeUI.setBackground(ThemeSet.Temple4.getPathBackgroundHome());
-                boardPanel.setBackground(ThemeSet.Temple4.getPathBackgroundGamplay());
-                WinPage.setBackground(ThemeSet.Temple4.getPathBackgroundWin());
-                LostPage.setBackground(ThemeSet.Temple4.getPathBackgroundLost());
+                themeSet = ThemeSet.Temple4;
+                setAllTheme();
                 cardLayout.show(cardPanel, "home");
             }
         }, 2, 1);
+        btnThemeBack.addActionListener(this);
+        themeUI.backBtn("src/main/resources/button/backbtn.png", btnThemeBack, 3, 1);
+
+        // add BTN to lost page
+        LostPage.addThemeButton("src/main/resources/button/restartbtn.png", new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                cardLayout.show(cardPanel, "gameplay");
+                game.reStart();
+                CountdownToStart(3000, game);
+            }
+        }, 1, 0);
+        LostPage.addThemeButton("src/main/resources/button/quit1.png", new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                cardLayout.show(cardPanel, "home");
+            }
+        }, 2, 0);
+        // add btn to win page
+        WinPage.addThemeButton("src/main/resources/button/quit1.png", new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                cardLayout.show(cardPanel, "home");
+            }
+        }, 1, 0);
         // setBackground btn HomeUI
         btnStart.setIcon(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnTheme.setIcon(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));
@@ -298,84 +303,16 @@ public class PacManUI extends JFrame implements ActionListener {
 
         // check Game Lost
         if (game.isLost()) {
-
-            /*
-             * dialogDead = new JDialog();
-             * dialogDead.setLayout(new BorderLayout());
-             * dialogDead.add(new JLabel("You Dead ", SwingConstants.CENTER),
-             * BorderLayout.NORTH);
-             * dialogDead.add(new JLabel("Your Score :  " + game.getScore(),
-             * SwingConstants.CENTER), BorderLayout.CENTER);
-             * // Create a JPanel for the buttons
-             * JPanel buttonPanel1 = new JPanel();
-             * dialogDead.setSize(300, 200);
-             * // Set the location of the dialog
-             * dialogDead.setLocationRelativeTo(this);
-             * // Create a JButton for restarting
-             * homeButton.addActionListener(this);
-             * buttonPanel1.add(restartButton);
-             * buttonPanel1.add(homeButton);
-             * dialogDead.add(buttonPanel1, BorderLayout.SOUTH);
-             * 
-             * restartButton.addActionListener(this);
-             * dialogDead.setVisible(true);
-             * game.setLost(false);
-             */
+            LostPage.setScore(game.getScore());
             cardLayout.show(cardPanel, "lost");
             game.setLost(false);
-            LostPage.addThemeButton("src/main/resources/button/restartbtn.png", new ActionListener() {
-                @Override
-                public void actionPerformed(java.awt.event.ActionEvent e) {
-                    cardLayout.show(cardPanel, "gameplay");
-                    game.reStart();
-                    CountdownToStart(3000, game);
-                }
-            }, 0, 0);
-            LostPage.addThemeButton("src/main/resources/button/quit1.png", new ActionListener() {
-                @Override
-                public void actionPerformed(java.awt.event.ActionEvent e) {
-                    cardLayout.show(cardPanel, "home");
-                }
-            }, 1, 0);
+
         }
         if (game.isWon()) {
-            /*
-             * game.setWon(false);
-             * dialogWon = new JDialog();
-             * dialogWon.setLayout(new BorderLayout());
-             * dialogWon.add(new JLabel("You Won ", SwingConstants.CENTER),
-             * BorderLayout.NORTH);
-             * dialogWon.add(new JLabel("Your Score :  " + game.getScore(),
-             * SwingConstants.CENTER), BorderLayout.CENTER);
-             * JPanel buttonPanel2 = new JPanel();
-             * dialogWon.setSize(300, 200);
-             * // Set the location of the dialog
-             * dialogWon.setLocationRelativeTo(this);
-             * buttonPanel2.add(nextButton);
-             * buttonPanel2.add(homeButton2);
-             * homeButton2.addActionListener(this);
-             * nextButton.addActionListener(this);
-             * dialogWon.add(buttonPanel2, BorderLayout.SOUTH);
-             * dialogWon.setVisible(true);
-             */
+            WinPage.setScore(game.getScore());
             cardLayout.show(cardPanel, "win");
             game.setWon(false);
-            /*
-             * WinPage.addThemeButton("src/main/resources/button/nextbtn.png", new
-             * ActionListener() {
-             * 
-             * @Override
-             * public void actionPerformed(java.awt.event.ActionEvent e) {
-             * cardLayout.show(cardPanel, "map select");
-             * }
-             * }, 0, 0);
-             */
-            WinPage.addThemeButton("src/main/resources/button/quit1.png", new ActionListener() {
-                @Override
-                public void actionPerformed(java.awt.event.ActionEvent e) {
-                    cardLayout.show(cardPanel, "home");
-                }
-            }, 1, 0);
+
         }
 
     }
@@ -391,6 +328,8 @@ public class PacManUI extends JFrame implements ActionListener {
         else if (e.getSource() == btnTheme) {
             cardLayout.show(cardPanel, "theme");
         } else if (e.getSource() == btnMapBack) {
+            cardLayout.show(cardPanel, "home");
+        } else if (e.getSource() == btnThemeBack) {
             cardLayout.show(cardPanel, "home");
         }
         // GoHome
@@ -454,10 +393,17 @@ public class PacManUI extends JFrame implements ActionListener {
             game.stop();
             dialogPause.setLocationRelativeTo(this);
             dialogPause.Visible();
+            if (countdown.isRun()) {
+                countdown.stopTime();
+            }
 
         } else if (e.getSource() == btnContinue) {
-            game.start();
             dialogPause.Disible();
+            if (!countdown.isRun()) {
+                countdown.startTime();
+            } else {
+                game.start();
+            }
         } else if (e.getSource() == btnBackhome) {
             countdown.Dispose();
             game.stop();
@@ -491,14 +437,22 @@ public class PacManUI extends JFrame implements ActionListener {
             countdown.setCount(time / 1000);
             countdown.setLocationRelativeTo(this);
             countdown.Visible();
-            GamePlay.setEnabled(false);
+
         } else {
             countdown = new DialogCountDown(this, time, game);
             countdown.setLocationRelativeTo(this);
             countdown.Visible();
-            GamePlay.setEnabled(false);
+
         }
 
+    }
+
+    public void setAllTheme() {
+        game.setTheme(themeSet);
+        homeUI.setBackground(themeSet.getPathBackgroundHome());
+        boardPanel.setBackground(themeSet.getPathBackgroundGamplay());
+        WinPage.setBackground(themeSet.getPathBackgroundWin());
+        LostPage.setBackground(themeSet.getPathBackgroundLost());
     }
 
 }

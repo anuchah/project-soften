@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionListener;
 
-public class MapSelectUI extends JPanel{
+public class MapSelectUI extends JPanel {
     private BufferedImage backgroundImage;
     private JButton btnBack = new JButton(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
 
@@ -31,7 +31,9 @@ public class MapSelectUI extends JPanel{
         setPreferredSize(new Dimension(800, 800));
         setBackground(Color.BLACK);
 
-    }public void backBtn(String pathIcon, JButton btn, int row, int column){
+    }
+
+    public void backBtn(String pathIcon, JButton btn, int row, int column) {
         ImageIcon icon = new ImageIcon(pathIcon);
 
         btn.setPreferredSize(new Dimension(100, 50));
@@ -86,4 +88,3 @@ public class MapSelectUI extends JPanel{
         }
     }
 }
-

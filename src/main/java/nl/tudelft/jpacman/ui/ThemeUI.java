@@ -15,7 +15,7 @@ public class ThemeUI extends JPanel {
     public ThemeUI() {
         setBackground("src/main/resources/Theme/ThemeSelected.png");
         setUI();
-        //showTopic();
+        // showTopic();
     }
 
     public void setUI() {
@@ -57,11 +57,30 @@ public class ThemeUI extends JPanel {
         add(button, c1);
 
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
         }
+    }
+
+    public void backBtn(String pathIcon, JButton btn, int row, int column) {
+        ImageIcon icon = new ImageIcon(pathIcon);
+
+        btn.setPreferredSize(new Dimension(100, 50));
+        btn.setIcon(icon);
+        btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btn.setBorderPainted(false);
+        btn.setFocusPainted(false);
+        btn.setContentAreaFilled(false);
+
+        GridBagConstraints c1 = new GridBagConstraints();
+        c1.fill = GridBagConstraints.HORIZONTAL;
+        c1.gridx = column;
+        c1.gridy = row;
+        c1.insets = new Insets(0, 0, 0, 0);
+        add(btn, c1);
     }
 }

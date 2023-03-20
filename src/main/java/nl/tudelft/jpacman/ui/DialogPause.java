@@ -9,19 +9,16 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class DialogPause extends JDialog{
+public class DialogPause extends JDialog {
     private BufferedImage bg;
 
     public DialogPause() {
 
         this.setLayout(new GridBagLayout());
 
-        /*JLabel label = new JLabel("Pause Game");
-
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        Font font = new Font("Serif", Font.BOLD, 20);
-        label.setFont(font);*/
         JLabel popup = new JLabel("Pause");
+        Font font = new Font("Serif", Font.BOLD, 20);
+        popup.setFont(font);
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
 
@@ -44,6 +41,7 @@ public class DialogPause extends JDialog{
             e.printStackTrace();
         }
     }
+
     public void Visible() {
         setVisible(true);
     }
