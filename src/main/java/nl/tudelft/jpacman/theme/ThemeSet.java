@@ -15,10 +15,11 @@ public enum ThemeSet {
             "src/main/resources/Theme/lostwin/win.png",
             "src/main/resources/Theme/lostwin/lost.png",
             "src/main/resources/Theme/banner1.png",
-            "src/main/resources/Theme/gamewat4.png",
+            "src/main/resources/Theme/popog.png",
             "src/main/resources/button/pause1.png",
             "src/main/resources/button/resumebtn.png",
-            "src/main/resources/button/quitbtn.png"),
+            "src/main/resources/button/quitbtn.png",
+            "src/main/resources/button/restartbtn.png"),
 
     Temple1("Temple1",
             "src\\main\\resources\\Theme\\temp2.png",
@@ -33,10 +34,11 @@ public enum ThemeSet {
             "src/main/resources/Theme/lostwin/win2.png",
             "src/main/resources/Theme/lostwin/lost2.png",
             "src/main/resources/Theme/banner2.png",
-            "src/main/resources/Theme/popup/popog.png",
+            "src/main/resources/Theme/popup/prasri.png",
             "src/main/resources/button/pause2.png",
             "src/main/resources/button/ResumeBTN2.png",
-            "src/main/resources/button/QuitBTN2.png"),
+            "src/main/resources/button/QuitBTN2.png",
+            "src/main/resources/button/restartButton2.png"),
 
     Temple2("Temple2",
             "src\\main\\resources\\Theme\\temp3.png",
@@ -51,10 +53,11 @@ public enum ThemeSet {
             "src/main/resources/Theme/lostwin/win3.png",
             "src/main/resources/Theme/lostwin/lost3.png",
             "src/main/resources/Theme/banner3.png",
-            "src/main/resources/Theme/popup/popog.png",
+            "src/main/resources/Theme/popup/mahabud.png",
             "src/main/resources/button/pause3.png",
             "src/main/resources/button/ResumeBTN3.png",
-            "src/main/resources/button/QuitBTN3.png"),
+            "src/main/resources/button/QuitBTN3.png",
+            "src/main/resources/button/restartButton3.png"),
 
     Temple3("Temple3",
             "src\\main\\resources\\Theme\\temp4.png",
@@ -69,10 +72,11 @@ public enum ThemeSet {
             "src/main/resources/Theme/lostwin/win4.png",
             "src/main/resources/Theme/lostwin/lost4.png",
             "src/main/resources/Theme/banner4.png",
-            "src/main/resources/Theme/popup/popog.png",
+            "src/main/resources/Theme/popup/sa-mhan.png",
             "src/main/resources/button/pause4.png",
             "src/main/resources/button/ResumeBTNt4.png",
-            "src/main/resources/button/QuitBTN4.png"),
+            "src/main/resources/button/QuitBTN4.png",
+            "src/main/resources/button/restartButton4.png"),
 
     Temple4("Temple4",
             "src\\main\\resources\\Theme\\temp5.png",
@@ -87,10 +91,11 @@ public enum ThemeSet {
             "src/main/resources/Theme/lostwin/win5.png",
             "src/main/resources/Theme/lostwin/lost5.png",
             "src/main/resources/Theme/banner5.png",
-            "src/main/resources/Theme/popup/popog.png",
+            "src/main/resources/Theme/popup/khamer.png",
             "src/main/resources/button/pause5.png",
             "src/main/resources/button/ResumeBTN5.png",
-            "src/main/resources/button/QuitBTN5.png");
+            "src/main/resources/button/QuitBTN5.png",
+            "src/main/resources/button/restartButton5.png");
 
     private final String themeName;
     private final String pathSkinPacman;
@@ -109,13 +114,15 @@ public enum ThemeSet {
     private final String pathPause;
     private final String pathResumeBtn;
     private final String pathQuitBtn;
+    private final String pathRestartBtn;
 
     ThemeSet(String themeName, String pathBackgroundHome,
             String pathWall, String pathPallet,
             String pathSkinPacman, String pathGhostBlinky, String pathGhostPinky, String pathGhostInky,
             String pathGhostClyde,
             String pathBackgroundGamplay, String pathBackgroundWin, String pathBackgroundLost,
-            String pathBanner, String pathPause, String pathPauseBtn, String pathResumeBtn, String pathQuitBtn) {
+            String pathBanner, String pathPause, String pathPauseBtn, String pathResumeBtn, String pathQuitBtn,
+            String pathRestartBtn) {
         this.themeName = themeName;
         this.pathSkinPacman = pathSkinPacman;
         this.pathWall = pathWall;
@@ -133,6 +140,7 @@ public enum ThemeSet {
         this.pathPauseBtn = pathPauseBtn;
         this.pathResumeBtn = pathResumeBtn;
         this.pathQuitBtn = pathQuitBtn;
+        this.pathRestartBtn = pathRestartBtn;
 
     }
 
@@ -146,6 +154,10 @@ public enum ThemeSet {
 
     public String getPathGhostBlinky() {
         return pathGhostBlinky;
+    }
+
+    public String getPathRestartBtn() {
+        return pathRestartBtn;
     }
 
     public String getPathQuitBtn() {

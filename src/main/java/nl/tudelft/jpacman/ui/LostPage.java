@@ -30,7 +30,7 @@ public class LostPage extends JPanel {
         c1.gridy = 0;
         c1.insets = new Insets(20, 20, 20, 0);
         score = new JLabel("Score : 0");
-//        Font font = new Font("Serif", Font.BOLD, 50);
+        // Font font = new Font("Serif", Font.BOLD, 50);
         customFont.setSizeFont(50f);
         Font font = customFont.fontFormat();
         score.setFont(font);
@@ -49,23 +49,22 @@ public class LostPage extends JPanel {
         }
     }
 
-    public void addThemeButton(String pathIcon, ActionListener action, int row, int column) {
+    public void addThemeButton(String pathIcon, JButton btn, int row, int column) {
 
         ImageIcon icon = new ImageIcon(pathIcon);
-        JButton button = new JButton(icon);
-        button.setPreferredSize(new Dimension(150, 75));
-        button.addActionListener(action);
-        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.setContentAreaFilled(false);
+        btn.setIcon(icon);
+        btn.setPreferredSize(new Dimension(150, 75));
+        btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btn.setBorderPainted(false);
+        btn.setFocusPainted(false);
+        btn.setContentAreaFilled(false);
 
         GridBagConstraints c1 = new GridBagConstraints();
         c1.fill = GridBagConstraints.HORIZONTAL;
         c1.gridx = column;
         c1.gridy = row;
         c1.insets = new Insets(20, 20, 20, 0);
-        add(button, c1);
+        add(btn, c1);
 
     }
 

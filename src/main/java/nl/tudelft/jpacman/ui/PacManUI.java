@@ -101,13 +101,13 @@ public class PacManUI extends JFrame implements ActionListener {
     JDialog dialogWon;
     private LostPage LostPage = new LostPage();
     private WinPage WinPage = new WinPage();
+    // Lost Page
+    JButton lostbackhomeButton = new JButton();
+    JButton restartButton = new JButton();
 
-    JButton backButton = new JButton("Back");
-    JButton restartButton = new JButton("Restart");
-    JButton restartButton2 = new JButton("Restart");
-    JButton nextButton = new JButton("Next");
-    JButton homeButton = new JButton("Exit");
-    JButton homeButton2 = new JButton("Exit");
+    // win page
+    JButton winbackhomeButton = new JButton();
+
     JButton btnTheme = new JButton();
 
     // Map Select UI
@@ -209,27 +209,13 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.backBtn("src/main/resources/button/backbtn.png", btnThemeBack, 3, 1);
 
         // add BTN to lost page
-        LostPage.addThemeButton("src/main/resources/button/restartbtn.png", new ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                cardLayout.show(cardPanel, "gameplay");
-                game.reStart();
-                CountdownToStart(3000, game);
-            }
-        }, 1, 0);
-        LostPage.addThemeButton("src/main/resources/button/quit1.png", new ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                cardLayout.show(cardPanel, "home");
-            }
-        }, 2, 0);
+        restartButton.addActionListener(this);
+        LostPage.addThemeButton("src/main/resources/button/restartbtn.png", restartButton, 1, 0);
+        lostbackhomeButton.addActionListener(this);
+        LostPage.addThemeButton("src/main/resources/button/quit1.png", lostbackhomeButton, 2, 0);
         // add btn to win page
-        WinPage.addThemeButton("src/main/resources/button/quit1.png", new ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent e) {
-                cardLayout.show(cardPanel, "home");
-            }
-        }, 1, 0);
+        winbackhomeButton.addActionListener(this);
+        WinPage.addThemeButton("src/main/resources/button/quit1.png", winbackhomeButton, 1, 0);
         // setBackground btn HomeUI
         btnStart.setIcon(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnTheme.setIcon(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));
@@ -326,26 +312,22 @@ public class PacManUI extends JFrame implements ActionListener {
             cardLayout.show(cardPanel, "home");
         }
         // GoHome
-        else if (e.getSource() == homeButton) {
+        else if (e.getSource() == winbackhomeButton) {
             game.reStart();
-            dialogDead.setVisible(false);
             cardLayout.show(cardPanel, "home");
-            dialogDead.removeAll();
         }
         // restart
         else if (e.getSource() == restartButton) {
-            dialogDead.setVisible(false);
+            cardLayout.show(cardPanel, "gameplay");
             game.reStart();
-
-            dialogDead.removeAll();
             CountdownToStart(3000, game);
+
         }
         // back
-        else if (e.getSource() == backButton) {
+        else if (e.getSource() == lostbackhomeButton) {
             game.reStart();
-            dialogDead.setVisible(false);
             cardLayout.show(cardPanel, "home");
-            dialogDead.removeAll();
+
         }
         // map
         else if (e.getSource() == map0) {
@@ -414,23 +396,6 @@ public class PacManUI extends JFrame implements ActionListener {
 
         }
 
-        else if (e.getSource() == nextButton) {
-            dialogWon.setVisible(false);
-            Launcher launcher = new Launcher();
-            if (launcher.getMapNum() + 1 < launcher.getAllLevels().size()) {
-                int mapNum = launcher.getMapNum();
-                mapNum++;
-                game.setMap(mapNum);
-                game.reStart();
-                cardLayout.show(cardPanel, "gameplay");
-                dialogWon.removeAll();
-                CountdownToStart(3000, game);
-            } else {
-                System.out.println("There are no more maps!");
-                nextButton.setEnabled(false);
-                dialogWon.removeAll();
-            }
-        }
     }
 
     private void CountdownToStart(int time, Game game) {
@@ -460,6 +425,9 @@ public class PacManUI extends JFrame implements ActionListener {
         btnPauseButton.setIcon(new ImageIcon(themeSet.getPathPauseBtn()));
         btnContinue.setIcon(new ImageIcon(themeSet.getPathResumeBtn()));
         btnBackhome.setIcon(new ImageIcon(themeSet.getPathQuitBtn()));
+        restartButton.setIcon(new ImageIcon(themeSet.getPathRestartBtn()));
+        lostbackhomeButton.setIcon(new ImageIcon(themeSet.getPathQuitBtn()));
+        winbackhomeButton.setIcon(new ImageIcon(themeSet.getPathQuitBtn()));
     }
 
 }
