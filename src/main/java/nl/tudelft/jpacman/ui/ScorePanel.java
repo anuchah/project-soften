@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import nl.tudelft.jpacman.level.Player;
+import nl.tudelft.jpacman.theme.CustomFont;
 
 /**
  * A panel consisting of a column for each player, with the numbered players on
@@ -50,6 +51,8 @@ public class ScorePanel extends JPanel {
     private BufferedImage btnImage;
     private JLabel state;
 
+    private CustomFont customFont = new CustomFont();
+
     /**
      * Creates a new score panel with a column for each player.
      *
@@ -62,12 +65,18 @@ public class ScorePanel extends JPanel {
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(800, 75));
 
+//        font crackman
+        customFont.setSizeFont(18f);
+        Font font = customFont.fontFormat();
+
         for (int i = 1; i <= players.size(); i++) {
             JLabel player = new JLabel("Player " + i, JLabel.CENTER);
             // player.setForeground(Color.WHITE);
             // add(player, BorderLayout.LINE_START);
+            player.setFont(font);
         }
         state = new JLabel("State: " + mapName);
+        state.setFont(font);
         state.setForeground(Color.WHITE);
         state.setBorder(BorderFactory.createEmptyBorder(10, 100, 0, 0));
         add(state, BorderLayout.LINE_START);
@@ -75,6 +84,7 @@ public class ScorePanel extends JPanel {
         scoreLabels = new LinkedHashMap<>();
         for (Player player : players) {
             JLabel scoreLabel = new JLabel("0", JLabel.CENTER);
+            scoreLabel.setFont(font);
             scoreLabel.setForeground(Color.WHITE);
             scoreLabels.put(player, scoreLabel);
             add(scoreLabel, BorderLayout.CENTER);

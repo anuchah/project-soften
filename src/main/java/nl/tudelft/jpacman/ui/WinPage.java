@@ -1,5 +1,7 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.theme.CustomFont;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +13,8 @@ import java.io.IOException;
 public class WinPage extends JPanel {
     private BufferedImage backgroundImage;
     private JLabel score;
+
+    private CustomFont customFont = new CustomFont();
 
     public WinPage() {
         setBackground("src/main/resources/theme/lostwin/win.png");
@@ -26,7 +30,9 @@ public class WinPage extends JPanel {
         c.gridy = 0;
         c.anchor = GridBagConstraints.CENTER;
         score = new JLabel("Score : 0");
-        Font font = new Font("Serif", Font.BOLD, 50);
+//        Font font = new Font("Serif", Font.BOLD, 50);
+        customFont.setSizeFont(50f);
+        Font font = customFont.fontFormat();
         score.setFont(font);
         setPreferredSize(new Dimension(800, 800));
         setBackground(Color.BLACK);

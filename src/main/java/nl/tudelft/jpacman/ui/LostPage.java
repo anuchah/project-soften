@@ -1,5 +1,7 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.theme.CustomFont;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +14,8 @@ import java.io.InputStream;
 public class LostPage extends JPanel {
     private BufferedImage backgroundImage;
     private JLabel score;
+
+    private CustomFont customFont = new CustomFont();
 
     public LostPage() {
         setBackground("src/main/resources/theme/lostwin/lost.png");
@@ -26,8 +30,9 @@ public class LostPage extends JPanel {
         c1.gridy = 0;
         c1.insets = new Insets(20, 20, 20, 0);
         score = new JLabel("Score : 0");
-        Font font = new Font("Serif", Font.BOLD, 50);
-
+//        Font font = new Font("Serif", Font.BOLD, 50);
+        customFont.setSizeFont(50f);
+        Font font = customFont.fontFormat();
         score.setFont(font);
         score.setBackground(new Color(0, 0, 0));
         setPreferredSize(new Dimension(800, 800));
