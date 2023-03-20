@@ -37,7 +37,7 @@ public class Launcher {
 
     private static final PacManSprites SPRITE_STORE = new PacManSprites();
 
-    public static final String DEFAULT_MAP = "/board0.txt";
+    public static String DEFAULT_MAP = "/board0.txt";
     private List<String> allLevel = Arrays.asList("/board0.txt", "/board1.txt", "/board2.txt", "/board3.txt",
             "/board4.txt");
 
