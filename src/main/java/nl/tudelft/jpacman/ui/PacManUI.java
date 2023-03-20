@@ -58,7 +58,7 @@ public class PacManUI extends JFrame implements ActionListener {
      */
     private final ScorePanel scorePanel;
     private final JButton btnPauseButton = new JButton();
-    private final DialogPause dialogPause = new DialogPause();
+    private final DialogPause dialogPause = new DialogPause(this);
     private final JButton btnContinue = new JButton();
     private final JButton btnBackhome = new JButton();
 
@@ -391,7 +391,7 @@ public class PacManUI extends JFrame implements ActionListener {
         // pause
         else if (e.getSource() == btnPauseButton) {
             game.stop();
-            dialogPause.setLocationRelativeTo(this);
+
             dialogPause.Visible();
             if (countdown.isRun()) {
                 countdown.stopTime();
@@ -399,9 +399,10 @@ public class PacManUI extends JFrame implements ActionListener {
 
         } else if (e.getSource() == btnContinue) {
             dialogPause.Disible();
-            if (!countdown.isRun()) {
+            if (!countdown.isRun() && countdown.getCount() != 0) {
                 countdown.startTime();
             } else {
+                this.requestFocus();
                 game.start();
             }
         } else if (e.getSource() == btnBackhome) {
