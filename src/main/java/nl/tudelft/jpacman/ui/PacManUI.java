@@ -210,12 +210,12 @@ public class PacManUI extends JFrame implements ActionListener {
 
         // add BTN to lost page
         restartButton.addActionListener(this);
-        LostPage.addThemeButton("src/main/resources/button/restartbtn.png", restartButton, 1, 0);
+        LostPage.addButton("src/main/resources/button/restartbtn.png", restartButton, 1, 0);
         lostbackhomeButton.addActionListener(this);
-        LostPage.addThemeButton("src/main/resources/button/quit1.png", lostbackhomeButton, 2, 0);
+        LostPage.addButton("src/main/resources/button/quit1.png", lostbackhomeButton, 2, 0);
         // add btn to win page
         winbackhomeButton.addActionListener(this);
-        WinPage.addThemeButton("src/main/resources/button/quit1.png", winbackhomeButton, 1, 0);
+        WinPage.addButton("src/main/resources/button/quit1.png", winbackhomeButton, 1, 0);
         // setBackground btn HomeUI
         btnStart.setIcon(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnTheme.setIcon(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));

@@ -7,6 +7,7 @@ import java.io.IOException;
 public class CustomFont {
 
     private static final String fileName = "src/main/resources/fonts/crackman.front.ttf";
+    private static final String fileName2 = "src/main/resources/fonts/PixeloidMono-VGj6x.ttf";
     private float sizeFont = 14f;
 
     private Font customFont;
@@ -17,7 +18,7 @@ public class CustomFont {
 
     public Font fontFormat(){
         try {
-            customFont = Font.createFont(Font.TRUETYPE_FONT, new File(fileName));
+            customFont = Font.createFont(Font.TRUETYPE_FONT, new File(fileName2));
             customFont = customFont.deriveFont(getSizeFont());
 
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
