@@ -139,7 +139,7 @@ public class ScorePanel extends JPanel {
     // Show State name
     public void setMapName(String mapName) {
         this.mapName = mapName;
-        stage.setText("State: " + mapName);
+        stage.setText("Stage: " + mapName);
 
     }
 

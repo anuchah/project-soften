@@ -131,7 +131,7 @@ public class PacManUI extends JFrame implements ActionListener {
         this.game = game;
 
         btnContinue.setIcon(new ImageIcon("src/main/resources/button/resumebtn.png"));
-        btnBackhome.setIcon(new ImageIcon("src/main/resources/button/quitbtn.png"));
+        btnBackhome.setIcon(new ImageIcon("src/main/resources/button/quit1.png"));
         dialogPause.addBackhomeButton(btnBackhome);
         dialogPause.addContinueButton(btnContinue);
 
@@ -215,7 +215,7 @@ public class PacManUI extends JFrame implements ActionListener {
         LostPage.addButton("src/main/resources/button/quit1.png", lostbackhomeButton, 2, 0);
         // add btn to win page
         winbackhomeButton.addActionListener(this);
-        WinPage.addButton("src/main/resources/button/quit1.png", winbackhomeButton, 1, 0);
+        WinPage.addButton("src/main/resources/button/quit1.png", winbackhomeButton, 1, 2);
         // setBackground btn HomeUI
         btnStart.setIcon(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnTheme.setIcon(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));

@@ -18,7 +18,7 @@ public enum ThemeSet {
             "src/main/resources/Theme/popog.png",
             "src/main/resources/button/pause1.png",
             "src/main/resources/button/resumebtn.png",
-            "src/main/resources/button/quitbtn.png",
+            "src/main/resources/button/quit1.png",
             "src/main/resources/button/restartbtn.png"),
 
     Temple1("Temple1",
