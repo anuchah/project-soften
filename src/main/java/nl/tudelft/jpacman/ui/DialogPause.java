@@ -1,6 +1,8 @@
 package nl.tudelft.jpacman.ui;
 
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -12,16 +14,16 @@ import javax.swing.*;
 public class DialogPause extends JDialog {
     private BufferedImage bg;
 
-    public DialogPause() {
-
+    public DialogPause(JFrame owner) {
+        super(owner);
         this.setLayout(new GridBagLayout());
 
         JLabel popup = new JLabel("Pause");
         Font font = new Font("Serif", Font.BOLD, 20);
         popup.setFont(font);
-        setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(DialogPause.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
-
+        setLocationRelativeTo(owner);
         // Add the label above the first button
         GridBagConstraints cl = new GridBagConstraints();
         cl.gridx = 0;
@@ -32,6 +34,14 @@ public class DialogPause extends JDialog {
         // Set the dialog size and visibility
         this.setSize(300, 200);
         setBackground("src/main/resources/Theme/popup/popog.png");
+
+        owner.addComponentListener(new ComponentAdapter() {
+            public void componentMoved(ComponentEvent e) {
+                int x = owner.getLocation().x + (owner.getWidth() - getWidth()) / 2;
+                int y = owner.getLocation().y + (owner.getHeight() - getHeight()) / 2;
+                setLocation(x, y);
+            }
+        });
     }
 
     public void setBackground(String imagePath) {
