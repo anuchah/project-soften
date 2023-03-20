@@ -45,15 +45,15 @@ public class ScorePanel extends JPanel {
      */
     private ScoreFormatter scoreFormatter = DEFAULT_SCORE_FORMATTER;
 
-    private String mapName;
+    private String mapName = "";
     private BufferedImage backgroundImage;
     private BufferedImage btnImage;
-
+    private JLabel state;
 
     /**
      * Creates a new score panel with a column for each player.
      *
-     * @param players  The players to display the scores of.
+     * @param players The players to display the scores of.
      *
      */
     public ScorePanel(List<Player> players) {
@@ -64,9 +64,13 @@ public class ScorePanel extends JPanel {
 
         for (int i = 1; i <= players.size(); i++) {
             JLabel player = new JLabel("Player " + i, JLabel.CENTER);
-            //player.setForeground(Color.WHITE);
-            //add(player, BorderLayout.LINE_START);
+            // player.setForeground(Color.WHITE);
+            // add(player, BorderLayout.LINE_START);
         }
+        state = new JLabel("State: " + mapName);
+        state.setForeground(Color.WHITE);
+        state.setBorder(BorderFactory.createEmptyBorder(10, 100, 0, 0));
+        add(state, BorderLayout.LINE_START);
 
         scoreLabels = new LinkedHashMap<>();
         for (Player player : players) {
@@ -75,7 +79,7 @@ public class ScorePanel extends JPanel {
             scoreLabels.put(player, scoreLabel);
             add(scoreLabel, BorderLayout.CENTER);
         }
-        //setBackground(new Color(51, 51, 51));
+        // setBackground(new Color(51, 51, 51));
         setBackground("src/main/resources/Theme/banner1.png");
     }
 
@@ -122,13 +126,11 @@ public class ScorePanel extends JPanel {
         add(btnPauseGame, BorderLayout.LINE_END);
     }
 
-    //Show State name
+    // Show State name
     public void setMapName(String mapName) {
         this.mapName = mapName;
-        JLabel state = new JLabel("State: " + mapName);
-        state.setForeground(Color.WHITE);
-        state.setBorder(BorderFactory.createEmptyBorder(10, 100, 0, 0));
-        add(state, BorderLayout.LINE_START);
+        state.setText("State: " + mapName);
+
     }
 
     public void setBackground(String imagePath) {
@@ -140,15 +142,16 @@ public class ScorePanel extends JPanel {
         }
     }
 
-    /*public void setBtnBg(String btnPath) {
-        try {
-            btnImage = ImageIO.read(new File(btnPath));
-            repaint();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
-
+    /*
+     * public void setBtnBg(String btnPath) {
+     * try {
+     * btnImage = ImageIO.read(new File(btnPath));
+     * repaint();
+     * } catch (IOException e) {
+     * e.printStackTrace();
+     * }
+     * }
+     */
 
     @Override
     protected void paintComponent(Graphics g) {

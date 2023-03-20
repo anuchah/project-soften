@@ -449,7 +449,7 @@ public class PacManUI extends JFrame implements ActionListener {
 
     }
 
-    public void setAllTheme() {
+    private void setAllTheme() {
         game.setTheme(themeSet);
         homeUI.setBackground(themeSet.getPathBackgroundHome());
         boardPanel.setBackground(themeSet.getPathBackgroundGamplay());
@@ -457,7 +457,9 @@ public class PacManUI extends JFrame implements ActionListener {
         LostPage.setBackground(themeSet.getPathBackgroundLost());
         scorePanel.setBackground(themeSet.getPathBanner());
         dialogPause.setBackground(themeSet.getPathPause());
-        //scorePanel.addPauseButton(themeSet.getPathPauseBtn());
+        btnPauseButton.setIcon(new ImageIcon(themeSet.getPathPauseBtn()));
+        btnContinue.setIcon(new ImageIcon(themeSet.getPathResumeBtn()));
+        btnBackhome.setIcon(new ImageIcon(themeSet.getPathQuitBtn()));
     }
 
 }
