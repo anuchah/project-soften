@@ -31,6 +31,7 @@ public class DialogPause extends JDialog {
 
         // Set the dialog size and visibility
         this.setSize(300, 200);
+        setBackground("src/main/resources/Theme/popup/popog.png");
     }
 
     public void setBackground(String imagePath) {
@@ -59,6 +60,7 @@ public class DialogPause extends JDialog {
         btn.setBorderPainted(false);
         btn.setFocusPainted(false);
         btn.setContentAreaFilled(false);
+        btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.add(btn, c1);
     }
 
@@ -71,6 +73,7 @@ public class DialogPause extends JDialog {
         btn.setBorderPainted(false);
         btn.setFocusPainted(false);
         btn.setContentAreaFilled(false);
+        btn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.add(btn, c1);
     }
 

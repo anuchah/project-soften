@@ -14,7 +14,11 @@ public enum ThemeSet {
         "/sprite/ghost_orange.png",
         "src\\main\\resources\\Theme\\black.jpg",
         "src/main/resources/Theme/lostwin/win.png",
-        "src/main/resources/Theme/lostwin/lost.png"),
+        "src/main/resources/Theme/lostwin/lost.png",
+        "src/main/resources/Theme/banner1.png",
+        "src/main/resources/Theme/gamewat4.png",
+        "src/main/resources/button/pause1.png"),
+
     Temple1("Temple1",
         "src\\main\\resources\\Theme\\temp2.png",
         "/sprite/pixil-frame-1.png",
@@ -26,7 +30,10 @@ public enum ThemeSet {
         "/sprite/ghost2/taneeor.png",
         "src\\main\\resources\\Theme\\gamewat2.png",
         "src/main/resources/Theme/lostwin/win2.png",
-        "src/main/resources/Theme/lostwin/lost2.png"),
+        "src/main/resources/Theme/lostwin/lost2.png",
+        "src/main/resources/Theme/banner2.png",
+        "src/main/resources/Theme/popup/popog.png",
+        "src/main/resources/button/pause2.png"),
 
     Temple2("Temple2",
         "src\\main\\resources\\Theme\\temp3.png",
@@ -39,7 +46,10 @@ public enum ThemeSet {
         "/sprite/ghost3/babyorange.png",
         "src\\main\\resources\\Theme\\gamewat3.png",
         "src/main/resources/Theme/lostwin/win3.png",
-        "src/main/resources/Theme/lostwin/lost3.png"),
+        "src/main/resources/Theme/lostwin/lost3.png",
+        "src/main/resources/Theme/banner3.png",
+        "src/main/resources/Theme/popup/popog.png",
+        "src/main/resources/button/pause3.png"),
 
     Temple3("Temple3",
         "src\\main\\resources\\Theme\\temp4.png",
@@ -52,7 +62,10 @@ public enum ThemeSet {
         "/sprite/ghost4/eyeor.png",
         "src\\main\\resources\\Theme\\gamewat4.png",
         "src/main/resources/Theme/lostwin/win4.png",
-        "src/main/resources/Theme/lostwin/lost4.png"),
+        "src/main/resources/Theme/lostwin/lost4.png",
+        "src/main/resources/Theme/banner4.png",
+        "src/main/resources/Theme/popup/popog.png",
+        "src/main/resources/button/pause4.png"),
 
     Temple4("Temple4",
         "src\\main\\resources\\Theme\\temp5.png",
@@ -65,7 +78,10 @@ public enum ThemeSet {
         "/sprite/ghost5/bloodor.png",
         "src\\main\\resources\\Theme\\gamewat5.png",
         "src/main/resources/Theme/lostwin/win5.png",
-        "src/main/resources/Theme/lostwin/lost5.png");
+        "src/main/resources/Theme/lostwin/lost5.png",
+        "src/main/resources/Theme/banner5.png",
+        "src/main/resources/Theme/popup/popog.png",
+        "src/main/resources/button/pause5.png");
 
     private final String themeName;
     private final String pathSkinPacman;
@@ -79,12 +95,16 @@ public enum ThemeSet {
     private final String pathGhostPinky;
     private final String pathGhostInky;
     private final String pathGhostClyde;
+    private final String pathBanner;
+    private final String pathPauseBtn;
+    private final String pathPause;
 
     ThemeSet(String themeName, String pathBackgroundHome,
             String pathWall, String pathPallet,
             String pathSkinPacman, String pathGhostBlinky, String pathGhostPinky, String pathGhostInky,
             String pathGhostClyde,
-            String pathBackgroundGamplay, String pathBackgroundWin, String pathBackgroundLost) {
+            String pathBackgroundGamplay, String pathBackgroundWin, String pathBackgroundLost,
+             String pathBanner, String pathPause, String pathPauseBtn) {
         this.themeName = themeName;
         this.pathSkinPacman = pathSkinPacman;
         this.pathWall = pathWall;
@@ -97,6 +117,9 @@ public enum ThemeSet {
         this.pathGhostPinky = pathGhostPinky;
         this.pathGhostInky = pathGhostInky;
         this.pathGhostClyde = pathGhostClyde;
+        this.pathBanner = pathBanner;
+        this.pathPause = pathPause;
+        this.pathPauseBtn = pathPauseBtn;
 
     }
 
@@ -147,4 +170,10 @@ public enum ThemeSet {
     public String getPathPallet() {
         return pathPallet;
     }
+
+    public String getPathBanner(){ return pathBanner; }
+
+    public String getPathPause(){ return pathPause; }
+
+    public  String getPathPauseBtn(){ return pathPauseBtn; }
 }

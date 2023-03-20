@@ -1,30 +1,18 @@
 package nl.tudelft.jpacman.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.*;
-import java.util.Map;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-
-import org.junit.jupiter.api.function.ThrowingSupplier;
-
-//import javafx.scene.layout.Background;
-
-import javax.swing.*;
-//import net.bytebuddy.asm.Advice.This;
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.game.Game;
 import nl.tudelft.jpacman.theme.ThemeSet;
 import nl.tudelft.jpacman.ui.ScorePanel.ScoreFormatter;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * The default JPacMan UI frame. The PacManUI consists of the following
@@ -124,6 +112,7 @@ public class PacManUI extends JFrame implements ActionListener {
 
     // Map Select UI
     private MapSelectUI mapSelectUI = new MapSelectUI();
+    private String mapName;
     private JButton map0 = new JButton("map 0");
     private JButton map1 = new JButton("map 1");
     private JButton map2 = new JButton("map 2");
@@ -195,7 +184,7 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 3 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                themeSet = ThemeSet.Temple3;
+                themeSet = ThemeSet.Temple2;
                 setAllTheme();
                 cardLayout.show(cardPanel, "home");
             }
@@ -317,6 +306,10 @@ public class PacManUI extends JFrame implements ActionListener {
 
     }
 
+    public String getSelectedMapName() {
+        return mapName;
+    }
+
     // Handle Button
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -356,7 +349,8 @@ public class PacManUI extends JFrame implements ActionListener {
         }
         // map
         else if (e.getSource() == map0) {
-
+            mapName = "Maha-Ud";
+            scorePanel.setMapName(mapName);
             game.setMap(0);
             game.reStart();
 
@@ -364,24 +358,31 @@ public class PacManUI extends JFrame implements ActionListener {
             CountdownToStart(5000, game);
 
         } else if (e.getSource() == map1) {
+            mapName = "Takrut Ton";
+            scorePanel.setMapName(mapName);
             game.setMap(1);
             game.reStart();
             cardLayout.show(cardPanel, "gameplay");
             CountdownToStart(5000, game);
 
         } else if (e.getSource() == map2) {
-
+            mapName = "Chatra Phet";
+            scorePanel.setMapName(mapName);
             game.setMap(2);
             game.reStart();
 
             cardLayout.show(cardPanel, "gameplay");
             CountdownToStart(5000, game);
         } else if (e.getSource() == map3) {
+            mapName = "Phokkasub";
+            scorePanel.setMapName(mapName);
             game.setMap(3);
             game.reStart();
             cardLayout.show(cardPanel, "gameplay");
             CountdownToStart(5000, game);
         } else if (e.getSource() == map4) {
+            mapName = "Praphutnimit";
+            scorePanel.setMapName(mapName);
             game.setMap(4);
             game.reStart();
 
@@ -453,6 +454,9 @@ public class PacManUI extends JFrame implements ActionListener {
         boardPanel.setBackground(themeSet.getPathBackgroundGamplay());
         WinPage.setBackground(themeSet.getPathBackgroundWin());
         LostPage.setBackground(themeSet.getPathBackgroundLost());
+        scorePanel.setBackground(themeSet.getPathBanner());
+        dialogPause.setBackground(themeSet.getPathPause());
+        //scorePanel.addPauseButton(themeSet.getPathPauseBtn());
     }
 
 }

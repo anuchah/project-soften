@@ -10,7 +10,6 @@ import java.io.IOException;
 
 public class WinPage extends JPanel {
     private BufferedImage backgroundImage;
-
     private JLabel score;
 
     public WinPage() {

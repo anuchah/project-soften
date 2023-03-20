@@ -16,19 +16,16 @@ public class themeTest {
         ThemeSet jp = ThemeSet.valueOf("Temple1");
         assertEquals(jp, ThemeSet.Temple1);
     }
-
     @Test
     public void testSelectThemeHalloween() {
         ThemeSet h = ThemeSet.valueOf("Temple2");
         assertEquals(h, ThemeSet.Temple2);
     }
-
     @Test
     public void testSelectThemeCity() {
         ThemeSet c = ThemeSet.valueOf("Temple3");
         assertEquals(c, ThemeSet.Temple3);
     }
-
     @Test
     public void testSelectThemeDefault() {
         ThemeSet de = ThemeSet.valueOf("DEFAULT");
