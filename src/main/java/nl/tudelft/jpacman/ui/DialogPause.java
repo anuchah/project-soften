@@ -1,5 +1,7 @@
 package nl.tudelft.jpacman.ui;
 
+import nl.tudelft.jpacman.theme.CustomFont;
+
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -13,13 +15,15 @@ import javax.swing.*;
 
 public class DialogPause extends JDialog {
     private BufferedImage bg;
+    private CustomFont customFont = new CustomFont();
 
     public DialogPause(JFrame owner) {
         super(owner);
         this.setLayout(new GridBagLayout());
 
         JLabel popup = new JLabel("Pause");
-        Font font = new Font("Serif", Font.BOLD, 20);
+        customFont.setSizeFont(18f);
+        Font font = customFont.fontFormat();
         popup.setFont(font);
         setDefaultCloseOperation(DialogPause.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
@@ -30,6 +34,8 @@ public class DialogPause extends JDialog {
         cl.gridy = 0;
 
         this.add(popup, cl);
+
+
 
         // Set the dialog size and visibility
         this.setSize(300, 200);

@@ -209,7 +209,7 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.backBtn("src/main/resources/button/backbtn.png", btnThemeBack, 3, 1);
 
         // add BTN to lost page
-        LostPage.addThemeButton("src/main/resources/button/restartbtn.png", new ActionListener() {
+        LostPage.addButton("src/main/resources/button/restartbtn.png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 cardLayout.show(cardPanel, "gameplay");
@@ -217,19 +217,19 @@ public class PacManUI extends JFrame implements ActionListener {
                 CountdownToStart(3000, game);
             }
         }, 1, 0);
-        LostPage.addThemeButton("src/main/resources/button/quit1.png", new ActionListener() {
+        LostPage.addButton("src/main/resources/button/quit1.png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 cardLayout.show(cardPanel, "home");
             }
         }, 2, 0);
         // add btn to win page
-        WinPage.addThemeButton("src/main/resources/button/quit1.png", new ActionListener() {
+        WinPage.addButton("src/main/resources/button/quit1.png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 cardLayout.show(cardPanel, "home");
             }
-        }, 1, 0);
+        }, 1, 2);
         // setBackground btn HomeUI
         btnStart.setIcon(new ImageIcon("src\\main\\resources\\button\\startbutton.png"));
         btnTheme.setIcon(new ImageIcon("src\\main\\resources\\Theme\\buttontheme.png"));

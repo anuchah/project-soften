@@ -49,7 +49,7 @@ public class LostPage extends JPanel {
         }
     }
 
-    public void addThemeButton(String pathIcon, ActionListener action, int row, int column) {
+    public void addButton(String pathIcon, ActionListener action, int row, int column) {
 
         ImageIcon icon = new ImageIcon(pathIcon);
         JButton button = new JButton(icon);

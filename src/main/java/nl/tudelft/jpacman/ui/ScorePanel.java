@@ -49,7 +49,7 @@ public class ScorePanel extends JPanel {
     private String mapName = "";
     private BufferedImage backgroundImage;
     private BufferedImage btnImage;
-    private JLabel state;
+    private JLabel stage;
 
     private CustomFont customFont = new CustomFont();
 
@@ -65,7 +65,7 @@ public class ScorePanel extends JPanel {
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(800, 75));
 
-//        font crackman
+//        font
         customFont.setSizeFont(18f);
         Font font = customFont.fontFormat();
 
@@ -75,11 +75,11 @@ public class ScorePanel extends JPanel {
             // add(player, BorderLayout.LINE_START);
             player.setFont(font);
         }
-        state = new JLabel("State: " + mapName);
-        state.setFont(font);
-        state.setForeground(Color.WHITE);
-        state.setBorder(BorderFactory.createEmptyBorder(10, 100, 0, 0));
-        add(state, BorderLayout.LINE_START);
+        stage = new JLabel("Stage: " + mapName);
+        stage.setFont(font);
+        stage.setForeground(Color.WHITE);
+        stage.setBorder(BorderFactory.createEmptyBorder(10, 100, 0, 0));
+        add(stage, BorderLayout.LINE_START);
 
         scoreLabels = new LinkedHashMap<>();
         for (Player player : players) {
@@ -139,7 +139,7 @@ public class ScorePanel extends JPanel {
     // Show State name
     public void setMapName(String mapName) {
         this.mapName = mapName;
-        state.setText("State: " + mapName);
+        stage.setText("State: " + mapName);
 
     }
 
@@ -151,17 +151,6 @@ public class ScorePanel extends JPanel {
             e.printStackTrace();
         }
     }
-
-    /*
-     * public void setBtnBg(String btnPath) {
-     * try {
-     * btnImage = ImageIO.read(new File(btnPath));
-     * repaint();
-     * } catch (IOException e) {
-     * e.printStackTrace();
-     * }
-     * }
-     */
 
     @Override
     protected void paintComponent(Graphics g) {
