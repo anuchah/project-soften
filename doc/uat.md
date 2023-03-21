@@ -84,18 +84,24 @@
 
 
 ### 5. การเลือกด่าน ‘Phokkasub’
+
 5.1 เล่นเกมแพ้
+
 <img src="./img/Phokkasub/Phokkasub_lost.gif" width="300" height="300" >
 
 5.2 เล่นเกมชนะ
+
 <img src="./img/Phokkasub/Phokkasuba_lost.gif" width="300" height="300" >
 
 
 ### 6. การเลือกด่าน ‘Praphutnimit’
+
 6.1 เล่นเกมแพ้
+
 <img src="./img/Praphutnimit/praphut_lost.gif" width="300" height="300" >
 
 6.2 เล่นเกมชนะ
+
 <img src="./img/Praphutnimit/praphut_win.gif" width="300" height="300" >
 
 ### 7. การกด Pause
@@ -121,6 +127,6 @@
 
 ### 12. การกดออกเมื่อชนะ
 
-<img src="./img/Trakrut Ton\takrut_win-quit.gif width="300" height="300" >
+<img src=".\img\Trakrut Ton\takrut_win-quit.gif width="300" height="300" >
 
 
