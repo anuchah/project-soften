@@ -75,7 +75,7 @@ public class WinPage extends JPanel {
         }
     }
 
-    public void setScore(int socre) {
-        score.setText("Score : " + socre);
-    }
+    public void setScore(int socre) { score.setText("Score : " + socre); }
 }
+
+
