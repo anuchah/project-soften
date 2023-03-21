@@ -127,6 +127,6 @@
 
 ### 12. การกดออกเมื่อชนะ
 
-<img src="./img/Trakrut Ton/takrut_win-quit.gif" width="300" height="300" >
+<img src="./img/trakrut ton/takrut_win-quit.gif" width="300" height="300" >
 
 
