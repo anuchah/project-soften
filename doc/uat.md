@@ -76,11 +76,11 @@
 
 4.1 เล่นเกมแพ้
 
-<img src="./img/Chatra Phet/chatra_win.gif" width="300" height="300" >
+<img src="./img/chatra chet/chatra_win.gif" width="300" height="300" >
 
 4.2 เล่นเกมชนะ
 
-<img src="./img/Chatra Phet/chatra_lost.gif" width="300" height="300" >
+<img src="./img/chatra chet/chatra_lost.gif" width="300" height="300" >
 
 
 ### 5. การเลือกด่าน ‘Phokkasub’
@@ -127,6 +127,6 @@
 
 ### 12. การกดออกเมื่อชนะ
 
-<img src=".\img\Trakrut Ton\takrut_win-quit.gif width="300" height="300" >
+<img src="./img/Trakrut Ton/takrut_win-quit.gif width="300" height="300" >
 
 
