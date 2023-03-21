@@ -91,7 +91,7 @@
 
 5.2 เล่นเกมชนะ
 
-<img src="./img/phokkasub/phokkasuba_lost.gif" width="300" height="300" >
+<img src="./img/phokkasub/phokkasuba_win.gif" width="300" height="300" >
 
 
 ### 6. การเลือกด่าน ‘Praphutnimit’
@@ -127,6 +127,6 @@
 
 ### 12. การกดออกเมื่อชนะ
 
-<img src="./img/Trakrut Ton/takrut_win-quit.gif width="300" height="300" >
+<img src="./img/Trakrut Ton/takrut_win-quit.gif" width="300" height="300" >
 
 
