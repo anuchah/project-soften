@@ -42,7 +42,7 @@ public class DialogPause extends JDialog {
         setBackground("src/main/resources/Theme/popup/popog.png");
         // Set the dialog size and visibility
         this.setSize(300, 200);
-
+        panel.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
         owner.addComponentListener(new ComponentAdapter() {
             public void componentMoved(ComponentEvent e) {
                 int x = owner.getLocation().x + (owner.getWidth() - getWidth()) / 2;

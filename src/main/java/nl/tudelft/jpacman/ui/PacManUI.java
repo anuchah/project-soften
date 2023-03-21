@@ -170,6 +170,7 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\og.png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
+                scorePanel.setFontColor(Color.WHITE);
                 themeSet = ThemeSet.DEFAULT;
                 setAllTheme();
                 cardLayout.show(cardPanel, "home");
@@ -179,6 +180,7 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 2 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
+                scorePanel.setFontColor(Color.BLACK);
                 themeSet = ThemeSet.Temple1;
                 setAllTheme();
                 cardLayout.show(cardPanel, "home");
@@ -187,6 +189,7 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 3 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
+                scorePanel.setFontColor(Color.BLACK);
                 themeSet = ThemeSet.Temple2;
                 setAllTheme();
                 cardLayout.show(cardPanel, "home");
@@ -195,6 +198,7 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 4 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
+                scorePanel.setFontColor(Color.WHITE);
                 themeSet = ThemeSet.Temple3;
                 setAllTheme();
                 cardLayout.show(cardPanel, "home");
@@ -203,6 +207,7 @@ public class PacManUI extends JFrame implements ActionListener {
         themeUI.addThemeButton("src\\main\\resources\\button\\" + 5 + ".png", new ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
+                scorePanel.setFontColor(Color.BLACK);
                 themeSet = ThemeSet.Temple4;
                 setAllTheme();
                 cardLayout.show(cardPanel, "home");

@@ -50,6 +50,7 @@ public class ScorePanel extends JPanel {
     private BufferedImage backgroundImage;
     private BufferedImage btnImage;
     private JLabel stage;
+    private JLabel scoreLabel;
 
     private CustomFont customFont = new CustomFont();
 
@@ -65,7 +66,7 @@ public class ScorePanel extends JPanel {
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(800, 75));
 
-//        font
+        // font
         customFont.setSizeFont(18f);
         Font font = customFont.fontFormat();
 
@@ -83,7 +84,7 @@ public class ScorePanel extends JPanel {
 
         scoreLabels = new LinkedHashMap<>();
         for (Player player : players) {
-            JLabel scoreLabel = new JLabel("0", JLabel.CENTER);
+            scoreLabel = new JLabel("0", JLabel.CENTER);
             scoreLabel.setFont(font);
             scoreLabel.setForeground(Color.WHITE);
             scoreLabels.put(player, scoreLabel);
@@ -150,6 +151,11 @@ public class ScorePanel extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setFontColor(Color color) {
+        stage.setForeground(color);
+        scoreLabel.setForeground(color);
     }
 
     @Override
