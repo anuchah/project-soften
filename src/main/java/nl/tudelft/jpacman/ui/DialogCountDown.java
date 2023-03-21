@@ -11,12 +11,14 @@ import java.awt.*;
 import javax.swing.*;
 
 import nl.tudelft.jpacman.game.Game;
+import nl.tudelft.jpacman.theme.CustomFont;
 
 public class DialogCountDown extends JDialog {
 
     private Timer timer;
     private int count = 5;
     private JLabel label;
+    private CustomFont customFont = new CustomFont();
 
     public DialogCountDown(JFrame owner, double time, Game g) {
         super(owner);
@@ -27,7 +29,9 @@ public class DialogCountDown extends JDialog {
         count = (int) (time / 1000);
 
         label = new JLabel(String.valueOf(count), SwingConstants.CENTER);
-        label.setFont(new Font("Arial", Font.BOLD, 130));
+        customFont.setSizeFont(120f);
+        Font font = customFont.fontFormat();
+        label.setFont(font);
         label.setForeground(Color.WHITE);
         add(label);
 

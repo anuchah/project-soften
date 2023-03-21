@@ -139,6 +139,9 @@ public class PacManUI extends JFrame implements ActionListener {
 
         // addCard Layout to Card Panel
         cardPanel.setLayout(cardLayout);
+        setTitle("Pac-Man Game");
+        ImageIcon icon = new ImageIcon("src/main/resources/button/pacmanIcon.png");
+        setIconImage(icon.getImage());
 
         PacKeyListener keys = new PacKeyListener(keyMappings);
         addKeyListener(keys);
