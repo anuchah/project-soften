@@ -3,15 +3,16 @@
 ## การเปลี่ยนธีม
 
 ### 1. อยู่ที่หน้าแรกของเกม จากนั้นกดปุ่ม Theme 
-
     Expected result: แสดงหน้าธีม
 
-<img src="img/chatra phet/chatra_win.gif" width="300" height="300" >
+<img src="./img/chatra phet/chatra_win.gif" width="300" height="300" >
 
 
 ### 2. ภายในหน้าธีม กดปุ่ม Back เพื่อย้อนกลับมายังหน้าแรก
 
     Expected result: แสดงหน้าแรกพร้อมกับธีมก่อนหน้า
+
+<img src="./img/chatra phet/chatra_win.gif" width="300" height="300" >
 
 ### 3. ภายในหน้าธีม กดเลือกธีมที่ต้องการ ในที่นี้จะเลือกธีม ‘Wat Pra-Sri’
 
