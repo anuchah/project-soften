@@ -76,11 +76,11 @@
 
 4.1 เล่นเกมแพ้
 
-<img src="./img/chatra Phet/chatra_win.gif" width="300" height="300" >
+<img src="./img/chatra phet/chatra_win.gif" width="300" height="300" >
 
 4.2 เล่นเกมชนะ
 
-<img src="./img/chatra Phet/chatra_lost.gif" width="300" height="300" >
+<img src="./img/chatra phet/chatra_lost.gif" width="300" height="300" >
 
 
 ### 5. การเลือกด่าน ‘Phokkasub’
