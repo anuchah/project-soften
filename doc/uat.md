@@ -1,3 +1,4 @@
+# User Acceptance Test
 
 ## การเปลี่ยนธีม
 
@@ -5,7 +6,7 @@
 
     Expected result: แสดงหน้าธีม
 
-<img src="./img/chatra phet/chatra_win.gif" width="300" height="300" >
+<img src="img/chatra phet/chatra_win.gif" width="300" height="300" >
 
 
 ### 2. ภายในหน้าธีม กดปุ่ม Back เพื่อย้อนกลับมายังหน้าแรก
@@ -31,10 +32,3 @@
 ### 7. สามารถชนะเกมได้โดยการกิน pellet ทั้งหมด
 
     Expected result: แสดงหน้า Success
-
-
-* Win
-
-
-
-![name](https://raw.githubusercontent.com/anuchah/project-soften/main/doc/img/Trakrut%20Ton/takrut_lost-quit.gif =30x30)
