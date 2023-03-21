@@ -160,4 +160,15 @@ public class AnimatedSprite implements Sprite {
         return currentSprite().getHeight();
     }
 
+    public int getNumberOfFrames() {
+        return animationFrames.length;
+    }
+
+    public int getDelay() {
+        return animationDelay;
+    }
+
+    public boolean isLooping() {
+        return looping;
+    }
 }
