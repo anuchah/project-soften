@@ -5,7 +5,7 @@
 ### 1. อยู่ที่หน้าแรกของเกม จากนั้นกดปุ่ม Theme 
     Expected result: แสดงหน้าธีม
 
-<img src="doc/img/theme-btnback.gif" width="300" height="300" >
+<img src="jetbrains://idea/navigate/reference?project=jpacman&path=doc/img/theme-btnback.gif" width="300" height="300" >
 
 
 ### 2. ภายในหน้าธีม กดปุ่ม Back เพื่อย้อนกลับมายังหน้าแรก
