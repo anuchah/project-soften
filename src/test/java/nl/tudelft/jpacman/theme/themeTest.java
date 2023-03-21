@@ -12,17 +12,17 @@ public class themeTest {
     PacManSprites p = new PacManSprites();
 
     @Test
-    public void testSelectThemeJapan() {
+    public void testSelectThemeTemple1() {
         ThemeSet jp = ThemeSet.valueOf("Temple1");
         assertEquals(jp, ThemeSet.Temple1);
     }
     @Test
-    public void testSelectThemeHalloween() {
+    public void testSelectThemeTemple2() {
         ThemeSet h = ThemeSet.valueOf("Temple2");
         assertEquals(h, ThemeSet.Temple2);
     }
     @Test
-    public void testSelectThemeCity() {
+    public void testSelectThemeTemple3() {
         ThemeSet c = ThemeSet.valueOf("Temple3");
         assertEquals(c, ThemeSet.Temple3);
     }
